@@ -15,18 +15,28 @@
 \begin{enumerate}[listparindent=\parindent]
 \item[1.] Verify that the set of complex numbers of the form \(x + y\sqrt{2}\), where \(x\) and \(y\) are rational, is a subfield of \(\mathbb{C}\).
 
-    Let \(\mathbb F = \{x + y\sqrt{2} | x, y \in \mathbb Q\}\) and \(a, b \in \mathbb Q\).
+    Let \(\mathbb F = \{x + y\sqrt{2} | x, y \in \mathbb Q\}\) and \(a, b, c, d \in \mathbb Q\). Then,
+
     \[(a + b\sqrt{2}) + (c + d\sqrt{2}) = (a + c) + (b + d)\sqrt{2}\]
     \[(a + b\sqrt{2})(c + d\sqrt{2}) = (ac + 2bd) + (bc + ad)\sqrt{2}\]
 
-    \(\mathbb Q\) is closed under addition and multiplication, so the \(\mathbb F\) is also closed under addition and multiplication.
+    \(\mathbb Q\) is closed under addition and multiplication,
+    so the \(\mathbb F\) is also closed under addition and multiplication.
 
-    Let \(0 = x + y\sqrt{2}\). Then,
+    Addition and multiplication are also commutative and associative for \(\mathbb Q\),
+    so \(\mathbb F\) must also have commutative and associative addition and muliplication:
+
+    \[(a + b\sqrt{2}) + (c + d\sqrt{2}) = (a + c) + (b + d)\sqrt{2} = \]
+    \[(c + a) + (d + b)\sqrt{2} = (c + d\sqrt{2}) + (a + b\sqrt{2})\]
+
+    \[(a + b\sqrt{2})(c + d\sqrt{2}) = (ac + 2bd) + (bc + ad)\sqrt{2} = \]
+    \[(ca + 2db\sqrt{2})(cb + da\sqrt{2}) = (c + d\sqrt{2})(a + b\sqrt{2})\]
+
+    To prove there is a unique additive identity, \(0 = x + y\sqrt{2}\). Then,
     \[(a + b\sqrt{2}) + (x + y\sqrt{2}) = a + b\sqrt{2} = (a + x) + (b + y)\sqrt{2}\]
     \[x = y = 0\]
-    Therefore, there is a unique additive identity for \(\mathbb F\).
 
-    Likewise, let \(1 = x + y\sqrt{2}\). Then,
+    Likewise, there is a unique multiplicative identity, \(1 = x + y\sqrt{2}\).
     \[(a + b\sqrt{2})(x + y\sqrt{2}) = a + b\sqrt{2} = (ax + 2by) + (bx + ay)\sqrt{2}\]
     \[
         \systeme{
@@ -37,7 +47,26 @@
     \[a(x - 1) + 2by = 0, b(x - 1) + ay = 0\]
     \[x - 1 = \frac{-2by}{a} = \frac{-ay}{b}\]
     \[x = 1, y = 0\]
-    There must also be a unique multiplicative identity for \(\mathbb F\).
+
+    Finally, there exists a unique additive inverse \(-x\) for all \(x \in \mathbb F\),
+    such that \(x + (-x) = 0\):
+    \[(a + b\sqrt{2}) + (x + y\sqrt{2}) = (a + x) + (b + y)\sqrt{2} = 0 + 0\sqrt{2}\]
+    \[a + x = 0, b + y = 0\]
+    \[x = -a, y = -b\]
+    \[(a + b\sqrt{2}) + (-a + -b\sqrt{2}) = 0 + 0\sqrt{2}\]
+
+    and a unique multiplicative inverse \(x^{-1}\) for all \(x \in \mathbb F\) and \(x \neq 0\),
+    such that \(x(x^{-1}) = 1\):
+    \[(a + b\sqrt{2})(x + y\sqrt{2}) = (ax + 2by) + (bx + ay)\sqrt{2} = 1 + 0\sqrt{2} \]
+
+    Then,
+    \[
+        \systeme{
+            ax + 2by = 1,
+            bx + ay = 0
+        }
+    \]
+    which can be solved to get \(x = \frac{a}{a^2 - 2b^2}, y = \frac{-b}{a^2 - 2b^2}\).
 
 \item[2.] Let \(\mathbb F\) be a field of complex numbers. Are the following two systems of linear equations equivalent?
     If so, express each equation in each system as a linear combination of the equations in another system.
