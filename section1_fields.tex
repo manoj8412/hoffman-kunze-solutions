@@ -68,6 +68,9 @@
     \]
     which can be solved to get \(x = \frac{a}{a^2 - 2b^2}, y = \frac{-b}{a^2 - 2b^2}\).
 
+    Therefore, \(\mathbb F\) follows all the axioms of a field,
+    and therefore is a field and a subfield of \(\mathbb C\).
+
 \item[2.] Let \(\mathbb F\) be a field of complex numbers. Are the following two systems of linear equations equivalent?
     If so, express each equation in each system as a linear combination of the equations in another system.
     \[
@@ -107,10 +110,51 @@
         }
     \]
 
-\item[6.] Prove that if two homongeneous systems of linear equations in two unknowns have the same solutions,
+\item[6.] Prove that if two homogeneous systems of linear equations in two unknowns have the same solutions,
     then they are equivalent.
 
-todo
+    Let
+    \[
+        \systeme{
+            xa_{11} + ya_{12} = 0,
+            xa_{21} + ya_{22} = 0
+        }
+        \quad
+        \systeme{
+            xb_{11} + yb_{12} = 0,
+            xb_{21} + yb_{22} = 0
+        }
+    \]
+    where \((x, y)\) is a solution to the systems.
+
+    The systems are homogeneous if there exist \(c_1\) and \(c_2\) such that
+    \[c_1(xa_{11} + ya_{12}) + c_2(xa_{21} + ya_{22}) = xb_{11} + yb_{12}\]
+
+    Then it must be true that
+    \[a_{11}c_1 + a_{21}c_2 = b_{11}\]
+    \[a_{12}c_1 + a_{22}c_2 = b_{12}\]
+
+    Solve for \(c_1\) and \(c_2\):
+
+    \[c_2 = \frac{b_{11} - a_{11}c_1} {a_{21}}\]
+    \[a_{12}c_1 + \frac{a_{22}b_{11} - a_{22}a_{21}c_1} {a_{21}} = b_{12}\]
+    \[\frac{a_{22}b_{11} - a_{22}a_{21}c_1 + a_{12}a_{21}c_1} {a_{21}} = b_{12}\]
+    \[a_{22}b_{11} - a_{22}a_{21}c_1 + a_{12}a_{21}c_1 = a_{21}b_{12}\]
+    \[c_1 = \frac{a_{12}b_{21} - a_{22}b_{21}} {a_{11}a_{22} - a_{12}a_{21}}\]
+
+    Similarly,
+    \[c_2 = \frac{a_{11}b_{12} - a_{12}b_{11}} {a_{11}a_{22} - a_{12}a_{21}}\]
+
+    When \(c_1\) and \(c_2\) are defined, one system can be written
+    as a linear combination of the another and the two systems are equivalent.
+    If \(c_1\) and \(c_2\) are undefined, then
+    \(a_{11}a_{22} - a_{12}a_{21} = 0\).
+    \[\frac{a_{11}}{a_{12}} = \frac{a_{21}}{a_{22}}\]
+
+    Then the two equations in the first system are multiples of each other, and the solution set is a line.
+    Since the second system has the same line as its solution set,
+    its equations are constant multiples of equations of the first system.
+    Therefore, the two systems are equivalent.
 
 \item[7.] Prove that each subfield of the field of complex numbers every rational number.
 
