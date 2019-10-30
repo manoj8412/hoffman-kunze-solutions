@@ -1,0 +1,181 @@
+\documentclass{article}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{enumitem}
+\usepackage{systeme}
+
+\begin{document}
+
+\section{Linear Equations}
+
+\setcounter{subsection}{1}
+\subsection{System of Linear Equations}
+
+\paragraph{Exercises}
+\begin{enumerate}[listparindent=\parindent]
+\item[1.] Verify that the set of complex numbers of the form \(x + y\sqrt{2}\), where \(x\) and \(y\) are rational, is a subfield of \(\mathbb{C}\).
+
+    Let \(\mathbb F = \{x + y\sqrt{2} | x, y \in \mathbb Q\}\) and \(a, b, c, d \in \mathbb Q\). Then,
+
+    \[(a + b\sqrt{2}) + (c + d\sqrt{2}) = (a + c) + (b + d)\sqrt{2}\]
+    \[(a + b\sqrt{2})(c + d\sqrt{2}) = (ac + 2bd) + (bc + ad)\sqrt{2}\]
+
+    \(\mathbb Q\) is closed under addition and multiplication,
+    so the \(\mathbb F\) is also closed under addition and multiplication.
+
+    Addition and multiplication are also commutative and associative for \(\mathbb Q\),
+    so \(\mathbb F\) must also have commutative and associative addition and muliplication:
+
+    \[(a + b\sqrt{2}) + (c + d\sqrt{2}) = (a + c) + (b + d)\sqrt{2} = \]
+    \[(c + a) + (d + b)\sqrt{2} = (c + d\sqrt{2}) + (a + b\sqrt{2})\]
+
+    \[(a + b\sqrt{2})(c + d\sqrt{2}) = (ac + 2bd) + (bc + ad)\sqrt{2} = \]
+    \[(ca + 2db\sqrt{2})(cb + da\sqrt{2}) = (c + d\sqrt{2})(a + b\sqrt{2})\]
+
+    To prove there is a unique additive identity, \(0 = x + y\sqrt{2}\). Then,
+    \[(a + b\sqrt{2}) + (x + y\sqrt{2}) = a + b\sqrt{2} = (a + x) + (b + y)\sqrt{2}\]
+    \[x = y = 0\]
+
+    Likewise, there is a unique multiplicative identity, \(1 = x + y\sqrt{2}\).
+    \[(a + b\sqrt{2})(x + y\sqrt{2}) = a + b\sqrt{2} = (ax + 2by) + (bx + ay)\sqrt{2}\]
+    \[
+        \systeme{
+            ax + 2by = a,
+            bx + ay = b
+        }
+    \]
+    \[a(x - 1) + 2by = 0, b(x - 1) + ay = 0\]
+    \[x - 1 = \frac{-2by}{a} = \frac{-ay}{b}\]
+    \[x = 1, y = 0\]
+
+    Finally, there exists a unique additive inverse \(-x\) for all \(x \in \mathbb F\),
+    such that \(x + (-x) = 0\):
+    \[(a + b\sqrt{2}) + (x + y\sqrt{2}) = (a + x) + (b + y)\sqrt{2} = 0 + 0\sqrt{2}\]
+    \[a + x = 0, b + y = 0\]
+    \[x = -a, y = -b\]
+    \[(a + b\sqrt{2}) + (-a + -b\sqrt{2}) = 0 + 0\sqrt{2}\]
+
+    and a unique multiplicative inverse \(x^{-1}\) for all \(x \in \mathbb F\) and \(x \neq 0\),
+    such that \(x(x^{-1}) = 1\):
+    \[(a + b\sqrt{2})(x + y\sqrt{2}) = (ax + 2by) + (bx + ay)\sqrt{2} = 1 + 0\sqrt{2} \]
+
+    Then,
+    \[
+        \systeme{
+            ax + 2by = 1,
+            bx + ay = 0
+        }
+    \]
+    which can be solved to get \(x = \frac{a}{a^2 - 2b^2}, y = \frac{-b}{a^2 - 2b^2}\).
+
+    Therefore, \(\mathbb F\) follows all the axioms of a field,
+    and therefore is a field and a subfield of \(\mathbb C\).
+
+\item[2.] Let \(\mathbb F\) be a field of complex numbers. Are the following two systems of linear equations equivalent?
+    If so, express each equation in each system as a linear combination of the equations in another system.
+    \[
+        \systeme{
+            x_1 - x_2 = 0,
+            2x_1 + x_2 = 0
+        }
+        \quad
+        \systeme{
+            3x_1 + x_2 = 0,
+            x_1 + x_2 = 0
+        }
+    \]
+
+    The two systems of equations are equivalent.
+    Each equation in each system can be written as a linear combination of the equations in another system:
+    \[
+        \begin{alignedat}{2}
+                        (3x_1+x_2) -           2 (x_1+x_2) &=  x_1-x_2 \\
+            \frac{1}{2} (3x_1+x_2) + \frac{1}{2} (x_1+x_2) &= 2x_1+x_2 \\
+            \frac{4}{3} (2x_1+x_2) + \frac{1}{3} (x_1-x_2) &= 3x_1+x_2 \\
+            \frac{2}{3} (2x_1+x_2) - \frac{1}{3} (x_1-x_2) &=  x_1+x_2
+        \end{alignedat}
+    \]
+
+\item[3.] Test the following systems as in Exercise 2.
+    \[
+        \systeme{
+            -x_1 + x_2 + 4x_3 = 0,
+            x_1 + 3x_2 + 8x_3 = 0,
+            \frac{1}{2}x_1 + x_2 + \frac{5}{2}x_3 = 0
+        }
+        \quad
+        \systeme{
+            x_1 - x_3 = 0,
+            x_2 + 3x_3 = 0
+        }
+    \]
+
+\item[6.] Prove that if two homogeneous systems of linear equations in two unknowns have the same solutions,
+    then they are equivalent.
+
+    Let
+    \[
+        \systeme{
+            xa_{11} + ya_{12} = 0,
+            xa_{21} + ya_{22} = 0
+        }
+        \quad
+        \systeme{
+            xb_{11} + yb_{12} = 0,
+            xb_{21} + yb_{22} = 0
+        }
+    \]
+    where \((x, y)\) is a solution to the systems.
+
+    The systems are homogeneous if there exist \(c_1\) and \(c_2\) such that
+    \[c_1(xa_{11} + ya_{12}) + c_2(xa_{21} + ya_{22}) = xb_{11} + yb_{12}\]
+
+    Then it must be true that
+    \[a_{11}c_1 + a_{21}c_2 = b_{11}\]
+    \[a_{12}c_1 + a_{22}c_2 = b_{12}\]
+
+    Solve for \(c_1\) and \(c_2\):
+
+    \[c_2 = \frac{b_{11} - a_{11}c_1} {a_{21}}\]
+    \[a_{12}c_1 + \frac{a_{22}b_{11} - a_{22}a_{21}c_1} {a_{21}} = b_{12}\]
+    \[\frac{a_{22}b_{11} - a_{22}a_{21}c_1 + a_{12}a_{21}c_1} {a_{21}} = b_{12}\]
+    \[a_{22}b_{11} - a_{22}a_{21}c_1 + a_{12}a_{21}c_1 = a_{21}b_{12}\]
+    \[c_1 = \frac{a_{12}b_{21} - a_{22}b_{21}} {a_{11}a_{22} - a_{12}a_{21}}\]
+
+    Similarly,
+    \[c_2 = \frac{a_{11}b_{12} - a_{12}b_{11}} {a_{11}a_{22} - a_{12}a_{21}}\]
+
+    When \(c_1\) and \(c_2\) are defined, one system can be written
+    as a linear combination of the another and the two systems are equivalent.
+    If \(c_1\) and \(c_2\) are undefined, then
+    \(a_{11}a_{22} - a_{12}a_{21} = 0\).
+    \[\frac{a_{11}}{a_{12}} = \frac{a_{21}}{a_{22}}\]
+
+    Then the two equations in the first system are multiples of each other, and the solution set is a line.
+    Since the second system has the same line as its solution set,
+    its equations are constant multiples of equations of the first system.
+    Therefore, the two systems are equivalent.
+
+\item[7.] Prove that each subfield of the field of complex numbers contains every rational number.
+
+Let \(\mathbb F\) be a subfield of \(\mathbb C\).
+There exists a unique non-zero element \(1\) in \(\mathbb F\).
+\(\mathbb F\) is closed under addition, so if \(x\) is an element of \(\mathbb F\) then \(x + 1\) must be as well.
+Therefore, \(\mathbb Z^+ \in \mathbb F\).
+
+For each nonzero element \(x\) of \(\mathbb F\), there exists a unique element \(-x\) such that \(x + (-x)\ = 0\).
+Therefore, \(-1 \in \mathbb F\).
+\(\mathbb F\) is closed under multiplication, so for any positive integer \(x\), \(-x\) is also an element of \(\mathbb F\), 
+so \(\mathbb Z^- \in \mathbb F\).
+There also exists a unique element \(0\) in \(\mathbb F\), such that \(x0 = 0\).
+Therefore, \(\mathbb Z \subseteq \mathbb F\).
+
+Then, let \(n\) and \(m\) be two integers, where \(n \neq 0\).
+\(\mathbb F\) must also contain the of multiplicative inverse of \(n\), or \(\frac{1}{n}\), such that \(n\frac{1}{n} = 1\).
+A field is closed under multiplication, so \(\frac{m}{n} \in \mathbb F\),
+for any integers \(n\) and \(m\), where \(n \neq 0\).
+Therefore, \(\mathbb Q \subseteq \mathbb F\).
+
+\end{enumerate}
+
+\end{document}
