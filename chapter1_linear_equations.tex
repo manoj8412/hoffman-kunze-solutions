@@ -1,0 +1,798 @@
+\documentclass{article}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{enumitem}
+
+\begin{document}
+
+\section{Linear Equations}
+
+\setcounter{subsection}{1} % skip 1.1 because it has no exercises
+
+\subsection{System of Linear Equations}
+\paragraph{Exercises}
+
+\begin{enumerate}[listparindent=\parindent]
+\item[1.] Verify that the set of complex numbers of the form \(x + y\sqrt{2}\),
+    where \(x\) and \(y\) are rational, is a subfield of \(\mathbb{C}\).
+
+Let \(\mathbb F = \{x + y\sqrt{2} | x, y \in \mathbb Q\}\) and \(a, b, c, d \in \mathbb Q\). Then,
+
+\[ (a + b\sqrt{2}) + (c + d\sqrt{2}) = (a + c) + (b + d)\sqrt{2} \]
+\[ (a + b\sqrt{2})(c + d\sqrt{2}) = (ac + 2bd) + (bc + ad)\sqrt{2} \]
+
+\(\mathbb Q\) is closed under addition and multiplication,
+so the \(\mathbb F\) is also closed under addition and multiplication.
+
+Addition and multiplication are also commutative and associative for \(\mathbb Q\),
+so \(\mathbb F\) must also have commutative and associative addition and muliplication:
+
+\[ (a + b\sqrt{2}) + (c + d\sqrt{2}) = (a + c) + (b + d)\sqrt{2} =  \]
+\[ (c + a) + (d + b)\sqrt{2} = (c + d\sqrt{2}) + (a + b\sqrt{2}) \]
+
+\[ (a + b\sqrt{2})(c + d\sqrt{2}) = (ac + 2bd) + (bc + ad)\sqrt{2} =  \]
+\[ (ca + 2db\sqrt{2})(cb + da\sqrt{2}) = (c + d\sqrt{2})(a + b\sqrt{2}) \]
+
+To prove there is a unique additive identity, \(0 = x + y\sqrt{2}\). Then,
+\[ (a + b\sqrt{2}) + (x + y\sqrt{2}) = a + b\sqrt{2} = (a + x) + (b + y)\sqrt{2} \]
+\[ x = y = 0 \]
+
+Likewise, there is a unique multiplicative identity, \(1 = x + y\sqrt{2}\).
+\[ (a + b\sqrt{2})(x + y\sqrt{2}) = a + b\sqrt{2} = (ax + 2by) + (bx + ay)\sqrt{2} \]
+\[
+    \begin{cases}
+        \begin{alignedat}{2}
+            ax + 2by &= a \\
+            bx + ay &= b
+        \end{alignedat}
+    \end{cases}
+ \]
+\[ a(x - 1) + 2by = 0, b(x - 1) + ay = 0 \]
+\[ x - 1 = \frac{-2by}{a} = \frac{-ay}{b} \]
+\[ x = 1, y = 0 \]
+
+Finally, there exists a unique additive inverse \(-x\) for all \(x \in \mathbb F\),
+such that \(x + (-x) = 0\):
+\[ (a + b\sqrt{2}) + (x + y\sqrt{2}) = (a + x) + (b + y)\sqrt{2} = 0 + 0\sqrt{2} \]
+\[ a + x = 0, b + y = 0 \]
+\[ x = -a, y = -b \]
+\[ (a + b\sqrt{2}) + (-a + -b\sqrt{2}) = 0 + 0\sqrt{2} \]
+
+and a unique multiplicative inverse \(x^{-1}\) for all \(x \in \mathbb F\) and \(x \neq 0\),
+such that \(x(x^{-1}) = 1\):
+\[ (a + b\sqrt{2})(x + y\sqrt{2}) = (ax + 2by) + (bx + ay)\sqrt{2} = 1 + 0\sqrt{2}  \]
+
+Then,
+\[
+    \begin{cases}
+        \begin{alignedat}{2}
+            ax + 2by &= 1 \\
+            bx + ay &= 0
+        \end{alignedat}
+    \end{cases}
+\]
+which can be solved to get \(x = \frac{a}{a^2 - 2b^2}, y = \frac{-b}{a^2 - 2b^2}\).
+
+Therefore, \(\mathbb F\) follows all the axioms of a field,
+and therefore is a field and a subfield of \(\mathbb C\).
+
+\item[2.] Let \(\mathbb F\) be a field of complex numbers. Are the following two systems of linear equations equivalent?
+    If so, express each equation in each system as a linear combination of the equations in another system.
+    \[
+        \begin{cases}
+            \begin{alignedat}{2}
+                x_1 - x_2 &= 0 \\
+                2x_1 + x_2 &= 0
+            \end{alignedat}
+        \end{cases}
+        \quad
+        \begin{cases}
+            \begin{alignedat}{2}
+                3x_1 + x_2 &= 0\\
+                x_1 + x_2 &= 0
+            \end{alignedat}
+        \end{cases}
+     \]
+
+The two systems of equations are equivalent.
+Each equation in each system can be written as a linear combination of the equations in another system:
+\[
+    \begin{cases}
+        \begin{alignedat}{2}
+                         (3x_1+x_2) -            2 (x_1+x_2) &=  x_1-x_2 \\
+            \tfrac{1}{2} (3x_1+x_2) + \tfrac{1}{2} (x_1+x_2) &= 2x_1+x_2 \\
+            \tfrac{4}{3} (2x_1+x_2) + \tfrac{1}{3} (x_1-x_2) &= 3x_1+x_2 \\
+            \tfrac{2}{3} (2x_1+x_2) - \tfrac{1}{3} (x_1-x_2) &=  x_1+x_2
+        \end{alignedat}
+    \end{cases}
+ \]
+
+\item[3.] Test the following systems as in Exercise 2.
+    \[
+        \begin{cases}
+            \begin{alignedat}{4}
+                -x_1 &+ x_2 &+ 4x_3 &= 0 \\
+                x_1 &+ 3x_2 &+ 8x_3 &= 0 \\
+                \tfrac{1}{2}x_1 &+ x_2 &+ \tfrac{5}{2}x_3 &= 0
+            \end{alignedat}
+        \end{cases}
+        \quad
+        \begin{cases}
+            \begin{alignedat}{3}
+                x_1 &- x_3 &= 0 \\
+                x_2 &+ 3x_3 &= 0
+            \end{alignedat}
+        \end{cases}
+     \]
+
+\[ -(x_1 - x_3) + (x_2 + 3x_3) = -x_1 + x_2 + 4x_3 \]
+\[ (x_1 - x_3) + 3(x_2 + 3x_3) = x_1 + 3x_2 + 8x_3 \]
+\[ \frac{1}{2}(x_1 - x_3) + (x_2 + 3x_3) = \frac{1}{2}x_1 + x_2 + \frac{5}{2}x_3 \]
+
+\[ 0(-x_1 + x_2 + 4x_3) + -2(x_1 + 3x_2 + 8x_3) + 6(\frac{1}{2}x_1 + x_2 + \frac{5}{2}x_3) = x_1 - x_3 \]
+\[ 0(-x_1 + x_2 + 4x_3) + (x_1 + 3x_2 + 8x_3) + -2(\frac{1}{2}x_1 + x_2 + \frac{5}{2}x_3) = x_2 + 3x_3 \]
+
+\item[6.] Prove that if two homogeneous systems of linear equations in two unknowns have the same solutions,
+    then they are equivalent.
+
+Let
+\[
+    \begin{cases}
+        \begin{alignedat}{2}
+            a_{11}x + a_{12}x &= 0 \\
+            a_{21}x + a_{22}x &= 0
+        \end{alignedat}
+    \end{cases}
+    \quad
+    \begin{cases}
+        \begin{alignedat}{2}
+            b_{11}x + b_{12}x &= 0 \\
+            b_{21}x + b_{22}x &= 0
+        \end{alignedat}
+    \end{cases}
+ \]
+where \((x, y)\) is a solution to the systems.
+
+The systems are homogeneous if there exist \(c_1\) and \(c_2\) such that
+\[ c_1(a_{11}x + a_{12}y) + c_2(a_{21}x + a_{22}y) = b_{11}x + b_{12}y \]
+
+Then it must be true that
+\[ a_{11}c_1 + a_{21}c_2 = b_{11} \]
+\[ a_{12}c_1 + a_{22}c_2 = b_{12} \]
+
+Solve for \(c_1\) and \(c_2\):
+
+\[ c_2 = \frac{b_{11} - a_{11}c_1} {a_{21}} \]
+\[ a_{12}c_1 + \frac{a_{22}b_{11} - a_{22}a_{21}c_1} {a_{21}} = b_{12} \]
+\[ \frac{a_{22}b_{11} - a_{22}a_{21}c_1 + a_{12}a_{21}c_1} {a_{21}} = b_{12} \]
+\[ a_{22}b_{11} - a_{22}a_{21}c_1 + a_{12}a_{21}c_1 = a_{21}b_{12} \]
+\[ c_1 = \frac{a_{12}b_{21} - a_{22}b_{21}} {a_{11}a_{22} - a_{12}a_{21}} \]
+
+Similarly,
+\[ c_2 = \frac{a_{11}b_{12} - a_{12}b_{11}} {a_{11}a_{22} - a_{12}a_{21}} \]
+
+When \(c_1\) and \(c_2\) are defined, one system can be written
+as a linear combination of the another and the two systems are equivalent.
+If \(c_1\) and \(c_2\) are undefined, then
+\( a_{11}a_{22} - a_{12}a_{21} = 0 \).
+\[ \frac{a_{11}}{a_{12}} = \frac{a_{21}}{a_{22}} \]
+
+Then the two equations in the first system are multiples of each other, and the solution set is a line.
+Since the second system has the same line as its solution set,
+its equations are constant multiples of equations of the first system.
+Therefore, the two systems are equivalent.
+
+\item[7.] Prove that each subfield of the field of complex numbers contains every rational number.
+
+Let \(\mathbb F\) be a subfield of \(\mathbb C\).
+There exists a unique non-zero element \(1\) in \(\mathbb F\).
+\(\mathbb F\) is closed under addition, so if \(x\) is an element of \(\mathbb F\) then \(x + 1\) must be as well.
+Therefore, \(\mathbb Z^+ \in \mathbb F\).
+
+For each nonzero element \(x\) of \(\mathbb F\), there exists a unique element \(-x\) such that \(x + (-x)\ = 0\).
+Therefore, \(-1 \in \mathbb F\).
+\(\mathbb F\) is closed under multiplication, so for any positive integer \(x\), \(-x\) is also an element of \(\mathbb F\),
+so \(\mathbb Z^- \in \mathbb F\).
+There also exists a unique element \(0\) in \(\mathbb F\), such that \(x0 = 0\).
+Therefore, \(\mathbb Z \subseteq \mathbb F\).
+
+Then, let \(n\) and \(m\) be two integers, where \(n \neq 0\).
+\(\mathbb F\) must also contain the of multiplicative inverse of \(n\), or \(\frac{1}{n}\), such that \(n\frac{1}{n} = 1\).
+A field is closed under multiplication, so \(\frac{m}{n} \in \mathbb F\),
+for any integers \(n\) and \(m\), where \(n \neq 0\).
+Therefore, \(\mathbb Q \subseteq \mathbb F\).
+
+\end{enumerate}
+
+\subsection{Matrices and Elementary Row Operations}
+\paragraph{Exercises}
+
+\begin{enumerate}[listparindent=\parindent]
+
+\item[1.] Find all solutions to the system of equations
+    \[
+        \begin{cases}
+            \begin{alignedat}{2}
+                (1 - i)x_1 - ix_2 &= 0 \\
+                2x_1 + (1 - i)x_2 &= 0
+            \end{alignedat}
+        \end{cases}
+    \]
+
+\[
+    \begin{bmatrix}
+        1 - i & -i \\
+        2 & i - 1
+    \end{bmatrix}
+    \xrightarrow{(1)}
+    \begin{bmatrix}
+        1 & \frac{i - 1}{2} \\
+        2 & i - 1
+    \end{bmatrix}
+    \xrightarrow{(2)}
+    \begin{bmatrix}
+        1 & \frac{i - 1}{2} \\
+        0 & 0
+    \end{bmatrix}
+\]
+
+\[ x_1 + \frac{1 - i}{2}x_2 = 0 \]
+
+\[
+    \boxed{
+        (\frac{i - 1}{2}, x) \forall x \in \mathbb{C}
+    }
+\]
+
+\item[2.] If
+    \[
+        A = \begin{bmatrix}
+            3 & -1 & 2 \\
+            2 & 1 & 1 \\
+            1 & -3 & 0
+        \end{bmatrix}
+    \]
+    find all solutions of \(AX = 0\) by row-reducing \(A\).
+
+\[
+    \begin{bmatrix}
+        3 & -1 & 2 \\
+        2 & 1 & 1 \\
+        1 & -3 & 0
+    \end{bmatrix}
+    \xrightarrow{(2)}
+    \begin{bmatrix}
+        0 & 8 & 2 \\
+        0 & 7 & 1 \\
+        1 & -3 & 0
+    \end{bmatrix}
+    \xrightarrow{(1)}
+    \begin{bmatrix}
+        0 & 8 & 2 \\
+        0 & 1 & \frac{1}{7} \\
+        1 & -3 & 0
+    \end{bmatrix}
+    \xrightarrow{(2)}
+    \begin{bmatrix}
+        0 & 0 & \frac{6}{7} \\
+        0 & 1 & \frac{1}{7} \\
+        1 & 0 & \frac{3}{7}
+    \end{bmatrix}
+\]
+\[
+    \xrightarrow{(1)}
+    \begin{bmatrix}
+        0 & 0 & 1 \\
+        0 & 1 & \frac{1}{7} \\
+        1 & 0 & \frac{3}{7}
+    \end{bmatrix}
+    \xrightarrow{(2)}
+    \begin{bmatrix}
+        0 & 0 & 1 \\
+        0 & 1 & 0 \\
+        1 & 0 & 0
+    \end{bmatrix}
+\]
+\[
+\boxed{ (0, 0, 0) }
+\]
+
+\item[3.] If
+    \[
+        A = \begin{bmatrix}
+            6 & -4 & 0 \\
+            4 & -2 & 0 \\
+            -1 & 0 & 3
+        \end{bmatrix}
+    \]
+    find all solutions of \(AX = 2X\) and \(AX = 3X\).
+    (The symbol \(cX\) denotes the matrix each entry of which is \(c\) times the corresponding entry of \(X\).)
+
+\begin{enumerate}
+\item[(a)] \(AX = 2X\)
+
+    This is equivalent to the system
+    \[
+        \begin{cases}
+            \begin{alignedat}{2}
+                6x - 4y &= 2x \\
+                4x - 2y &= 2y \\
+                -x + 3z &= 2z
+            \end{alignedat}
+        \end{cases}
+    \]
+    which can be written as a homogeneous system
+    \[
+        \begin{cases}
+            \begin{alignedat}{2}
+                4x - 4y &= 0 \\
+                4x - 4y &= 0 \\
+                -x + z &= 0
+            \end{alignedat}
+        \end{cases}
+    \]
+
+    The system can be represented as
+    \[
+        \begin{bmatrix}
+            4 & -4 & 0 \\
+            4 & -4 & 0 \\
+            -1 & 0 & 1
+        \end{bmatrix}
+        \xrightarrow{(1)}
+        \begin{bmatrix}
+            1 & -1 & 0 \\
+            1 & -1 & 0 \\
+            -1 & 0 & 1
+        \end{bmatrix}
+        \xrightarrow{(2)}
+        \begin{bmatrix}
+            1 & -1 & 0 \\
+            0 & 0 & 0 \\
+            0 & -1 & 1
+        \end{bmatrix}
+    \]
+    \[
+        \xrightarrow{(1)}
+        \begin{bmatrix}
+            1 & -1 & 0 \\
+            0 & 0 & 0 \\
+            0 & 1 & -1
+        \end{bmatrix}
+        \xrightarrow{(2)}
+        \begin{bmatrix}
+            1 & 0 & -1 \\
+            0 & 0 & 0 \\
+            0 & 1 & -1
+        \end{bmatrix}
+    \]
+
+    \[ \boxed {
+        (x, x, x) \forall x \in \mathbb C.
+    } \]
+
+\item[(b)] \(AX = 3X\)
+    Similarly to the previous question, this system is equivalent to
+    \[
+        \begin{bmatrix}
+            3 & -4 & 0 \\
+            4 & -5 & 0 \\
+            -1 & 0 & 0
+        \end{bmatrix}
+    \]
+
+    The matrix can be reduced to
+    \[
+        \begin{bmatrix}
+            1 & 0 & 0 \\
+            0 & 1 & 0 \\
+            0 & 0 & 0
+        \end{bmatrix}
+    \]
+    \[ \boxed {
+        (0, 0, x) \forall x \in \mathbb C.
+    } \]
+\end{enumerate}
+
+\item[4.] Find a row-reduced matrix which is row-equivalent to
+    \[
+        A = \begin{bmatrix}
+            i & -(1 + i) & 0 \\
+            1 & -2 & 1 \\
+            1 & 2i & -1
+        \end{bmatrix}
+    \]
+
+\[
+    \begin{bmatrix}
+        i & -1 - i & 0 \\
+        1 & -2 & 1 \\
+        1 & 2i & -1
+    \end{bmatrix}
+    \xrightarrow{(2)}
+    \begin{bmatrix}
+        0 & 1 - i & i \\
+        0 & -2-2i & 2 \\
+        1 & 2i & -1
+    \end{bmatrix}
+    \xrightarrow{(1)}
+    \begin{bmatrix}
+        0 & 1 - i & i \\
+        0 & 1 & \frac{i - 1}{2} \\
+        1 & 2i & -1
+    \end{bmatrix}
+\]
+\[
+    \xrightarrow{(2)}
+    \boxed{
+        \begin{bmatrix}
+            0 & 0 & 0 \\
+            0 & 1 & \frac{i - 1}{2} \\
+            1 & 0 & i
+        \end{bmatrix}
+    }
+\]
+
+\item[5.] Prove that the following two matrices are \textit{not} row-equivalent:
+    \[
+        \begin{bmatrix}
+            2 & 0 & 0 \\
+            a & -1 & 0 \\
+            b & c & 3
+        \end{bmatrix}
+        \quad
+        \begin{bmatrix}
+            1 & 1 & 2 \\
+            -2 & 0 & -1 \\
+            1 & 3 & 5
+        \end{bmatrix}
+    \]
+
+The row-reduced matrix which is row-equivalent to the first matrix is
+\[
+    \begin{bmatrix}
+        2 & 0 & 0 \\
+        a & -1 & 0 \\
+        b & c & 3
+    \end{bmatrix}
+    \xrightarrow{(1)}
+    \begin{bmatrix}
+        1 & 0 & 0 \\
+        0 & -1 - 2a & 0 \\
+        0 & c - 2b & 3
+    \end{bmatrix}
+    \xrightarrow{(2)}
+    \begin{bmatrix}
+        1 & 0 & 0 \\
+        0 & -1 - 2a & 0 \\
+        0 & c - 2b & 3
+    \end{bmatrix}
+\]
+\[
+    \xrightarrow{(1)}
+    \begin{bmatrix}
+        1 & 0 & 0 \\
+        0 & 1 & 0 \\
+        0 & c - 2b & 3
+    \end{bmatrix}
+    \xrightarrow{(2)}
+    \begin{bmatrix}
+        1 & 0 & 0 \\
+        0 & 1 & 0 \\
+        0 & 0 & 3 - (c - 2b)
+    \end{bmatrix}
+    \xrightarrow{(1)}
+    \boxed{
+        \begin{bmatrix}
+            1 & 0 & 0 \\
+            0 & 1 & 0 \\
+            0 & 0 & 1
+        \end{bmatrix}
+    }
+\]
+which has \( (0, 0, 0) \) as its solution.
+
+The second matrix is equivalent to
+\[
+    \begin{bmatrix}
+        1 & 1 & 2 \\
+        -2 & 0 & -1 \\
+        1 & 3 & 5
+    \end{bmatrix}
+    \xrightarrow{(2)}
+    \begin{bmatrix}
+        1 & 1 & 2 \\
+        0 & 2 & 3 \\
+        0 & 2 & 3
+    \end{bmatrix}
+    \xrightarrow{(1)}
+    \begin{bmatrix}
+        1 & 1 & 2 \\
+        0 & 1 & \frac{3}{2} \\
+        0 & 2 & 3
+    \end{bmatrix}
+    \xrightarrow{(2)}
+    \boxed{
+        \begin{bmatrix}
+            1 & 0 & \frac{1}{2} \\
+            0 & 1 & \frac{3}{2} \\
+            0 & 0 & 0
+        \end{bmatrix}
+    }
+\]
+which has \( (\frac{-1}{2}x, \frac{-3}{2}x, x) \forall x \in \mathbb C \) as its solution set.
+
+By Theorem 3, if the two matrices are row-equivalent,
+then the two homogeneous systems represented by the matrices have exactly the same solutions.
+However, the first has only one solution and the second has an infinite amount of solutions.
+The homogeneous systems do not have the same solutions and the two matrices cannot be row-equivalent.
+
+\item[6.] Let
+    \[
+        A = \begin{bmatrix}
+            a & b \\ c & d
+        \end{bmatrix}
+    \]
+    be a \(2 \times 2\) matrix with complex entries. Suppose that \(A\) is row-reduced and also that \(a + b + c + d = 0\).
+    Prove that there are exactly three such matrices.
+
+Assume \(A\) is non-zero matrix.
+Suppose the first column of \(A\) is a zero column.
+Since the matrix is non-zero, there must be non-zero entry in the second column. So either \(b\) or \(d\) must be non-zero.
+This non-zero entry is also the first non-zero entry, meaning it must be 1. Let exactly one of them be 1.
+Then the other must be zero because other entries of a column containing a leading non-zero entry must be zero.
+Then \(a + b + c + d = 1 \neq 0\). 
+
+Therefore, \(A\) must be in the form \( (\begin{smallmatrix} 1 & b \\ 0 & d \end{smallmatrix}) \)
+or \( (\begin{smallmatrix} 0 & b \\ 1 & d \end{smallmatrix}) \).
+
+Consider the case where \(A = (\begin{smallmatrix} 1 & b \\ 0 & d\end{smallmatrix}) \).
+If \(d\) is a leading one, \(b\) must be zero because it is in the same column as \(d\).
+But then \(a + b + c + d = 2 \neq 0\).
+Thus \(d\) cannot be a leading non-zero entry, and must be zero.
+Therefore \(a + b + c + d = 1 + b + 0 + 0 = -1\), and \(b = -1\), meaning
+\[
+    A = \begin{bmatrix}
+        1 & -1 \\ 0 & 0
+    \end{bmatrix}
+\]
+is only possible case. The same logic follows for the case where \(A = (\begin{smallmatrix} 0 & b \\ 1 & d\end{smallmatrix}) \),
+leading to 
+\[
+    A = \begin{bmatrix}
+        0 & 0 \\ 1 & -1
+    \end{bmatrix}
+\]
+as the only case. Finally, there is the trivial zero matrix as our third possiblity.
+
+Therefore, the only three possible matrices are
+\[
+    \begin{bmatrix}
+        0 & 0 \\ 0 & 0
+    \end{bmatrix},
+    \begin{bmatrix}
+        1 & -1 \\ 0 & 0
+    \end{bmatrix},
+    \begin{bmatrix}
+        0 & 0 \\ 1 & -1
+    \end{bmatrix}
+\]
+
+\item[7.] Prove that the interchange of two rows of a matrix can be accomplished by a finite sequence of
+    elementary row operations of the other two types.
+
+Let \(R_i\) and \(R_j\) be two rows of a matrix. Then
+\[
+    \begin{bmatrix}
+        R_i \\ R_j
+    \end{bmatrix}
+    \xrightarrow{(2)}
+    \begin{bmatrix}
+        R_i + R_j \\ R_j
+    \end{bmatrix}
+    \xrightarrow{(2)}
+    \begin{bmatrix}
+        R_i + R_j \\ -R_i
+    \end{bmatrix}
+    \xrightarrow{(2)}
+    \begin{bmatrix}
+        R_j \\ -R_i
+    \end{bmatrix}
+    \xrightarrow{(1)}
+    \begin{bmatrix}
+        R_j \\ R_i
+    \end{bmatrix}
+\]
+
+\item[8.] Consider the system of equations \(AX = 0\) where
+    \[
+        A = \begin{bmatrix}
+            a & b \\ c & d
+        \end{bmatrix}
+    \]
+    is a \(2 \times 2\) matrix over the field \(F\). Prove the following.
+
+\begin{enumerate}
+\item[(a)] If every entry of \(A\) is 0, then every pair \(x_1, x_2\) is a solution of \(AX = 0\).
+This represents the following system of equations:
+\[
+    \begin{cases}
+        \begin{alignedat}{2}
+            0x_1 + 0x_2 &= 0 \\
+            0x_1 + 0x_2 &= 0
+        \end{alignedat}
+    \end{cases}
+\]
+\(0x \forall x \in F\) and \(0 + 0 = 0\), so every pair \(x_1, x_2\) is a solution.
+
+\item[(b)] If \(ad - bc \neq 0\), the system \(AX = 0\) has only the trivial solution \(x_1 = x_2 = 0\).
+
+\textbf{Case 1:} \(a \neq 0\)
+
+\[
+    \begin{bmatrix}
+        a & b \\
+        c & d
+    \end{bmatrix}
+    \xrightarrow{(1)}
+    \begin{bmatrix}
+        1 & \frac{b}{a} \\
+        c & d
+    \end{bmatrix}
+    \xrightarrow{(2)}
+    \begin{bmatrix}
+        1 & \frac{b}{a} \\
+        0 & d - \frac{bc}{a}
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+        1 & \frac{a}{b} \\
+        0 & \frac{ad - bc}{a}
+    \end{bmatrix}
+\]
+
+\(ad - bc \neq 0\), so \( \frac{a}{ad - bc} \) is defined. Multiplying second row with it leads to the identity matrix:
+\[
+    \begin{bmatrix}
+        1 & \frac{a}{b} \\
+        0 & \frac{ad - bc}{a}
+    \end{bmatrix}
+    \xrightarrow{(1)}
+    \begin{bmatrix}
+        1 & \frac{a}{b} \\
+        0 & 1
+    \end{bmatrix}
+    \xrightarrow{(2)}
+    \begin{bmatrix}
+        1 & 0 \\
+        0 & 1
+    \end{bmatrix}
+\]
+Then \(A = I_2\) and \(AX = 0\) only has the trivial solution \(x_1 = x_2 = 0\).
+
+\textbf{Case 2:} \(a = 0\)
+
+Note that \(b \neq 0\) and \(c \neq 0\) because otherwise \(ad - bc = 0\).
+\[
+    \begin{bmatrix}
+        0 & b \\
+        c & d
+    \end{bmatrix}
+    \xrightarrow{(1)}
+    \begin{bmatrix}
+        0 & 1 \\
+        1 & \frac{d}{c}
+    \end{bmatrix}
+    \xrightarrow{(2)}
+    \begin{bmatrix}
+        0 & 1 \\
+        1 & 0
+    \end{bmatrix}
+\]
+Again, \(A = I_2\) and \(AX = 0\) only has the trivial solution \(x_1 = x_2 = 0\).
+
+\item[(c)] If \(ad - bc = 0\), and some entry of \(A\) is different from 0, then there is a solution
+    \( (x_1^0, x_2^0) \) such that \( (x_1, x_2) \) is a solution if and only if there is a scalar y such that
+    \( x_1 = yx_1^0, x_2 = yx_2^0 \).
+
+Assume that \(a \neq 0\), since \(A\) has at least one non-zero entry. Then \(d = \frac{bc}{a}\).
+\[
+    \begin{bmatrix}
+        a & b \\
+        c & \frac{bc}{a}
+    \end{bmatrix}
+    \xrightarrow{(2)}
+    \begin{bmatrix}
+        a & b \\
+        0 & \frac{bc}{a} - \frac{bc}{a}
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+        a & b \\
+        0 & 0
+    \end{bmatrix}
+\]
+Then \(AX = Y\) has the solution set of \( (x, \frac{-a}{b}x) \forall x \in F \),
+and any solution must be a scalar multiple of \( (1, \frac{-a}{b}) \).
+If any other entry is non-zero, a similar argument can be given.
+\end{enumerate}
+\end{enumerate}
+
+\subsection{Row-Reduced Echelon Matrices}
+\paragraph{Exercises}
+
+\begin{enumerate}[listparindent=\parindent]
+\item[1.] Find all solutions to the following system of equations by row-reducing the coefficient matrix:
+    \[
+        \begin{cases}
+            \begin{alignedat}{6}
+                \tfrac{1}{3}x_1 &+& 2x_2 &-& 6x_3 &= 0 \\
+                -4x_1 && &+& 5x_3 &= 0 \\
+                -3x_1 &+& 6x_2 &-& 13x_3 &= 0 \\
+                -\tfrac{7}{3}x_1 &+& 2x_2 &-& \tfrac{8}{3}x_3 &= 0 \\
+            \end{alignedat}
+        \end{cases}
+    \]
+\[
+    \begin{bmatrix}
+        \frac{1}{3} & 2 & -6 \\
+        -4 & 0 & 5 \\
+        -3 & 6 & -13 \\
+        -\frac{7}{3} & 2 & -\frac{8}{3}
+    \end{bmatrix}
+    \rightarrow
+    \begin{bmatrix}
+        1 & 6 & -18 \\
+        -4 & 0 & 5 \\
+        -3 & 6 & -13 \\
+        -7 & 6 & -8
+    \end{bmatrix}
+    \rightarrow
+    \begin{bmatrix}
+        1 & 6 & -18 \\
+        0 & 24 & -67 \\
+        0 & 24 & -67 \\
+        0 & 48 & -134
+    \end{bmatrix}
+\]
+\[
+    \rightarrow
+    \begin{bmatrix}
+        1 & 6 & -18 \\
+        0 & 24 & -67 \\
+        0 & 0 & 0 \\
+        0 & 0 & 0
+    \end{bmatrix}
+    \rightarrow
+    \begin{bmatrix}
+        1 & 6 & -18 \\
+        0 & 1 & -\frac{67}{24} \\
+        0 & 0 & 0 \\
+        0 & 0 & 0
+    \end{bmatrix}
+    \rightarrow
+    \begin{bmatrix}
+        1 & 0 & -\frac{5}{4} \\
+        0 & 1 & -\frac{67}{24} \\
+        0 & 0 & 0 \\
+        0 & 0 & 0
+    \end{bmatrix}
+\]
+\[
+    \boxed {
+        (\frac{5}{4}x, \frac{67}{24}x, x) \forall x \in F
+    }
+\]
+
+\item[2.] Find a row-reduced echelon matrix which is row-equivalent to
+    \[
+        \begin{bmatrix}
+            1 & -i \\
+            2 & 2 \\
+            i & 1 + i 
+        \end{bmatrix}
+    \]
+
+\end{enumerate}
+
+\end{document}
