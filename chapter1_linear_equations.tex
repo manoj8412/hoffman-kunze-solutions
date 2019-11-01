@@ -2,6 +2,30 @@
 \usepackage{amssymb}
 \usepackage{amsmath}
 \usepackage{enumitem}
+\usepackage{array}
+
+\newenvironment{abmatrix}[1]
+{
+    \left[
+        \begin{array} {@{}*{#1}{c}|c@{}}
+}
+{ 
+        \end{array}
+    \right]
+}
+
+\newcolumntype{B}{>{{}}c<{{}}}
+
+\newenvironment{system}[1]
+{
+    \begin{cases}
+        \setlength{\arraycolsep}{0pt}
+        \begin{array} {r @{}*{#1}{B r}}
+}
+{ 
+        \end{array}
+    \end{cases}
+}
 
 \begin{document}
 
@@ -14,7 +38,7 @@
 
 \begin{enumerate}[listparindent=\parindent]
 \item[1.] Verify that the set of complex numbers of the form \(x + y\sqrt{2}\),
-    where \(x\) and \(y\) are rational, is a subfield of \(\mathbb{C}\).
+    where \(x\) and \(y\) are rational, is a subfield of \(\mathbb C\).
 
 Let \(\mathbb F = \{x + y\sqrt{2} | x, y \in \mathbb Q\}\) and \(a, b, c, d \in \mathbb Q\). Then,
 
@@ -40,13 +64,11 @@ To prove there is a unique additive identity, \(0 = x + y\sqrt{2}\). Then,
 Likewise, there is a unique multiplicative identity, \(1 = x + y\sqrt{2}\).
 \[ (a + b\sqrt{2})(x + y\sqrt{2}) = a + b\sqrt{2} = (ax + 2by) + (bx + ay)\sqrt{2} \]
 \[
-    \begin{cases}
-        \begin{alignedat}{2}
-            ax + 2by &= a \\
-            bx + ay &= b
-        \end{alignedat}
-    \end{cases}
- \]
+	\begin{system}{2}
+            ax &+& 2by &= a \\
+            bx &+& ay &= b
+	\end{system}
+\]
 \[ a(x - 1) + 2by = 0, b(x - 1) + ay = 0 \]
 \[ x - 1 = \frac{-2by}{a} = \frac{-ay}{b} \]
 \[ x = 1, y = 0 \]
@@ -64,12 +86,10 @@ such that \(x(x^{-1}) = 1\):
 
 Then,
 \[
-    \begin{cases}
-        \begin{alignedat}{2}
-            ax + 2by &= 1 \\
-            bx + ay &= 0
-        \end{alignedat}
-    \end{cases}
+	\begin{system}{2}
+		ax &+& 2by &= 1 \\
+		bx &+& ay &= 0
+	\end{system}
 \]
 which can be solved to get \(x = \frac{a}{a^2 - 2b^2}, y = \frac{-b}{a^2 - 2b^2}\).
 
@@ -79,50 +99,40 @@ and therefore is a field and a subfield of \(\mathbb C\).
 \item[2.] Let \(\mathbb F\) be a field of complex numbers. Are the following two systems of linear equations equivalent?
     If so, express each equation in each system as a linear combination of the equations in another system.
     \[
-        \begin{cases}
-            \begin{alignedat}{2}
-                x_1 - x_2 &= 0 \\
-                2x_1 + x_2 &= 0
-            \end{alignedat}
-        \end{cases}
+		\begin{system}{2}
+			x_1 &-& x_2 &= 0 \\
+			2x_1 &+& x_2 &= 0
+		\end{system}
         \quad
-        \begin{cases}
-            \begin{alignedat}{2}
-                3x_1 + x_2 &= 0\\
-                x_1 + x_2 &= 0
-            \end{alignedat}
-        \end{cases}
+		\begin{system}{2}
+			3x_1 &+& x_2 &= 0\\
+			x_1 &+& x_2 &= 0
+		\end{system}
      \]
 
 The two systems of equations are equivalent.
 Each equation in each system can be written as a linear combination of the equations in another system:
 \[
-    \begin{cases}
-        \begin{alignedat}{2}
-                         (3x_1+x_2) -            2 (x_1+x_2) &=  x_1-x_2 \\
-            \tfrac{1}{2} (3x_1+x_2) + \tfrac{1}{2} (x_1+x_2) &= 2x_1+x_2 \\
-            \tfrac{4}{3} (2x_1+x_2) + \tfrac{1}{3} (x_1-x_2) &= 3x_1+x_2 \\
-            \tfrac{2}{3} (2x_1+x_2) - \tfrac{1}{3} (x_1-x_2) &=  x_1+x_2
-        \end{alignedat}
-    \end{cases}
+	\begin{system}{2}
+                         (3x_1+x_2) &-&            2 (x_1+x_2) &=&  x_1-x_2 \\
+            \tfrac{1}{2} (3x_1+x_2) &+& \tfrac{1}{2} (x_1+x_2) &=& 2x_1+x_2 \\
+            \tfrac{4}{3} (2x_1+x_2) &+& \tfrac{1}{3} (x_1-x_2) &=& 3x_1+x_2 \\
+            \tfrac{2}{3} (2x_1+x_2) &-& \tfrac{1}{3} (x_1-x_2) &=&  x_1+x_2
+	\end{system}
  \]
 
 \item[3.] Test the following systems as in Exercise 2.
     \[
-        \begin{cases}
-            \begin{alignedat}{4}
-                -x_1 &+ x_2 &+ 4x_3 &= 0 \\
-                x_1 &+ 3x_2 &+ 8x_3 &= 0 \\
-                \tfrac{1}{2}x_1 &+ x_2 &+ \tfrac{5}{2}x_3 &= 0
-            \end{alignedat}
-        \end{cases}
+		\begin{system}{3}
+			-x_1 &+& x_2 &+& 4x_3 &=& 0 \\
+			x_1 &+& 3x_2 &+& 8x_3 &=& 0 \\
+			\tfrac{1}{2}x_1 &+& x_2 &+& \tfrac{5}{2}x_3 &=& 0
+        \end{system}
         \quad
-        \begin{cases}
-            \begin{alignedat}{3}
-                x_1 &- x_3 &= 0 \\
-                x_2 &+ 3x_3 &= 0
-            \end{alignedat}
-        \end{cases}
+		\begin{system}{3}
+			x_1 &-& x_3 &=& 0 \\
+			x_2 &+& 3x_3 &=& 0
+        \end{system}
      \]
 
 \[ -(x_1 - x_3) + (x_2 + 3x_3) = -x_1 + x_2 + 4x_3 \]
@@ -137,19 +147,15 @@ Each equation in each system can be written as a linear combination of the equat
 
 Let
 \[
-    \begin{cases}
-        \begin{alignedat}{2}
-            a_{11}x + a_{12}x &= 0 \\
-            a_{21}x + a_{22}x &= 0
-        \end{alignedat}
-    \end{cases}
+	\begin{system}{2}
+		a_{11}x &+& a_{12}x &=& 0 \\
+		a_{21}x &+& a_{22}x &=& 0
+    \end{system}
     \quad
-    \begin{cases}
-        \begin{alignedat}{2}
-            b_{11}x + b_{12}x &= 0 \\
-            b_{21}x + b_{22}x &= 0
-        \end{alignedat}
-    \end{cases}
+	\begin{system}{2}
+		b_{11}x &+& b_{12}x &=& 0 \\
+		b_{21}x &+& b_{22}x &=& 0
+    \end{system}
  \]
 where \((x, y)\) is a solution to the systems.
 
@@ -211,12 +217,10 @@ Therefore, \(\mathbb Q \subseteq \mathbb F\).
 
 \item[1.] Find all solutions to the system of equations
     \[
-        \begin{cases}
-            \begin{alignedat}{2}
-                (1 - i)x_1 - ix_2 &= 0 \\
-                2x_1 + (1 - i)x_2 &= 0
-            \end{alignedat}
-        \end{cases}
+        \begin{system}{2}
+            (1 - i)x_1 &-& ix_2 &=& 0 \\
+            2x_1 &+& (1 - i)x_2 &=& 0
+        \end{system}
     \]
 
 \[
@@ -313,23 +317,19 @@ Therefore, \(\mathbb Q \subseteq \mathbb F\).
 
     This is equivalent to the system
     \[
-        \begin{cases}
-            \begin{alignedat}{2}
-                6x - 4y &= 2x \\
-                4x - 2y &= 2y \\
-                -x + 3z &= 2z
-            \end{alignedat}
-        \end{cases}
+        \begin{system}{2}
+            6x &-& 4y &=& 2x \\
+            4x &-& 2y &=& 2y \\
+            -x &+& 3z &=& 2z
+        \end{system}
     \]
     which can be written as a homogeneous system
     \[
-        \begin{cases}
-            \begin{alignedat}{2}
-                4x - 4y &= 0 \\
-                4x - 4y &= 0 \\
-                -x + z &= 0
-            \end{alignedat}
-        \end{cases}
+        \begin{system}{2}
+            4x &-& 4y &=& 0 \\
+            4x &-& 4y &=& 0 \\
+            -x &+& z &=& 0
+        \end{system}
     \]
 
     The system can be represented as
@@ -616,12 +616,10 @@ Let \(R_i\) and \(R_j\) be two rows of a matrix. Then
 \item[(a)] If every entry of \(A\) is 0, then every pair \(x_1, x_2\) is a solution of \(AX = 0\).
 This represents the following system of equations:
 \[
-    \begin{cases}
-        \begin{alignedat}{2}
-            0x_1 + 0x_2 &= 0 \\
-            0x_1 + 0x_2 &= 0
-        \end{alignedat}
-    \end{cases}
+    \begin{system}{2}
+        0x_1 &+& 0x_2 &= 0 \\
+        0x_1 &+& 0x_2 &= 0
+    \end{system}
 \]
 \(0x \forall x \in F\) and \(0 + 0 = 0\), so every pair \(x_1, x_2\) is a solution.
 
@@ -724,14 +722,12 @@ If any other entry is non-zero, a similar argument can be given.
 \begin{enumerate}[listparindent=\parindent]
 \item[1.] Find all solutions to the following system of equations by row-reducing the coefficient matrix:
     \[
-        \begin{cases}
-            \begin{alignedat}{6}
-                \tfrac{1}{3}x_1 &+& 2x_2 &-& 6x_3 &= 0 \\
-                -4x_1 && &+& 5x_3 &= 0 \\
-                -3x_1 &+& 6x_2 &-& 13x_3 &= 0 \\
-                -\tfrac{7}{3}x_1 &+& 2x_2 &-& \tfrac{8}{3}x_3 &= 0 \\
-            \end{alignedat}
-        \end{cases}
+        \begin{system}{3}
+            \tfrac{1}{3}x_1 &+& 2x_2 &-& 6x_3 &= 0 \\
+            -4x_1 && &+& 5x_3 &= 0 \\
+            -3x_1 &+& 6x_2 &-& 13x_3 &= 0 \\
+            -\tfrac{7}{3}x_1 &+& 2x_2 &-& \tfrac{8}{3}x_3 &= 0 \\
+        \end{system}
     \]
 \[
     \begin{bmatrix}
@@ -792,6 +788,121 @@ If any other entry is non-zero, a similar argument can be given.
             i & 1 + i 
         \end{bmatrix}
     \]
+\[
+    \begin{bmatrix}
+        1 & -i \\
+        2 & 2 \\
+        i & 1 + i 
+    \end{bmatrix}
+    \rightarrow
+    \begin{bmatrix}
+        1 & -i \\
+        0 & 2+2i \\
+        0 & i 
+    \end{bmatrix}
+    \rightarrow
+    \begin{bmatrix}
+        1 & -i \\
+        0 & 1 \\
+        0 & i 
+    \end{bmatrix}
+    \rightarrow
+    \boxed{
+        \begin{bmatrix}
+            1 & 0 \\
+            0 & 1 \\
+            0 & 0 
+        \end{bmatrix}
+    }
+\]
+
+\item[3.] Describe explicitly all \(2 \times 2\) row-reduced echelon matrices.
+\[
+    \boxed{
+        \begin{bmatrix}
+            0 & 0 \\
+            0 & 0 \\
+        \end{bmatrix}
+        , \quad
+        \begin{bmatrix}
+            0 & 1 \\
+            0 & 0 \\
+        \end{bmatrix}
+        , \quad
+        \begin{bmatrix}
+            1 & a \\
+            0 & 0 \\
+        \end{bmatrix}
+        , \quad
+        \begin{bmatrix}
+            1 & 0 \\
+            0 & 1 \\
+        \end{bmatrix}
+    }
+\]
+
+\item[4.] Consider the system of equations
+    \[
+        \begin{cases}
+            \begin{array}{l B l B l B l}
+                x_1 &-& x_2 &+& 2x_3 &= 1 \\
+                2x_1 && &+& 2x_3 &= 1 \\
+                x_1 &-& 3x_2 &+& 4x_3 &= 2 \\
+            \end{array}
+        \end{cases}
+    \]
+    Does this system have a solution? If so, describe explicitly all solutions.
+
+\[
+    \begin{abmatrix}{3}
+        1 & -1 & 2 & 1 \\
+        2 & 0 & 2 & 1 \\
+        1 & -3 & 4 & 2
+    \end{abmatrix}
+    \rightarrow
+    \begin{abmatrix}{3}
+        1 & -1 & 2 & 1 \\
+        0 & 2 & -2 & -1 \\
+        0 & -2 & 2 & 1
+    \end{abmatrix}
+    \rightarrow
+    \begin{abmatrix}{3}
+        1 & -1 & 2 & 1 \\
+        0 & 1 & -1 & -\frac{1}{2} \\
+        0 & -2 & 2 & 1
+    \end{abmatrix}
+\]
+\[
+    \rightarrow
+    \begin{abmatrix}{3}
+        1 & 0 & 1 & \frac{1}{2} \\
+        0 & 1 & -1 & -\frac{1}{2} \\
+        0 & 0 & 0 & 0
+    \end{abmatrix}
+\]
+\[
+    \boxed{
+        (\frac{1}{2} - x, x - \frac{1}{2}, x) \forall x \in \mathbb F
+    }
+\]
+
+\item[5.] Give an example of a system of two linear equations in two unknowns which has no solution.
+\[
+	\begin{system}{2}
+		x_1 &+& x_2 &= 1 \\
+		x_1 &+& x_2 &= -1
+	\end{system}
+\]
+
+\item[6.] Show that the system
+    \[
+        \begin{system}{4}
+            x_1 &-& 2x_2 &+& x_3 &+& 2x_4 &= 1 \\
+            x_1 &+& x_2 &-& x_3 &+& x_4 &= -1 \\
+            x_1 &+& 7x_2 &-& 5x_3 &-& x_4 &= 3
+        \end{system}
+    \]
+    has no solution.
 
 \end{enumerate}
 
