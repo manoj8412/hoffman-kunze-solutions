@@ -1,8 +1,14 @@
 \documentclass{article}
+\usepackage{array}
 \usepackage{amssymb}
 \usepackage{amsmath}
 \usepackage{enumitem}
-\usepackage{array}
+\usepackage{hyperref}
+\hypersetup{
+    bookmarksnumbered=true,     
+    pdfpagemode=UseOutlines,    % this is the option you were lookin for
+    pdfpagelayout=TwoPageRight
+}
 
 \newenvironment{abmatrix}[1]
 {
@@ -65,8 +71,8 @@ Likewise, there is a unique multiplicative identity, \(1 = x + y\sqrt{2}\).
 \[ (a + b\sqrt{2})(x + y\sqrt{2}) = a + b\sqrt{2} = (ax + 2by) + (bx + ay)\sqrt{2} \]
 \[
 	\begin{system}{2}
-            ax &+& 2by &= a \\
-            bx &+& ay &= b
+            ax &+& 2by &=& a \\
+            bx &+& ay &=& b
 	\end{system}
 \]
 \[ a(x - 1) + 2by = 0, b(x - 1) + ay = 0 \]
@@ -87,8 +93,8 @@ such that \(x(x^{-1}) = 1\):
 Then,
 \[
 	\begin{system}{2}
-		ax &+& 2by &= 1 \\
-		bx &+& ay &= 0
+		ax &+& 2by &=& 1 \\
+		bx &+& ay &=& 0
 	\end{system}
 \]
 which can be solved to get \(x = \frac{a}{a^2 - 2b^2}, y = \frac{-b}{a^2 - 2b^2}\).
@@ -100,13 +106,13 @@ and therefore is a field and a subfield of \(\mathbb C\).
     If so, express each equation in each system as a linear combination of the equations in another system.
     \[
 		\begin{system}{2}
-			x_1 &-& x_2 &= 0 \\
-			2x_1 &+& x_2 &= 0
+			x_1 &-& x_2 &=& 0 \\
+			2x_1 &+& x_2 &=& 0
 		\end{system}
         \quad
 		\begin{system}{2}
-			3x_1 &+& x_2 &= 0\\
-			x_1 &+& x_2 &= 0
+			3x_1 &+& x_2 &=& 0\\
+			x_1 &+& x_2 &=& 0
 		\end{system}
      \]
 
@@ -183,9 +189,7 @@ If \(c_1\) and \(c_2\) are undefined, then
 \( a_{11}a_{22} - a_{12}a_{21} = 0 \).
 \[ \frac{a_{11}}{a_{12}} = \frac{a_{21}}{a_{22}} \]
 
-Then the two equations in the first system are multiples of each other, and the solution set is a line.
-Since the second system has the same line as its solution set,
-its equations are constant multiples of equations of the first system.
+The equations of a system are constant multiples of equations of another system.
 Therefore, the two systems are equivalent.
 
 \item[7.] Prove that each subfield of the field of complex numbers contains every rational number.
@@ -536,7 +540,7 @@ The homogeneous systems do not have the same solutions and the two matrices cann
     be a \(2 \times 2\) matrix with complex entries. Suppose that \(A\) is row-reduced and also that \(a + b + c + d = 0\).
     Prove that there are exactly three such matrices.
 
-Assume \(A\) is non-zero matrix.
+Assume \(A\) is a non-zero matrix.
 Suppose the first column of \(A\) is a zero column.
 Since the matrix is non-zero, there must be non-zero entry in the second column. So either \(b\) or \(d\) must be non-zero.
 This non-zero entry is also the first non-zero entry, meaning it must be 1. Let exactly one of them be 1.
@@ -617,8 +621,8 @@ Let \(R_i\) and \(R_j\) be two rows of a matrix. Then
 This represents the following system of equations:
 \[
     \begin{system}{2}
-        0x_1 &+& 0x_2 &= 0 \\
-        0x_1 &+& 0x_2 &= 0
+        0x_1 &+& 0x_2 &=& 0 \\
+        0x_1 &+& 0x_2 &=& 0
     \end{system}
 \]
 \(0x \forall x \in F\) and \(0 + 0 = 0\), so every pair \(x_1, x_2\) is a solution.
@@ -723,10 +727,10 @@ If any other entry is non-zero, a similar argument can be given.
 \item[1.] Find all solutions to the following system of equations by row-reducing the coefficient matrix:
     \[
         \begin{system}{3}
-            \tfrac{1}{3}x_1 &+& 2x_2 &-& 6x_3 &= 0 \\
-            -4x_1 && &+& 5x_3 &= 0 \\
-            -3x_1 &+& 6x_2 &-& 13x_3 &= 0 \\
-            -\tfrac{7}{3}x_1 &+& 2x_2 &-& \tfrac{8}{3}x_3 &= 0 \\
+            \tfrac{1}{3}x_1 &+& 2x_2 &-& 6x_3 &=& 0 \\
+            -4x_1 && &+& 5x_3 &=& 0 \\
+            -3x_1 &+& 6x_2 &-& 13x_3 &=& 0 \\
+            -\tfrac{7}{3}x_1 &+& 2x_2 &-& \tfrac{8}{3}x_3 &=& 0 \\
         \end{system}
     \]
 \[
@@ -845,9 +849,9 @@ If any other entry is non-zero, a similar argument can be given.
     \[
         \begin{cases}
             \begin{array}{l B l B l B l}
-                x_1 &-& x_2 &+& 2x_3 &= 1 \\
-                2x_1 && &+& 2x_3 &= 1 \\
-                x_1 &-& 3x_2 &+& 4x_3 &= 2 \\
+                x_1 &-& x_2 &+& 2x_3 &=& 1 \\
+                2x_1 && &+& 2x_3 &=& 1 \\
+                x_1 &-& 3x_2 &+& 4x_3 &=& 2 \\
             \end{array}
         \end{cases}
     \]
@@ -889,20 +893,194 @@ If any other entry is non-zero, a similar argument can be given.
 \item[5.] Give an example of a system of two linear equations in two unknowns which has no solution.
 \[
 	\begin{system}{2}
-		x_1 &+& x_2 &= 1 \\
-		x_1 &+& x_2 &= -1
+		x_1 &+& x_2 &=& 1 \\
+		x_1 &+& x_2 &=& -1
 	\end{system}
 \]
+has no solution, since \(1 \neq -1\).
 
 \item[6.] Show that the system
     \[
         \begin{system}{4}
-            x_1 &-& 2x_2 &+& x_3 &+& 2x_4 &= 1 \\
-            x_1 &+& x_2 &-& x_3 &+& x_4 &= -1 \\
-            x_1 &+& 7x_2 &-& 5x_3 &-& x_4 &= 3
+            x_1 &-& 2x_2 &+& x_3 &+& 2x_4 &=& 1 \\
+            x_1 &+& x_2 &-& x_3 &+& x_4 &=& 2 \\
+            x_1 &+& 7x_2 &-& 5x_3 &-& x_4 &=& 3
         \end{system}
     \]
     has no solution.
+
+\[
+    \begin{abmatrix}{4}
+        1 & -2 & 1 & 2 & 1 \\
+        1 & 1 & -1 & 1 & 2 \\
+        1 & 7 & -5 & -1 & 3 \\
+    \end{abmatrix}
+    \rightarrow
+    \begin{abmatrix}{4}
+        1 & -2 & 1 & 2 & 1 \\
+        0 & 3 & -2 & -1 & 1 \\
+        0 & 9 & -6 & -3 & 2 \\
+    \end{abmatrix}
+\]
+\[
+    \rightarrow
+    \begin{abmatrix}{4}
+        1 & -2 & 1 & 2 & 1 \\
+        0 & 1 & \frac{-2}{3} & \frac{-1}{3} & \frac{1}{3} \\
+        0 & 9 & -6 & -3 & 2 \\
+    \end{abmatrix}
+    \rightarrow
+    \begin{abmatrix}{4}
+        1 & 0 & \frac{-1}{3} & \frac{4}{3} & \frac{5}{3} \\
+        0 & 1 & \frac{-2}{3} & \frac{-1}{3} & \frac{1}{3} \\
+        0 & 0 & 0 & 0 & -1 \\
+    \end{abmatrix}
+\]
+
+\(-1 \neq 0\), therefore the system has no solution.
+
+\item[7.] Find all solutions of
+    \[
+        \begin{system}{5}
+            2x_1 &-& 3x_2 &-& 7x_3 &+& 2x_4 &+& 2x_5 &=& -2 \\
+            x_1 &-& 2x_2 &-& 4x_3 &+& 3x_4 &+& x_5 &=& -2 \\
+            2x_1 && &-& 4x_3 &+& 2x_4 &+& x_5 &=& 3 \\
+            x_1 &-& 5x_2 &-& 7x_3 &+& 6x_4 &+& 2x_5 &=& -7
+        \end{system}
+    \]
+
+\[
+    \begin{abmatrix}{5}
+        2 & -3 & -7 & 5 & 2 & -2 \\
+        1 & -2 & -4 & 3 & 1 & -2 \\
+        2 & 0 & -4 & 3 & 1 & -2 \\
+        1 & -5 & -7 & 6 & 2 & 7 
+    \end{abmatrix}
+    \rightarrow
+    \begin{abmatrix}{5}
+        1 & -2 & -4 & 3 & 1 & -2 \\
+        2 & -3 & -7 & 5 & 2 & -2 \\
+        2 & 0 & -4 & 3 & 1 & -2 \\
+        1 & -5 & -7 & 6 & 2 & 7 
+    \end{abmatrix}
+    \rightarrow
+\]
+\[
+    \begin{abmatrix}{5}
+        1 & -2 & -4 & 3 & 1 & -2 \\
+        0 & 1 & 1 & -1 & 0 & 2 \\
+        0 & 4 & 4 & -4 & -1 & 7 \\
+        0 & -3 & -3 & 3 & 1 & -5 
+    \end{abmatrix}
+    \rightarrow
+    \begin{abmatrix}{5}
+        1 & 0 & -2 & 1 & 1 & 2 \\
+        0 & 1 & 1 & -1 & 0 & 2 \\
+        0 & 0 & 0 & 0 & -1 & -1 \\
+        0 & 0 & 0 & 0 & 1 & 1 
+    \end{abmatrix}
+    \rightarrow
+\]
+\[
+    \begin{abmatrix}{5}
+        1 & 0 & -2 & 1 & 1 & 2 \\
+        0 & 1 & 1 & -1 & 0 & 2 \\
+        0 & 0 & 0 & 0 & 1 & 1 \\
+        0 & 0 & 0 & 0 & 1 & 1 
+    \end{abmatrix}
+    \rightarrow
+    \begin{abmatrix}{5}
+        1 & 0 & -2 & 1 & 0 & 1 \\
+        0 & 1 & 1 & -1 & 0 & 2 \\
+        0 & 0 & 0 & 0 & 1 & 1 \\
+        0 & 0 & 0 & 0 & 0 & 0 
+    \end{abmatrix}
+\]
+
+\[
+    \begin{system}{5}
+        x_1 &-& && 2x_3 &+& x_4 && &=& 1 \\
+        && x_2 &+& x_3 &-& x_4 && &=& 2 \\
+        && && && && x_5 &=& 1
+    \end{system}
+\]
+
+\[
+    \boxed{
+        (1 + 2x_3 - x_4, 2 - x_3 + x_4, x_3, x_4, 1), x_3, x_f \in \mathbb F
+    }
+\]
+
+\item[8.] Let
+    \[
+        A = \begin{bmatrix}
+            3 & -1 & 2 \\
+            2 & 1 & 1 \\
+            1 & -3 & 0
+        \end{bmatrix}
+    \]
+    For which \( (y_1, y_2, y_3) \) does the system of equations \(AX = Y\) have a solution?
+
+\[
+    \begin{abmatrix}{3}
+        3 & -1 & 2 & y_1 \\
+        2 & 1 & 1 & y_2 \\
+        1 & -3 & 0 & y_3
+    \end{abmatrix}
+    \rightarrow
+    \begin{abmatrix}{3}
+        1 & -3 & 0 & y_3 \\
+        3 & -1 & 2 & y_1 \\
+        2 & 1 & 1 & y_2 
+    \end{abmatrix}
+    \rightarrow
+    \begin{abmatrix}{3}
+        1 & -3 & 0 & y_3 \\
+        0 & 8 & 2 & y_1 - 3y_3 \\
+        0 & 7 & 1 & y_2 - 2y_3
+    \end{abmatrix}
+    \rightarrow
+\]
+\[
+    \begin{abmatrix}{3}
+        1 & -3 & 0 & y_3 \\
+        0 & 8 & 2 & y_1 - 3y_3 \\
+        0 & 7 & 1 & y_2 - 2y_3
+    \end{abmatrix}
+    \rightarrow
+    \begin{abmatrix}{3}
+        1 & -3 & 0 & y_3 \\
+        0 & 1 & 1 & y_1 - y_2 - y_3 \\
+        0 & 7 & 1 & y_2 - 2y_3
+    \end{abmatrix}
+    \rightarrow
+\]
+\[
+    \begin{abmatrix}{3}
+        1 & 0 & 3 & 3y_1 - 3y_2 - 2y_3 \\
+        0 & 1 & 1 & y_1 - y_2 - y_3 \\
+        0 & 0 & -6 & -7y_1 + 8y_2 + 5y_3
+    \end{abmatrix}
+    \rightarrow
+    \begin{abmatrix}{3}
+        1 & 0 & 3 & 3y_1 - 3y_2 - 2y_3 \\
+        0 & 1 & 1 & y_1 - y_2 - y_3 \\
+        0 & 0 & 1 & \frac{7}{6}y_1 - \frac{4}{3}y_2 - \frac{5}{6}y_3
+    \end{abmatrix}
+    \rightarrow
+\]
+\[
+    \begin{abmatrix}{3}
+        1 & 0 & 0 & \frac{-1}{2}y_1 + y_2 + \frac{1}{2}y_3 \\
+        0 & 1 & 0 & \frac{1}{6}y_1 + \frac{1}{3}y_2 - \frac{1}{6}y_3 \\
+        0 & 0 & 1 & \frac{7}{6}y_1 - \frac{4}{3}y_2 - \frac{5}{6}y_3
+    \end{abmatrix}
+\]
+
+For any \((y_1, y_2, y_3)\), \(AX = Y\) has a solution.
+
+\item[10.] Suppose \(R\) and \(R'\) are \(2 \times 3\) row-reduced echelon matrices and that the
+    systems \(RX = 0\) and \(R'X = 0\) have exactly the same solutions. Prove that \(R = R'\).
 
 \end{enumerate}
 
