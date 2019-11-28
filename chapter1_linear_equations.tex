@@ -5,17 +5,16 @@
 \usepackage{enumitem}
 \usepackage{hyperref}
 \hypersetup{
-    bookmarksnumbered=true,     
-    pdfpagemode=UseOutlines,    % this is the option you were lookin for
-    pdfpagelayout=TwoPageRight
+    bookmarksnumbered=true,
+    pdfpagemode=UseOutlines,
 }
 
-\newenvironment{abmatrix}[1]
+\newenvironment{abmatrix}[2]
 {
     \left[
-        \begin{array} {@{}*{#1}{c}|c@{}}
+        \begin{array} {@{} *{#1}{c} | *{#2}c @{}}
 }
-{ 
+{
         \end{array}
     \right]
 }
@@ -28,11 +27,10 @@
         \setlength{\arraycolsep}{0pt}
         \begin{array} {r @{}*{#1}{B r}}
 }
-{ 
+{
         \end{array}
     \end{cases}
 }
-
 \begin{document}
 
 \section{Linear Equations}
@@ -154,13 +152,13 @@ Each equation in each system can be written as a linear combination of the equat
 Let
 \[
 	\begin{system}{2}
-		a_{11}x &+& a_{12}x &=& 0 \\
-		a_{21}x &+& a_{22}x &=& 0
+		a_{11}x &+& a_{12}y &=& 0 \\
+		a_{21}x &+& a_{22}y &=& 0
     \end{system}
     \quad
 	\begin{system}{2}
-		b_{11}x &+& b_{12}x &=& 0 \\
-		b_{21}x &+& b_{22}x &=& 0
+		b_{11}x &+& b_{12}y &=& 0 \\
+		b_{21}x &+& b_{22}y &=& 0
     \end{system}
  \]
 where \((x, y)\) is a solution to the systems.
@@ -186,10 +184,10 @@ Similarly,
 When \(c_1\) and \(c_2\) are defined, one system can be written
 as a linear combination of the another and the two systems are equivalent.
 If \(c_1\) and \(c_2\) are undefined, then
-\( a_{11}a_{22} - a_{12}a_{21} = 0 \).
-\[ \frac{a_{11}}{a_{12}} = \frac{a_{21}}{a_{22}} \]
+\( a_{11}a_{22} - a_{12}a_{21} = 0 \), and
+\( \frac{a_{11}}{a_{12}} = \frac{a_{21}}{a_{22}} \).
 
-The equations of a system are constant multiples of equations of another system.
+This implies the equations of a system are constant multiples of equations of another system.
 Therefore, the two systems are equivalent.
 
 \item[7.] Prove that each subfield of the field of complex numbers contains every rational number.
@@ -545,7 +543,7 @@ Suppose the first column of \(A\) is a zero column.
 Since the matrix is non-zero, there must be non-zero entry in the second column. So either \(b\) or \(d\) must be non-zero.
 This non-zero entry is also the first non-zero entry, meaning it must be 1. Let exactly one of them be 1.
 Then the other must be zero because other entries of a column containing a leading non-zero entry must be zero.
-Then \(a + b + c + d = 1 \neq 0\). 
+Then \(a + b + c + d = 1 \neq 0\).
 
 Therefore, \(A\) must be in the form \( (\begin{smallmatrix} 1 & b \\ 0 & d \end{smallmatrix}) \)
 or \( (\begin{smallmatrix} 0 & b \\ 1 & d \end{smallmatrix}) \).
@@ -561,7 +559,7 @@ Therefore \(a + b + c + d = 1 + b + 0 + 0 = -1\), and \(b = -1\), meaning
     \end{bmatrix}
 \]
 is only possible case. The same logic follows for the case where \(A = (\begin{smallmatrix} 0 & b \\ 1 & d\end{smallmatrix}) \),
-leading to 
+leading to
 \[
     A = \begin{bmatrix}
         0 & 0 \\ 1 & -1
@@ -789,33 +787,33 @@ If any other entry is non-zero, a similar argument can be given.
         \begin{bmatrix}
             1 & -i \\
             2 & 2 \\
-            i & 1 + i 
+            i & 1 + i
         \end{bmatrix}
     \]
 \[
     \begin{bmatrix}
         1 & -i \\
         2 & 2 \\
-        i & 1 + i 
+        i & 1 + i
     \end{bmatrix}
     \rightarrow
     \begin{bmatrix}
         1 & -i \\
         0 & 2+2i \\
-        0 & i 
+        0 & i
     \end{bmatrix}
     \rightarrow
     \begin{bmatrix}
         1 & -i \\
         0 & 1 \\
-        0 & i 
+        0 & i
     \end{bmatrix}
     \rightarrow
     \boxed{
         \begin{bmatrix}
             1 & 0 \\
             0 & 1 \\
-            0 & 0 
+            0 & 0
         \end{bmatrix}
     }
 \]
@@ -858,19 +856,19 @@ If any other entry is non-zero, a similar argument can be given.
     Does this system have a solution? If so, describe explicitly all solutions.
 
 \[
-    \begin{abmatrix}{3}
+    \begin{abmatrix}{3}{1}
         1 & -1 & 2 & 1 \\
         2 & 0 & 2 & 1 \\
         1 & -3 & 4 & 2
     \end{abmatrix}
     \rightarrow
-    \begin{abmatrix}{3}
+    \begin{abmatrix}{3}{1}
         1 & -1 & 2 & 1 \\
         0 & 2 & -2 & -1 \\
         0 & -2 & 2 & 1
     \end{abmatrix}
     \rightarrow
-    \begin{abmatrix}{3}
+    \begin{abmatrix}{3}{1}
         1 & -1 & 2 & 1 \\
         0 & 1 & -1 & -\frac{1}{2} \\
         0 & -2 & 2 & 1
@@ -878,7 +876,7 @@ If any other entry is non-zero, a similar argument can be given.
 \]
 \[
     \rightarrow
-    \begin{abmatrix}{3}
+    \begin{abmatrix}{3}{1}
         1 & 0 & 1 & \frac{1}{2} \\
         0 & 1 & -1 & -\frac{1}{2} \\
         0 & 0 & 0 & 0
@@ -910,13 +908,13 @@ has no solution, since \(1 \neq -1\).
     has no solution.
 
 \[
-    \begin{abmatrix}{4}
+    \begin{abmatrix}{4}{1}
         1 & -2 & 1 & 2 & 1 \\
         1 & 1 & -1 & 1 & 2 \\
         1 & 7 & -5 & -1 & 3 \\
     \end{abmatrix}
     \rightarrow
-    \begin{abmatrix}{4}
+    \begin{abmatrix}{4}{1}
         1 & -2 & 1 & 2 & 1 \\
         0 & 3 & -2 & -1 & 1 \\
         0 & 9 & -6 & -3 & 2 \\
@@ -924,13 +922,13 @@ has no solution, since \(1 \neq -1\).
 \]
 \[
     \rightarrow
-    \begin{abmatrix}{4}
+    \begin{abmatrix}{4}{1}
         1 & -2 & 1 & 2 & 1 \\
         0 & 1 & \frac{-2}{3} & \frac{-1}{3} & \frac{1}{3} \\
         0 & 9 & -6 & -3 & 2 \\
     \end{abmatrix}
     \rightarrow
-    \begin{abmatrix}{4}
+    \begin{abmatrix}{4}{1}
         1 & 0 & \frac{-1}{3} & \frac{4}{3} & \frac{5}{3} \\
         0 & 1 & \frac{-2}{3} & \frac{-1}{3} & \frac{1}{3} \\
         0 & 0 & 0 & 0 & -1 \\
@@ -950,50 +948,50 @@ has no solution, since \(1 \neq -1\).
     \]
 
 \[
-    \begin{abmatrix}{5}
+    \begin{abmatrix}{5}{1}
         2 & -3 & -7 & 5 & 2 & -2 \\
         1 & -2 & -4 & 3 & 1 & -2 \\
         2 & 0 & -4 & 3 & 1 & -2 \\
-        1 & -5 & -7 & 6 & 2 & 7 
+        1 & -5 & -7 & 6 & 2 & 7
     \end{abmatrix}
     \rightarrow
-    \begin{abmatrix}{5}
+    \begin{abmatrix}{5}{1}
         1 & -2 & -4 & 3 & 1 & -2 \\
         2 & -3 & -7 & 5 & 2 & -2 \\
         2 & 0 & -4 & 3 & 1 & -2 \\
-        1 & -5 & -7 & 6 & 2 & 7 
+        1 & -5 & -7 & 6 & 2 & 7
     \end{abmatrix}
     \rightarrow
 \]
 \[
-    \begin{abmatrix}{5}
+    \begin{abmatrix}{5}{1}
         1 & -2 & -4 & 3 & 1 & -2 \\
         0 & 1 & 1 & -1 & 0 & 2 \\
         0 & 4 & 4 & -4 & -1 & 7 \\
-        0 & -3 & -3 & 3 & 1 & -5 
+        0 & -3 & -3 & 3 & 1 & -5
     \end{abmatrix}
     \rightarrow
-    \begin{abmatrix}{5}
+    \begin{abmatrix}{5}{1}
         1 & 0 & -2 & 1 & 1 & 2 \\
         0 & 1 & 1 & -1 & 0 & 2 \\
         0 & 0 & 0 & 0 & -1 & -1 \\
-        0 & 0 & 0 & 0 & 1 & 1 
+        0 & 0 & 0 & 0 & 1 & 1
     \end{abmatrix}
     \rightarrow
 \]
 \[
-    \begin{abmatrix}{5}
+    \begin{abmatrix}{5}{1}
         1 & 0 & -2 & 1 & 1 & 2 \\
         0 & 1 & 1 & -1 & 0 & 2 \\
         0 & 0 & 0 & 0 & 1 & 1 \\
-        0 & 0 & 0 & 0 & 1 & 1 
+        0 & 0 & 0 & 0 & 1 & 1
     \end{abmatrix}
     \rightarrow
-    \begin{abmatrix}{5}
+    \begin{abmatrix}{5}{1}
         1 & 0 & -2 & 1 & 0 & 1 \\
         0 & 1 & 1 & -1 & 0 & 2 \\
         0 & 0 & 0 & 0 & 1 & 1 \\
-        0 & 0 & 0 & 0 & 0 & 0 
+        0 & 0 & 0 & 0 & 0 & 0
     \end{abmatrix}
 \]
 
@@ -1022,19 +1020,19 @@ has no solution, since \(1 \neq -1\).
     For which \( (y_1, y_2, y_3) \) does the system of equations \(AX = Y\) have a solution?
 
 \[
-    \begin{abmatrix}{3}
+    \begin{abmatrix}{3}{1}
         3 & -1 & 2 & y_1 \\
         2 & 1 & 1 & y_2 \\
         1 & -3 & 0 & y_3
     \end{abmatrix}
     \rightarrow
-    \begin{abmatrix}{3}
+    \begin{abmatrix}{3}{1}
         1 & -3 & 0 & y_3 \\
         3 & -1 & 2 & y_1 \\
-        2 & 1 & 1 & y_2 
+        2 & 1 & 1 & y_2
     \end{abmatrix}
     \rightarrow
-    \begin{abmatrix}{3}
+    \begin{abmatrix}{3}{1}
         1 & -3 & 0 & y_3 \\
         0 & 8 & 2 & y_1 - 3y_3 \\
         0 & 7 & 1 & y_2 - 2y_3
@@ -1042,13 +1040,13 @@ has no solution, since \(1 \neq -1\).
     \rightarrow
 \]
 \[
-    \begin{abmatrix}{3}
+    \begin{abmatrix}{3}{1}
         1 & -3 & 0 & y_3 \\
         0 & 8 & 2 & y_1 - 3y_3 \\
         0 & 7 & 1 & y_2 - 2y_3
     \end{abmatrix}
     \rightarrow
-    \begin{abmatrix}{3}
+    \begin{abmatrix}{3}{1}
         1 & -3 & 0 & y_3 \\
         0 & 1 & 1 & y_1 - y_2 - y_3 \\
         0 & 7 & 1 & y_2 - 2y_3
@@ -1056,13 +1054,13 @@ has no solution, since \(1 \neq -1\).
     \rightarrow
 \]
 \[
-    \begin{abmatrix}{3}
+    \begin{abmatrix}{3}{1}
         1 & 0 & 3 & 3y_1 - 3y_2 - 2y_3 \\
         0 & 1 & 1 & y_1 - y_2 - y_3 \\
         0 & 0 & -6 & -7y_1 + 8y_2 + 5y_3
     \end{abmatrix}
     \rightarrow
-    \begin{abmatrix}{3}
+    \begin{abmatrix}{3}{1}
         1 & 0 & 3 & 3y_1 - 3y_2 - 2y_3 \\
         0 & 1 & 1 & y_1 - y_2 - y_3 \\
         0 & 0 & 1 & \frac{7}{6}y_1 - \frac{4}{3}y_2 - \frac{5}{6}y_3
@@ -1070,7 +1068,7 @@ has no solution, since \(1 \neq -1\).
     \rightarrow
 \]
 \[
-    \begin{abmatrix}{3}
+    \begin{abmatrix}{3}{1}
         1 & 0 & 0 & \frac{-1}{2}y_1 + y_2 + \frac{1}{2}y_3 \\
         0 & 1 & 0 & \frac{1}{6}y_1 + \frac{1}{3}y_2 - \frac{1}{6}y_3 \\
         0 & 0 & 1 & \frac{7}{6}y_1 - \frac{4}{3}y_2 - \frac{5}{6}y_3
@@ -1082,6 +1080,305 @@ For any \((y_1, y_2, y_3)\), \(AX = Y\) has a solution.
 \item[10.] Suppose \(R\) and \(R'\) are \(2 \times 3\) row-reduced echelon matrices and that the
     systems \(RX = 0\) and \(R'X = 0\) have exactly the same solutions. Prove that \(R = R'\).
 
+    TODO
 \end{enumerate}
+
+\subsection{Matrix Multiplication}
+\paragraph{Exercises}
+
+\begin{enumerate}[listparindent=\parindent]
+\item[1.] Let
+    \[
+        A = \begin{bmatrix}
+            2 & -1 & 1 \\
+            1 & 2 & 1
+        \end{bmatrix}, \quad
+        B = \begin{bmatrix}
+            3 \\ 1 \\ -1
+        \end{bmatrix}, \quad
+        C = \begin{bmatrix}
+            1 & -1
+        \end{bmatrix}.
+    \]
+    Compute \(ABC\) and \(CAB\).
+
+    \[
+        ABC = \begin{bmatrix}
+            4 & -4 \\
+            4 & -4
+        \end{bmatrix}
+        , \quad
+        CAB = \begin{bmatrix}
+            0
+        \end{bmatrix}
+    \]
+
+\item[3.] Find two different \(2 \times 2\) matrices \(A\) such that \(A^2 = 0\) but \(A \neq 0\).
+
+\[
+    A = \begin{bmatrix}
+        a & b \\
+        c & d
+    \end{bmatrix}, \quad
+    A^2 = \begin{bmatrix}
+        a^2 + bc & b(a + d) \\
+        c(a + d) & bc + d^2
+    \end{bmatrix}
+\]
+
+Let \(a + d = 0\), then \(a = -d\), and
+\[a^2 + bc = d^2 + bc = 0\]
+\[a^2 = d^2 = -ad = -bc\]
+\[ad = bc\]
+
+\[
+    \begin{bmatrix}
+        1 & -1 \\
+        1 & -1
+    \end{bmatrix}
+    \begin{bmatrix}
+        -2 & -4 \\
+        1 & 2
+    \end{bmatrix}
+\]
+are two matrices that satisfy the given conditions.
+
+\item[4.] Let
+    \[
+        A = \begin{bmatrix}
+            1 & -1 & 1 \\
+            2 & 0 & 1 \\
+            3 & 0 & 1
+        \end{bmatrix}.
+    \] Find elementary matrices \(E_1, E_2, \dots, E_k\) such that
+    \[E_k \dots E_2E_1A = I.\]
+
+\[
+    E_8E_7E_6E_5E_4E_3E_2E_1A =
+\]
+\[
+    \begin{bmatrix}
+        1 & 0 & 0 \\
+        0 & 1 & 0 \\
+        0 & 0 & 2
+    \end{bmatrix}
+    \begin{bmatrix}
+        1 & 0 & -1 \\
+        0 & 1 & 0 \\
+        0 & 0 & 1
+    \end{bmatrix}
+    \begin{bmatrix}
+        1 & 0 & 0 \\
+        0 & 1 & 3 \\
+        0 & 0 & 1
+    \end{bmatrix}
+    \begin{bmatrix}
+        1 & 0 & 0 \\
+        0 & 1 & 0 \\
+        0 & -3 & 1
+    \end{bmatrix}
+    \begin{bmatrix}
+        1 & 1 & 0 \\
+        0 & 1 & 0 \\
+        0 & 0 & 1
+    \end{bmatrix}
+\]
+\[
+    \begin{bmatrix}
+        1 & 0 & 0 \\
+        0 & \frac{1}{2} & 0 \\
+        0 & 0 & 1
+    \end{bmatrix}
+    \begin{bmatrix}
+        1 & 0 & 0 \\
+        0 & 1 & 0 \\
+        -3 & 0 & 1
+    \end{bmatrix}
+    \begin{bmatrix}
+        1 & 0 & 0 \\
+        -2 & 1 & 0 \\
+        0 & 0 & 1
+    \end{bmatrix}
+    \begin{bmatrix}
+        1 & -1 & 1 \\
+        2 & 0 & 1 \\
+        3 & 0 & 1
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+        1 & 0 & 0 \\
+        0 & 1 & 0 \\
+        0 & 0 & 1
+    \end{bmatrix}
+    = I
+\]
+
+\item[5.] Let
+    \[
+        A = \begin{bmatrix}
+            1 & -1 \\
+            2 & 2 \\
+            1 & 0
+        \end{bmatrix}, \quad
+        B = \begin{bmatrix}
+            3 & 1 \\
+            -4 & 4
+        \end{bmatrix}.
+    \]
+    Is there a matrix \(C\) such that \(CA = B\)?
+
+Let \(C\) be a \(2 \times 3\) matrix. Then
+\[
+    CA = \begin{bmatrix}
+        c_{11} + 2c_{12} + c_{13} & -c_{11} + 2c_{12} \\
+        c_{21} + 2c_{22} + c_{23} & -c_{21} + 2c_{22} \\
+    \end{bmatrix}
+    = 
+    \begin{bmatrix}
+        3 & 1 \\
+        -4 & 4
+    \end{bmatrix}.
+\]
+
+\[
+    \begin{system}{3}
+        c_{11} &+& 2c_{12} &+& c_{13} &=& 3 \\
+        -c_{11} &+& 2c_{12} && &=& 1 \\
+    \end{system}
+    \begin{system}{3}
+        c_{21} &+& 2c_{22} &+& c_{23} &=& -4 \\
+        -c_{21} &+& 2c_{22} && &=& 4
+    \end{system}
+\]
+Arbitrarily letting \(c_{13} = c_{23} = 0\) and solving the resulting systems, we find
+\[
+    C = \begin{bmatrix}
+        1 & 1 & 0 \\
+        -4 & 0 & 0
+    \end{bmatrix}
+\]
+is one possible answer.
+It'd be cool to find all possible solutions but that's too much work (maybe I'll do it later?).
+
+\item[6.] Let \(A\) be an \(m \times n\) matrix and \(B\) an \(n \times k\) matrix. Show that the columns of \(C = AB\) are linear combinations
+    of the columns of \(A\). If \(\alpha_1, \dots \alpha_n\) are columns of \(A\) and \(\gamma_1, \dots, \gamma_k\) are columns of \(C\), then
+    \[\gamma_i = \sum_{r = 1}^{n} B_{ri}\alpha_r\].
+
+\[
+    \gamma_j = \begin{bmatrix}
+    (AB)_{1j} \\
+    \dots \\
+    (AB)_{mj} \\
+    \end{bmatrix}
+    = 
+    \begin{bmatrix}
+    \sum_{r = 1}^{n} A_{1r}B_{rj} \\
+    \dots \\
+    \sum_{r = 1}^{n} A_{mr}B_{rj}
+    \end{bmatrix}
+\]
+\[
+    =
+    B_{1j}
+    \begin{bmatrix}
+    A_{1r} \\
+    \dots \\
+    A_{mr} \\
+    \end{bmatrix}
+    +
+    \dots
+    +
+    B_{nj}
+    \begin{bmatrix}
+    A_{1r} \\
+    \dots \\
+    A_{mr} \\
+    \end{bmatrix}
+    =
+    \sum_{r = 1}^{n} B_{rj} \alpha_r
+\]
+
+This proves the columns of \(C\) are linear combinations of columns of \(A\).
+
+\item[7.] Let \(A\) and \(B\) be \(2 \times 2\) matrices such that \(AB = I\). Prove that \(BA = I\).
+
+By the corollary to Theorem 9, if \(AB = I\), then \(B\) is row-equivalent to \(I\) and \(A\) is the product of elementary matrices.
+Also by Theorem 9, \(A = E_k...E_2E_1 = e_k(...e_2(e_1(I)))\), where \(E_n\) is an elementary matrix and \(e_n\) is an elementay row operation.
+Therefore, \(A\) is also row-equivalent to \(I\) and there must be a matrix \(A'\) such that \(A'A = I\).
+
+Then,
+\[AB = I\]
+\[A'AB = A'I\]
+\[IB = A'\]
+\[B = A'\]
+Therefore \(A'A = BA = I\).
+
+\item[8.] Let
+    \[
+        C = \begin{bmatrix}
+            C_{11} & C_{12} \\
+            C_{21} & C_{22} \\
+        \end{bmatrix}
+    \]
+    be a \(2 \times 2\) matrix. We inquire when it is possible to find \(2 \times 2\) matrices \(A\) and \(B\) such that \(C = AB - BA\).
+    Prove that such matrices can be found if and only if \(C_{11} + C_{22} = 0\).
+
+Let
+\[
+    A = \begin{bmatrix}
+        a & b \\
+        c & d
+    \end{bmatrix}, \quad
+    B = \begin{bmatrix}
+        q & r \\
+        s & t
+    \end{bmatrix}
+\]
+
+\[
+    AB = \begin{bmatrix}
+        aq + bs && ar + bt \\
+        cq + ds && cr + dt
+    \end{bmatrix}, \quad
+    BA = \begin{bmatrix}
+        aq + cr && bq + dr \\
+        as + ct && bs + dt
+    \end{bmatrix}
+\]
+\[
+    AB - BA = \begin{bmatrix}
+        bs - cr && (ar + bt) - (bq + dr) \\
+        (cq + ds) - (as + ct) && cr - bs
+    \end{bmatrix}
+\]
+\[
+    = \begin{bmatrix}
+        C_{11} & C_{12} \\
+        C_{21} & -C_{11} \\
+    \end{bmatrix}
+\]
+If \(AB - BA = C\), \(C_{11} + C_{22} = 0\).
+
+\[
+    \begin{system}{4}
+        && -cr &+& bs && &=& C_{11} \\
+        -bq &+& (a - d)r && &+& bt &=& C_{12} \\
+        cq &+& && (d - a)s &-& ct &=& C_{21} \\
+    \end{system}
+\]
+
+\[
+    \begin{abmatrix}{4}{1}
+        0 & -c & b & 0 & C_{11} \\
+        -b & a - d & 0 & b & C_{12} \\
+        c & 0 & d - a & -c & C_{21}
+    \end{abmatrix}
+\]
+Ok I am not doing this
+
+\end{enumerate}
+
+\subsection{Invertible Matrices}
+\paragraph{Exercises}
 
 \end{document}
