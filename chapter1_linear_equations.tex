@@ -9,6 +9,8 @@
     pdfpagemode=UseOutlines,
 }
 
+% The first argument is the number of columns before the divider,
+% and the second argument is the number of columns before the divider,
 \newenvironment{abmatrix}[2]
 {
     \left[
@@ -19,8 +21,9 @@
     \right]
 }
 
-\newcolumntype{B}{>{{}}c<{{}}}
 
+% The argument is the number of variables in the system.
+\newcolumntype{B}{>{{}}c<{{}}}
 \newenvironment{system}[1]
 {
     \begin{cases}
@@ -1233,7 +1236,7 @@ Let \(C\) be a \(2 \times 3\) matrix. Then
         c_{11} + 2c_{12} + c_{13} & -c_{11} + 2c_{12} \\
         c_{21} + 2c_{22} + c_{23} & -c_{21} + 2c_{22} \\
     \end{bmatrix}
-    = 
+    =
     \begin{bmatrix}
         3 & 1 \\
         -4 & 4
@@ -1270,7 +1273,7 @@ It'd be cool to find all possible solutions but that's too much work (maybe I'll
     \dots \\
     (AB)_{mj} \\
     \end{bmatrix}
-    = 
+    =
     \begin{bmatrix}
     \sum_{r = 1}^{n} A_{1r}B_{rj} \\
     \dots \\
@@ -1380,5 +1383,237 @@ Ok I am not doing this
 
 \subsection{Invertible Matrices}
 \paragraph{Exercises}
+
+\begin{enumerate}[listparindent=\parindent]
+\item[1.] Let
+    \[
+        A = \begin{bmatrix}
+            1 & 2 & 1 & 0 \\
+            -1 & 0 & 3 & 5 \\
+            1 & -2 & 1 & 1
+        \end{bmatrix}.
+    \]
+    Find a row-reduced echelon matrix \(R\) which is row-equivalent to \(A\) and an invertible \(3 \times 3\) matrix \(P\) such that \(R = PA\).
+
+\[
+    \begin{abmatrix}{4}{4}
+        1 & 2 & 1 & 0 & 1 & 0 & 0 \\
+        -1 & 0 & 3 & 5 & 0 & 1 & 0 \\
+        1 & -2 & 1 & 1 & 0 & 0 & 1
+    \end{abmatrix}
+    \rightarrow
+    \begin{abmatrix}{4}{4}
+        1 & 2 & 1 & 0 & 1 & 0 & 0 \\
+        0 & 2 & 4 & 5 & 1 & 1 & 0 \\
+        0 & -4 & 0 & 1 & -1 & 0 & 1
+    \end{abmatrix}
+    \rightarrow
+\]
+\[
+    \begin{abmatrix}{4}{4}
+        1 & 2 & 1 & 0 & 1 & 0 & 0 \\
+        0 & -4 & 0 & 1 & -1 & 0 & 1 \\
+        0 & 2 & 4 & 5 & 1 & 1 & 0
+    \end{abmatrix}
+    \rightarrow
+    \begin{abmatrix}{4}{4}
+        1 & 0 & 1 & \frac{1}{2} & \frac{1}{2} & 0 & \frac{1}{2} \\
+        0 & -4 & 0 & 1 & -1 & 0 & 1 \\
+        0 & 0 & 4 & \frac{11}{2} & \frac{1}{2} & 1 & \frac{1}{2}
+    \end{abmatrix}
+    \rightarrow
+\]
+\[
+    \begin{abmatrix}{4}{4}
+        1 & 0 & 1 & \frac{1}{2} & \frac{1}{2} & 0 & \frac{1}{2} \\
+        0 & 1 & 0 & \frac{1}{4} & \frac{1}{4} & 0 & -\frac{1}{4} \\
+        0 & 0 & 1 & \frac{11}{8} & \frac{1}{8} & \frac{1}{4} & \frac{1}{8}
+    \end{abmatrix}
+    \rightarrow
+    \begin{abmatrix}{4}{4}
+        1 & 0 & 0 & -\frac{7}{8} & \frac{3}{8} & -\frac{1}{4} & \frac{3}{8} \\
+        0 & 1 & 0 & \frac{1}{4} & \frac{1}{4} & 0 & -\frac{1}{4} \\
+        0 & 0 & 1 & \frac{11}{8} & \frac{1}{8} & \frac{1}{4} & \frac{1}{8}
+    \end{abmatrix}
+\]
+
+\[
+    \boxed {
+        \begin{bmatrix}
+            1 & 0 & 0 & -\frac{7}{8} \\
+            0 & 1 & 0 & \frac{1}{4} \\
+            0 & 0 & 1 & \frac{11}{8}
+        \end{bmatrix}
+        =
+        \begin{bmatrix}{4}
+            \frac{3}{8} & -\frac{1}{4} & \frac{3}{8} \\
+            \frac{1}{4} & 0 & -\frac{1}{4} \\
+            \frac{1}{8} & \frac{1}{4} & \frac{1}{8}
+        \end{bmatrix}
+        A
+    }
+\]
+
+\item[2.] Do Exercise 1, but with
+    \[
+        A = \begin{bmatrix}
+            2 & 0 & i \\
+            1 & -3 & -i \\
+            i & 1 & 1
+        \end{bmatrix}.
+    \]
+
+\[
+    \boxed {
+        \begin{bmatrix}
+            1 & 0 & 0 \\
+            0 & 1 & 0 \\
+            0 & 0 & 1
+        \end{bmatrix}
+        =
+        \begin{bmatrix}
+            \frac{1}{3} & \frac{i-3i}{30} & \frac{1-3i}{10} \\
+            0 & -\frac{3+i}{10} & \frac{1-3i}{10} \\
+            \frac{-i}{3} & \frac{3+i}{15} & \frac{3+i}{5}
+        \end{bmatrix}
+        A
+    }
+\]
+
+\item[4.] Let
+    \[
+        A = \begin{bmatrix}
+            5 & 0 & 0 \\
+            1 & 5 & 0 \\
+            0 & 1 & 5
+        \end{bmatrix}.
+    \]
+    For which \(X\) does there exist a scalar \(c\) such that \(AX = cX\)?
+
+\[
+    \begin{bmatrix}
+        5 & 0 & 0 \\
+        1 & 5 & 0 \\
+        0 & 1 & 5
+    \end{bmatrix}
+    \begin{bmatrix}
+        x \\ y \\ z
+    \end{bmatrix}
+    = c
+    \begin{bmatrix}
+        x \\ y \\ z
+    \end{bmatrix}
+\]
+\[
+    \begin{system}{3}
+        5x && && &=& cx \\
+        x &+& 5y && &=& cy \\
+          && y &+& 5z &=& cy \\
+    \end{system}
+\]
+
+If \(c \neq 5\), the \(5x = cx\) is true only if \(x = 0\). Similiarly, \(x = y = z = 0\).
+Otherwise, \(y + 5z = 5z\) so \(y = 0\), and \(x + 5y = 5y\) so \(x = 0\).
+
+\[
+    X = \begin{bmatrix}
+        0 \\ 0 \\ a
+    \end{bmatrix} \forall a \in \mathbb F
+\]
+\item[5.] Discover whether
+    \[
+        A = \begin{bmatrix}
+            1 & 2 & 3 & 4 \\
+            0 & 2 & 3 & 4 \\
+            0 & 0 & 3 & 4 \\
+            0 & 0 & 0 & 4
+        \end{bmatrix}
+    \]
+    is invertible, and find \(A^{-1}\) if it exists.
+
+\[
+    \begin{abmatrix}{4}{4}
+        1 & 2 & 3 & 4 & 1 & 0 & 0 & 0 \\
+        0 & 2 & 3 & 4 & 0 & 1 & 0 & 0 \\
+        0 & 0 & 3 & 4 & 0 & 0 & 1 & 0 \\
+        0 & 0 & 0 & 4 & 0 & 0 & 0 & 1
+    \end{abmatrix}
+    \rightarrow
+    \begin{abmatrix}{4}{4}
+        1 & 2 & 3 & 0 & 1 & 0 & 0 & -1 \\
+        0 & 2 & 3 & 0 & 0 & 1 & 0 & -1 \\
+        0 & 0 & 3 & 0 & 0 & 0 & 1 & -1 \\
+        0 & 0 & 0 & 4 & 0 & 0 & 0 & 1
+    \end{abmatrix}
+    \rightarrow
+\]
+\[
+    \begin{abmatrix}{4}{4}
+        1 & 2 & 0 & 0 & 1 & 0 & -1 & 0 \\
+        0 & 2 & 0 & 0 & 0 & 1 & -1 & 0 \\
+        0 & 0 & 3 & 0 & 0 & 0 & 1 & -1 \\
+        0 & 0 & 0 & 4 & 0 & 0 & 0 & 1
+    \end{abmatrix}
+    \rightarrow
+    \begin{abmatrix}{4}{4}
+        1 & 0 & 0 & 0 & 1 & -1 & 0 & 0 \\
+        0 & 2 & 0 & 0 & 0 & 1 & -1 & 0 \\
+        0 & 0 & 3 & 0 & 0 & 0 & 1 & -1 \\
+        0 & 0 & 0 & 4 & 0 & 0 & 0 & 1
+    \end{abmatrix}
+    \rightarrow
+\]
+\[
+    \boxed {
+        A^{-1} =
+        \begin{bmatrix}
+            1 & -1 & 0 & 0 \\
+            0 & \frac{1}{2} & -\frac{1}{2} & 0 \\
+            0 & 0 & \frac{1}{3} & -\frac{1}{3} \\
+            0 & 0 & 0 & \frac{1}{4} \\
+        \end{bmatrix}
+    }
+\]
+
+\item[6.] Suppose \(A\) is a \(2 \times 1\) matrix and that \(B\) is a \(1 \times 2\) matrix. Prove that \(C = AB\) is not invertible.
+
+Suppose
+\[
+    A = \begin{bmatrix}
+        A_1 \\ A_2
+    \end{bmatrix}, \quad
+    B = \begin{bmatrix}
+        B_1 & B_2
+    \end{bmatrix}
+\]
+
+Then,
+\[
+    C = AB = \begin{bmatrix}
+        A_1B_1 & A_1B_2 \\
+        A_2B_1 & A_2B_2
+    \end{bmatrix}
+\]
+
+The two rows are constant multiples of each other, so a row may be reduced to all zeros
+using elementary row operations.
+Therefore, \(C\) is not row-equivalent to \(I\) and therefore not invertible.
+
+\item[7.] Let \(A\) be an \(n \times n\) matrix. Prove the following two statements:
+\begin{enumerate}[listparindent=\parindent]
+\item[(a)] If \(A\) is invertible and \(AB = 0\) for some \(n \times n\) matrix \(B\), then \(B = 0\).
+
+\(A^{-1}\) exists since \(A\) is invertible. Then,
+
+\[AB = 0\]
+\[A^{-1}AB = A^{-1}0\]
+\[IB = 0\]
+\[B = 0\]
+
+\item[(b)] If \(A\) is not invertible, then there exists a \(n \times n\) matrix \(B\) such that \(AB = 0\) but \(B \neq 0\).
+\[AB = 0\]
+\end{enumerate}
+
+\end{enumerate}
 
 \end{document}
