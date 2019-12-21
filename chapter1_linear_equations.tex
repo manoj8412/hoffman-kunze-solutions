@@ -9,31 +9,8 @@
     pdfpagemode=UseOutlines,
 }
 
-% The first argument is the number of columns before the divider,
-% and the second argument is the number of columns before the divider,
-\newenvironment{abmatrix}[2]
-{
-    \left[
-        \begin{array} {@{} *{#1}{c} | *{#2}c @{}}
-}
-{
-        \end{array}
-    \right]
-}
+\input{util.tex}
 
-
-% The argument is the number of variables in the system.
-\newcolumntype{B}{>{{}}c<{{}}}
-\newenvironment{system}[1]
-{
-    \begin{cases}
-        \setlength{\arraycolsep}{0pt}
-        \begin{array} {r @{}*{#1}{B r}}
-}
-{
-        \end{array}
-    \end{cases}
-}
 \begin{document}
 
 \section{Linear Equations}
@@ -41,51 +18,65 @@
 \setcounter{subsection}{1} % skip 1.1 because it has no exercises
 
 \subsection{System of Linear Equations}
-\paragraph{Exercises}
 
 \begin{enumerate}[listparindent=\parindent]
 \item[1.] Verify that the set of complex numbers of the form \(x + y\sqrt{2}\),
     where \(x\) and \(y\) are rational, is a subfield of \(\mathbb C\).
 
 Let \(\mathbb F = \{x + y\sqrt{2} | x, y \in \mathbb Q\}\) and \(a, b, c, d \in \mathbb Q\). Then,
-
-\[ (a + b\sqrt{2}) + (c + d\sqrt{2}) = (a + c) + (b + d)\sqrt{2} \]
-\[ (a + b\sqrt{2})(c + d\sqrt{2}) = (ac + 2bd) + (bc + ad)\sqrt{2} \]
+\begin{gather*}
+    (a + b\sqrt{2}) + (c + d\sqrt{2}) = (a + c) + (b + d)\sqrt{2} \\
+    (a + b\sqrt{2})(c + d\sqrt{2}) = (ac + 2bd) + (bc + ad)\sqrt{2}
+\end{gather*}
 
 \(\mathbb Q\) is closed under addition and multiplication,
 so the \(\mathbb F\) is also closed under addition and multiplication.
 
 Addition and multiplication are also commutative and associative for \(\mathbb Q\),
 so \(\mathbb F\) must also have commutative and associative addition and muliplication:
-
-\[ (a + b\sqrt{2}) + (c + d\sqrt{2}) = (a + c) + (b + d)\sqrt{2} =  \]
-\[ (c + a) + (d + b)\sqrt{2} = (c + d\sqrt{2}) + (a + b\sqrt{2}) \]
-
-\[ (a + b\sqrt{2})(c + d\sqrt{2}) = (ac + 2bd) + (bc + ad)\sqrt{2} =  \]
-\[ (ca + 2db\sqrt{2})(cb + da\sqrt{2}) = (c + d\sqrt{2})(a + b\sqrt{2}) \]
+\begin{gather*}
+    (a + b\sqrt{2}) + (c + d\sqrt{2}) \\
+    = (a + c) + (b + d)\sqrt{2} \\
+    = (c + a) + (d + b)\sqrt{2} \\
+    = (c + d\sqrt{2}) + (a + b\sqrt{2}) \\
+    \\
+    (a + b\sqrt{2})(c + d\sqrt{2}) \\
+    = (ac + 2bd) + (bc + ad)\sqrt{2} \\
+    = (ca + 2db\sqrt{2})(cb + da\sqrt{2}) \\
+    = (c + d\sqrt{2})(a + b\sqrt{2})
+\end{gather*}
 
 To prove there is a unique additive identity, \(0 = x + y\sqrt{2}\). Then,
-\[ (a + b\sqrt{2}) + (x + y\sqrt{2}) = a + b\sqrt{2} = (a + x) + (b + y)\sqrt{2} \]
-\[ x = y = 0 \]
+\begin{gather*}
+    (a + b\sqrt{2}) + (x + y\sqrt{2}) = a + b\sqrt{2} \\
+    = (a + x) + (b + y)\sqrt{2}\ \\
+    x = y = 0
+\end{gather*}
 
 Likewise, there is a unique multiplicative identity, \(1 = x + y\sqrt{2}\).
-\[ (a + b\sqrt{2})(x + y\sqrt{2}) = a + b\sqrt{2} = (ax + 2by) + (bx + ay)\sqrt{2} \]
+\[(a + b\sqrt{2})(x + y\sqrt{2}) = a + b\sqrt{2} = (ax + 2by) + (bx + ay)\sqrt{2}\]
+
 \[
-	\begin{system}{2}
-            ax &+& 2by &=& a \\
-            bx &+& ay &=& b
-	\end{system}
+\begin{system}{2}
+     ax &+& 2by &=& a \\
+     bx &+& ay &=& b
+\end{system}
 \]
-\[ a(x - 1) + 2by = 0, b(x - 1) + ay = 0 \]
-\[ x - 1 = \frac{-2by}{a} = \frac{-ay}{b} \]
-\[ x = 1, y = 0 \]
+
+\begin{gather*}
+a(x - 1) + 2by = 0, b(x - 1) + ay = 0 \\
+x - 1 = \frac{-2by}{a} = \frac{-ay}{b} \\
+x = 1, y = 0
+\end{gather*}
 
 Finally, there exists a unique additive inverse \(-x\) for all \(x \in \mathbb F\),
 such that \(x + (-x) = 0\):
-\[ (a + b\sqrt{2}) + (x + y\sqrt{2}) = (a + x) + (b + y)\sqrt{2} = 0 + 0\sqrt{2} \]
-\[ a + x = 0, b + y = 0 \]
-\[ x = -a, y = -b \]
-\[ (a + b\sqrt{2}) + (-a + -b\sqrt{2}) = 0 + 0\sqrt{2} \]
+\begin{gather*}
+(a + b\sqrt{2}) + (x + y\sqrt{2}) = (a + x) + (b + y)\sqrt{2} = 0 + 0\sqrt{2} \\
+a + x = 0, b + y = 0 \\
+x = -a, y = -b \\
+(a + b\sqrt{2}) + (-a + -b\sqrt{2}) = 0 + 0\sqrt{2}
+\end{gather*}
 
 and a unique multiplicative inverse \(x^{-1}\) for all \(x \in \mathbb F\) and \(x \neq 0\),
 such that \(x(x^{-1}) = 1\):
@@ -142,12 +133,14 @@ Each equation in each system can be written as a linear combination of the equat
         \end{system}
      \]
 
-\[ -(x_1 - x_3) + (x_2 + 3x_3) = -x_1 + x_2 + 4x_3 \]
-\[ (x_1 - x_3) + 3(x_2 + 3x_3) = x_1 + 3x_2 + 8x_3 \]
-\[ \frac{1}{2}(x_1 - x_3) + (x_2 + 3x_3) = \frac{1}{2}x_1 + x_2 + \frac{5}{2}x_3 \]
-
-\[ 0(-x_1 + x_2 + 4x_3) + -2(x_1 + 3x_2 + 8x_3) + 6(\frac{1}{2}x_1 + x_2 + \frac{5}{2}x_3) = x_1 - x_3 \]
-\[ 0(-x_1 + x_2 + 4x_3) + (x_1 + 3x_2 + 8x_3) + -2(\frac{1}{2}x_1 + x_2 + \frac{5}{2}x_3) = x_2 + 3x_3 \]
+\begin{gather*}
+    -(x_1 - x_3) + (x_2 + 3x_3) = -x_1 + x_2 + 4x_3 \\
+    (x_1 - x_3) + 3(x_2 + 3x_3) = x_1 + 3x_2 + 8x_3 \\
+    \frac{1}{2}(x_1 - x_3) + (x_2 + 3x_3) = \frac{1}{2}x_1 + x_2 + \frac{5}{2}x_3 \\
+    \\
+    0(-x_1 + x_2 + 4x_3) + -2(x_1 + 3x_2 + 8x_3) + 6(\frac{1}{2}x_1 + x_2 + \frac{5}{2}x_3) = x_1 - x_3 \\
+    0(-x_1 + x_2 + 4x_3) + (x_1 + 3x_2 + 8x_3) + -2(\frac{1}{2}x_1 + x_2 + \frac{5}{2}x_3) = x_2 + 3x_3 
+\end{gather*}
 
 \item[6.] Prove that if two homogeneous systems of linear equations in two unknowns have the same solutions,
     then they are equivalent.
@@ -170,16 +163,19 @@ The systems are homogeneous if there exist \(c_1\) and \(c_2\) such that
 \[ c_1(a_{11}x + a_{12}y) + c_2(a_{21}x + a_{22}y) = b_{11}x + b_{12}y \]
 
 Then it must be true that
-\[ a_{11}c_1 + a_{21}c_2 = b_{11} \]
-\[ a_{12}c_1 + a_{22}c_2 = b_{12} \]
+\begin{gather*}
+    a_{11}c_1 + a_{21}c_2 = b_{11} \\
+    a_{12}c_1 + a_{22}c_2 = b_{12}
+\end{gather*}
 
 Solve for \(c_1\) and \(c_2\):
-
-\[ c_2 = \frac{b_{11} - a_{11}c_1} {a_{21}} \]
-\[ a_{12}c_1 + \frac{a_{22}b_{11} - a_{22}a_{21}c_1} {a_{21}} = b_{12} \]
-\[ \frac{a_{22}b_{11} - a_{22}a_{21}c_1 + a_{12}a_{21}c_1} {a_{21}} = b_{12} \]
-\[ a_{22}b_{11} - a_{22}a_{21}c_1 + a_{12}a_{21}c_1 = a_{21}b_{12} \]
-\[ c_1 = \frac{a_{12}b_{21} - a_{22}b_{21}} {a_{11}a_{22} - a_{12}a_{21}} \]
+\begin{gather*}
+    c_2 = \frac{b_{11} - a_{11}c_1} {a_{21}} \\
+    a_{12}c_1 + \frac{a_{22}b_{11} - a_{22}a_{21}c_1} {a_{21}} = b_{12} \\
+    \frac{a_{22}b_{11} - a_{22}a_{21}c_1 + a_{12}a_{21}c_1} {a_{21}} = b_{12} \\
+    a_{22}b_{11} - a_{22}a_{21}c_1 + a_{12}a_{21}c_1 = a_{21}b_{12} \\
+    c_1 = \frac{a_{12}b_{21} - a_{22}b_{21}} {a_{11}a_{22} - a_{12}a_{21}}
+\end{gather*}
 
 Similarly,
 \[ c_2 = \frac{a_{11}b_{12} - a_{12}b_{11}} {a_{11}a_{22} - a_{12}a_{21}} \]
@@ -216,7 +212,6 @@ Therefore, \(\mathbb Q \subseteq \mathbb F\).
 \end{enumerate}
 
 \subsection{Matrices and Elementary Row Operations}
-\paragraph{Exercises}
 
 \begin{enumerate}[listparindent=\parindent]
 
@@ -263,7 +258,7 @@ Therefore, \(\mathbb Q \subseteq \mathbb F\).
     \]
     find all solutions of \(AX = 0\) by row-reducing \(A\).
 
-\[
+\begin{gather*}
     \begin{bmatrix}
         3 & -1 & 2 \\
         2 & 1 & 1 \\
@@ -281,14 +276,13 @@ Therefore, \(\mathbb Q \subseteq \mathbb F\).
         0 & 1 & \frac{1}{7} \\
         1 & -3 & 0
     \end{bmatrix}
+    \\
     \xrightarrow{(2)}
     \begin{bmatrix}
         0 & 0 & \frac{6}{7} \\
         0 & 1 & \frac{1}{7} \\
         1 & 0 & \frac{3}{7}
     \end{bmatrix}
-\]
-\[
     \xrightarrow{(1)}
     \begin{bmatrix}
         0 & 0 & 1 \\
@@ -300,11 +294,9 @@ Therefore, \(\mathbb Q \subseteq \mathbb F\).
         0 & 0 & 1 \\
         0 & 1 & 0 \\
         1 & 0 & 0
-    \end{bmatrix}
-\]
-\[
-\boxed{ (0, 0, 0) }
-\]
+    \end{bmatrix} \\
+    \boxed{ (0, 0, 0) }
+\end{gather*}
 
 \item[3.] If
     \[
@@ -338,7 +330,7 @@ Therefore, \(\mathbb Q \subseteq \mathbb F\).
     \]
 
     The system can be represented as
-    \[
+    \begin{gather*}
         \begin{bmatrix}
             4 & -4 & 0 \\
             4 & -4 & 0 \\
@@ -355,9 +347,7 @@ Therefore, \(\mathbb Q \subseteq \mathbb F\).
             1 & -1 & 0 \\
             0 & 0 & 0 \\
             0 & -1 & 1
-        \end{bmatrix}
-    \]
-    \[
+        \end{bmatrix} \\
         \xrightarrow{(1)}
         \begin{bmatrix}
             1 & -1 & 0 \\
@@ -370,7 +360,7 @@ Therefore, \(\mathbb Q \subseteq \mathbb F\).
             0 & 0 & 0 \\
             0 & 1 & -1
         \end{bmatrix}
-    \]
+    \end{gather*}
 
     \[ \boxed {
         (x, x, x) \forall x \in \mathbb C.
@@ -408,7 +398,7 @@ Therefore, \(\mathbb Q \subseteq \mathbb F\).
         \end{bmatrix}
     \]
 
-\[
+\begin{gather*}
     \begin{bmatrix}
         i & -1 - i & 0 \\
         1 & -2 & 1 \\
@@ -426,8 +416,7 @@ Therefore, \(\mathbb Q \subseteq \mathbb F\).
         0 & 1 & \frac{i - 1}{2} \\
         1 & 2i & -1
     \end{bmatrix}
-\]
-\[
+    \\
     \xrightarrow{(2)}
     \boxed{
         \begin{bmatrix}
@@ -436,7 +425,7 @@ Therefore, \(\mathbb Q \subseteq \mathbb F\).
             1 & 0 & i
         \end{bmatrix}
     }
-\]
+\end{gather*}
 
 \item[5.] Prove that the following two matrices are \textit{not} row-equivalent:
     \[
@@ -454,7 +443,7 @@ Therefore, \(\mathbb Q \subseteq \mathbb F\).
     \]
 
 The row-reduced matrix which is row-equivalent to the first matrix is
-\[
+\begin{gather*}
     \begin{bmatrix}
         2 & 0 & 0 \\
         a & -1 & 0 \\
@@ -472,8 +461,7 @@ The row-reduced matrix which is row-equivalent to the first matrix is
         0 & -1 - 2a & 0 \\
         0 & c - 2b & 3
     \end{bmatrix}
-\]
-\[
+    \\
     \xrightarrow{(1)}
     \begin{bmatrix}
         1 & 0 & 0 \\
@@ -494,11 +482,11 @@ The row-reduced matrix which is row-equivalent to the first matrix is
             0 & 0 & 1
         \end{bmatrix}
     }
-\]
+\end{gather*}
 which has \( (0, 0, 0) \) as its solution.
 
 The second matrix is equivalent to
-\[
+\begin{gather*}
     \begin{bmatrix}
         1 & 1 & 2 \\
         -2 & 0 & -1 \\
@@ -524,7 +512,7 @@ The second matrix is equivalent to
             0 & 0 & 0
         \end{bmatrix}
     }
-\]
+\end{gather*}
 which has \( (\frac{-1}{2}x, \frac{-3}{2}x, x) \forall x \in \mathbb C \) as its solution set.
 
 By Theorem 3, if the two matrices are row-equivalent,
@@ -614,10 +602,9 @@ Let \(R_i\) and \(R_j\) be two rows of a matrix. Then
         A = \begin{bmatrix}
             a & b \\ c & d
         \end{bmatrix}
-    \]
-    is a \(2 \times 2\) matrix over the field \(F\). Prove the following.
+    \] is a \(2 \times 2\) matrix over the field \(F\). Prove the following.
 
-\begin{enumerate}
+\begin{enumerate}[listparindent=\parindent]
 \item[(a)] If every entry of \(A\) is 0, then every pair \(x_1, x_2\) is a solution of \(AX = 0\).
 This represents the following system of equations:
 \[
@@ -722,7 +709,6 @@ If any other entry is non-zero, a similar argument can be given.
 \end{enumerate}
 
 \subsection{Row-Reduced Echelon Matrices}
-\paragraph{Exercises}
 
 \begin{enumerate}[listparindent=\parindent]
 \item[1.] Find all solutions to the following system of equations by row-reducing the coefficient matrix:
@@ -734,7 +720,8 @@ If any other entry is non-zero, a similar argument can be given.
             -\tfrac{7}{3}x_1 &+& 2x_2 &-& \tfrac{8}{3}x_3 &=& 0 \\
         \end{system}
     \]
-\[
+
+\begin{gather*}
     \begin{bmatrix}
         \frac{1}{3} & 2 & -6 \\
         -4 & 0 & 5 \\
@@ -755,8 +742,7 @@ If any other entry is non-zero, a similar argument can be given.
         0 & 24 & -67 \\
         0 & 48 & -134
     \end{bmatrix}
-\]
-\[
+    \\
     \rightarrow
     \begin{bmatrix}
         1 & 6 & -18 \\
@@ -778,7 +764,7 @@ If any other entry is non-zero, a similar argument can be given.
         0 & 0 & 0 \\
         0 & 0 & 0
     \end{bmatrix}
-\]
+\end{gather*}
 \[
     \boxed {
         (\frac{5}{4}x, \frac{67}{24}x, x) \forall x \in F
@@ -858,7 +844,7 @@ If any other entry is non-zero, a similar argument can be given.
     \]
     Does this system have a solution? If so, describe explicitly all solutions.
 
-\[
+\begin{gather*}
     \begin{abmatrix}{3}{1}
         1 & -1 & 2 & 1 \\
         2 & 0 & 2 & 1 \\
@@ -876,15 +862,14 @@ If any other entry is non-zero, a similar argument can be given.
         0 & 1 & -1 & -\frac{1}{2} \\
         0 & -2 & 2 & 1
     \end{abmatrix}
-\]
-\[
+    \\
     \rightarrow
     \begin{abmatrix}{3}{1}
         1 & 0 & 1 & \frac{1}{2} \\
         0 & 1 & -1 & -\frac{1}{2} \\
         0 & 0 & 0 & 0
     \end{abmatrix}
-\]
+\end{gather*}
 \[
     \boxed{
         (\frac{1}{2} - x, x - \frac{1}{2}, x) \forall x \in \mathbb F
@@ -910,7 +895,7 @@ has no solution, since \(1 \neq -1\).
     \]
     has no solution.
 
-\[
+\begin{gather*}
     \begin{abmatrix}{4}{1}
         1 & -2 & 1 & 2 & 1 \\
         1 & 1 & -1 & 1 & 2 \\
@@ -922,8 +907,7 @@ has no solution, since \(1 \neq -1\).
         0 & 3 & -2 & -1 & 1 \\
         0 & 9 & -6 & -3 & 2 \\
     \end{abmatrix}
-\]
-\[
+    \\
     \rightarrow
     \begin{abmatrix}{4}{1}
         1 & -2 & 1 & 2 & 1 \\
@@ -936,7 +920,7 @@ has no solution, since \(1 \neq -1\).
         0 & 1 & \frac{-2}{3} & \frac{-1}{3} & \frac{1}{3} \\
         0 & 0 & 0 & 0 & -1 \\
     \end{abmatrix}
-\]
+\end{gather*}
 
 \(-1 \neq 0\), therefore the system has no solution.
 
@@ -950,7 +934,7 @@ has no solution, since \(1 \neq -1\).
         \end{system}
     \]
 
-\[
+\begin{gather*}
     \begin{abmatrix}{5}{1}
         2 & -3 & -7 & 5 & 2 & -2 \\
         1 & -2 & -4 & 3 & 1 & -2 \\
@@ -965,8 +949,7 @@ has no solution, since \(1 \neq -1\).
         1 & -5 & -7 & 6 & 2 & 7
     \end{abmatrix}
     \rightarrow
-\]
-\[
+    \\
     \begin{abmatrix}{5}{1}
         1 & -2 & -4 & 3 & 1 & -2 \\
         0 & 1 & 1 & -1 & 0 & 2 \\
@@ -981,8 +964,7 @@ has no solution, since \(1 \neq -1\).
         0 & 0 & 0 & 0 & 1 & 1
     \end{abmatrix}
     \rightarrow
-\]
-\[
+    \\
     \begin{abmatrix}{5}{1}
         1 & 0 & -2 & 1 & 1 & 2 \\
         0 & 1 & 1 & -1 & 0 & 2 \\
@@ -996,7 +978,7 @@ has no solution, since \(1 \neq -1\).
         0 & 0 & 0 & 0 & 1 & 1 \\
         0 & 0 & 0 & 0 & 0 & 0
     \end{abmatrix}
-\]
+\end{gather*}
 
 \[
     \begin{system}{5}
@@ -1022,7 +1004,7 @@ has no solution, since \(1 \neq -1\).
     \]
     For which \( (y_1, y_2, y_3) \) does the system of equations \(AX = Y\) have a solution?
 
-\[
+\begin{gather*}
     \begin{abmatrix}{3}{1}
         3 & -1 & 2 & y_1 \\
         2 & 1 & 1 & y_2 \\
@@ -1041,8 +1023,7 @@ has no solution, since \(1 \neq -1\).
         0 & 7 & 1 & y_2 - 2y_3
     \end{abmatrix}
     \rightarrow
-\]
-\[
+    \\
     \begin{abmatrix}{3}{1}
         1 & -3 & 0 & y_3 \\
         0 & 8 & 2 & y_1 - 3y_3 \\
@@ -1055,8 +1036,7 @@ has no solution, since \(1 \neq -1\).
         0 & 7 & 1 & y_2 - 2y_3
     \end{abmatrix}
     \rightarrow
-\]
-\[
+    \\
     \begin{abmatrix}{3}{1}
         1 & 0 & 3 & 3y_1 - 3y_2 - 2y_3 \\
         0 & 1 & 1 & y_1 - y_2 - y_3 \\
@@ -1069,14 +1049,13 @@ has no solution, since \(1 \neq -1\).
         0 & 0 & 1 & \frac{7}{6}y_1 - \frac{4}{3}y_2 - \frac{5}{6}y_3
     \end{abmatrix}
     \rightarrow
-\]
-\[
+    \\
     \begin{abmatrix}{3}{1}
         1 & 0 & 0 & \frac{-1}{2}y_1 + y_2 + \frac{1}{2}y_3 \\
         0 & 1 & 0 & \frac{1}{6}y_1 + \frac{1}{3}y_2 - \frac{1}{6}y_3 \\
         0 & 0 & 1 & \frac{7}{6}y_1 - \frac{4}{3}y_2 - \frac{5}{6}y_3
     \end{abmatrix}
-\]
+\end{gather*}
 
 For any \((y_1, y_2, y_3)\), \(AX = Y\) has a solution.
 
@@ -1087,7 +1066,6 @@ For any \((y_1, y_2, y_3)\), \(AX = Y\) has a solution.
 \end{enumerate}
 
 \subsection{Matrix Multiplication}
-\paragraph{Exercises}
 
 \begin{enumerate}[listparindent=\parindent]
 \item[1.] Let
@@ -1156,10 +1134,8 @@ are two matrices that satisfy the given conditions.
     \] Find elementary matrices \(E_1, E_2, \dots, E_k\) such that
     \[E_k \dots E_2E_1A = I.\]
 
-\[
-    E_8E_7E_6E_5E_4E_3E_2E_1A =
-\]
-\[
+\begin{gather*}
+    E_8E_7E_6E_5E_4E_3E_2E_1A = \\
     \begin{bmatrix}
         1 & 0 & 0 \\
         0 & 1 & 0 \\
@@ -1185,8 +1161,7 @@ are two matrices that satisfy the given conditions.
         0 & 1 & 0 \\
         0 & 0 & 1
     \end{bmatrix}
-\]
-\[
+    \\
     \begin{bmatrix}
         1 & 0 & 0 \\
         0 & \frac{1}{2} & 0 \\
@@ -1214,7 +1189,7 @@ are two matrices that satisfy the given conditions.
         0 & 0 & 1
     \end{bmatrix}
     = I
-\]
+\end{gather*}
 
 \item[5.] Let
     \[
@@ -1267,39 +1242,38 @@ It'd be cool to find all possible solutions but that's too much work (maybe I'll
     of the columns of \(A\). If \(\alpha_1, \dots \alpha_n\) are columns of \(A\) and \(\gamma_1, \dots, \gamma_k\) are columns of \(C\), then
     \[\gamma_i = \sum_{r = 1}^{n} B_{ri}\alpha_r\].
 
-\[
+\begin{gather*}
     \gamma_j = \begin{bmatrix}
-    (AB)_{1j} \\
-    \dots \\
-    (AB)_{mj} \\
+        (AB)_{1j} \\
+        \dots \\
+        (AB)_{mj} \\
     \end{bmatrix}
     =
     \begin{bmatrix}
-    \sum_{r = 1}^{n} A_{1r}B_{rj} \\
-    \dots \\
-    \sum_{r = 1}^{n} A_{mr}B_{rj}
+        \sum_{r = 1}^{n} A_{1r}B_{rj} \\
+        \dots \\
+        \sum_{r = 1}^{n} A_{mr}B_{rj}
     \end{bmatrix}
-\]
-\[
+    \\
     =
     B_{1j}
     \begin{bmatrix}
-    A_{1r} \\
-    \dots \\
-    A_{mr} \\
+        A_{1r} \\
+        \dots \\
+        A_{mr} \\
     \end{bmatrix}
     +
     \dots
     +
     B_{nj}
     \begin{bmatrix}
-    A_{1r} \\
-    \dots \\
-    A_{mr} \\
+        A_{1r} \\
+        \dots \\
+        A_{mr} \\
     \end{bmatrix}
     =
     \sum_{r = 1}^{n} B_{rj} \alpha_r
-\]
+\end{gather*}
 
 This proves the columns of \(C\) are linear combinations of columns of \(A\).
 
@@ -1327,7 +1301,7 @@ Therefore \(A'A = BA = I\).
     Prove that such matrices can be found if and only if \(C_{11} + C_{22} = 0\).
 
 Let
-\[
+\begin{gather*}
     A = \begin{bmatrix}
         a & b \\
         c & d
@@ -1336,9 +1310,7 @@ Let
         q & r \\
         s & t
     \end{bmatrix}
-\]
-
-\[
+    \\
     AB = \begin{bmatrix}
         aq + bs && ar + bt \\
         cq + ds && cr + dt
@@ -1347,19 +1319,17 @@ Let
         aq + cr && bq + dr \\
         as + ct && bs + dt
     \end{bmatrix}
-\]
-\[
+    \\
     AB - BA = \begin{bmatrix}
         bs - cr && (ar + bt) - (bq + dr) \\
         (cq + ds) - (as + ct) && cr - bs
     \end{bmatrix}
-\]
-\[
+    \\
     = \begin{bmatrix}
         C_{11} & C_{12} \\
         C_{21} & -C_{11} \\
     \end{bmatrix}
-\]
+\end{gather*}
 If \(AB - BA = C\), \(C_{11} + C_{22} = 0\).
 
 \[
@@ -1382,7 +1352,6 @@ Ok I am not doing this
 \end{enumerate}
 
 \subsection{Invertible Matrices}
-\paragraph{Exercises}
 
 \begin{enumerate}[listparindent=\parindent]
 \item[1.] Let
@@ -1395,7 +1364,7 @@ Ok I am not doing this
     \]
     Find a row-reduced echelon matrix \(R\) which is row-equivalent to \(A\) and an invertible \(3 \times 3\) matrix \(P\) such that \(R = PA\).
 
-\[
+\begin{gather*}
     \begin{abmatrix}{4}{4}
         1 & 2 & 1 & 0 & 1 & 0 & 0 \\
         -1 & 0 & 3 & 5 & 0 & 1 & 0 \\
@@ -1408,8 +1377,7 @@ Ok I am not doing this
         0 & -4 & 0 & 1 & -1 & 0 & 1
     \end{abmatrix}
     \rightarrow
-\]
-\[
+    \\
     \begin{abmatrix}{4}{4}
         1 & 2 & 1 & 0 & 1 & 0 & 0 \\
         0 & -4 & 0 & 1 & -1 & 0 & 1 \\
@@ -1422,8 +1390,7 @@ Ok I am not doing this
         0 & 0 & 4 & \frac{11}{2} & \frac{1}{2} & 1 & \frac{1}{2}
     \end{abmatrix}
     \rightarrow
-\]
-\[
+    \\
     \begin{abmatrix}{4}{4}
         1 & 0 & 1 & \frac{1}{2} & \frac{1}{2} & 0 & \frac{1}{2} \\
         0 & 1 & 0 & \frac{1}{4} & \frac{1}{4} & 0 & -\frac{1}{4} \\
@@ -1435,7 +1402,7 @@ Ok I am not doing this
         0 & 1 & 0 & \frac{1}{4} & \frac{1}{4} & 0 & -\frac{1}{4} \\
         0 & 0 & 1 & \frac{11}{8} & \frac{1}{8} & \frac{1}{4} & \frac{1}{8}
     \end{abmatrix}
-\]
+\end{gather*}
 
 \[
     \boxed {
@@ -1490,7 +1457,7 @@ Ok I am not doing this
     \]
     For which \(X\) does there exist a scalar \(c\) such that \(AX = cX\)?
 
-\[
+\begin{gather*}
     \begin{bmatrix}
         5 & 0 & 0 \\
         1 & 5 & 0 \\
@@ -1503,14 +1470,13 @@ Ok I am not doing this
     \begin{bmatrix}
         x \\ y \\ z
     \end{bmatrix}
-\]
-\[
+    \\
     \begin{system}{3}
         5x && && &=& cx \\
         x &+& 5y && &=& cy \\
           && y &+& 5z &=& cy \\
-    \end{system}
-\]
+    \end{system} \\
+\end{gather*}
 
 If \(c \neq 5\), the \(5x = cx\) is true only if \(x = 0\). Similiarly, \(x = y = z = 0\).
 Otherwise, \(y + 5z = 5z\) so \(y = 0\), and \(x + 5y = 5y\) so \(x = 0\).
@@ -1531,7 +1497,7 @@ Otherwise, \(y + 5z = 5z\) so \(y = 0\), and \(x + 5y = 5y\) so \(x = 0\).
     \]
     is invertible, and find \(A^{-1}\) if it exists.
 
-\[
+\begin{gather*}
     \begin{abmatrix}{4}{4}
         1 & 2 & 3 & 4 & 1 & 0 & 0 & 0 \\
         0 & 2 & 3 & 4 & 0 & 1 & 0 & 0 \\
@@ -1546,8 +1512,7 @@ Otherwise, \(y + 5z = 5z\) so \(y = 0\), and \(x + 5y = 5y\) so \(x = 0\).
         0 & 0 & 0 & 4 & 0 & 0 & 0 & 1
     \end{abmatrix}
     \rightarrow
-\]
-\[
+    \\
     \begin{abmatrix}{4}{4}
         1 & 2 & 0 & 0 & 1 & 0 & -1 & 0 \\
         0 & 2 & 0 & 0 & 0 & 1 & -1 & 0 \\
@@ -1562,8 +1527,7 @@ Otherwise, \(y + 5z = 5z\) so \(y = 0\), and \(x + 5y = 5y\) so \(x = 0\).
         0 & 0 & 0 & 4 & 0 & 0 & 0 & 1
     \end{abmatrix}
     \rightarrow
-\]
-\[
+    \\
     \boxed {
         A^{-1} =
         \begin{bmatrix}
@@ -1573,25 +1537,25 @@ Otherwise, \(y + 5z = 5z\) so \(y = 0\), and \(x + 5y = 5y\) so \(x = 0\).
             0 & 0 & 0 & \frac{1}{4} \\
         \end{bmatrix}
     }
-\]
+\end{gather*}
 
 \item[6.] Suppose \(A\) is a \(2 \times 1\) matrix and that \(B\) is a \(1 \times 2\) matrix. Prove that \(C = AB\) is not invertible.
 
 Suppose
 \[
     A = \begin{bmatrix}
-        A_1 \\ A_2
+        a_1 \\ a_2
     \end{bmatrix}, \quad
     B = \begin{bmatrix}
-        B_1 & B_2
+        b_1 & b_2
     \end{bmatrix}
 \]
 
 Then,
 \[
     C = AB = \begin{bmatrix}
-        A_1B_1 & A_1B_2 \\
-        A_2B_1 & A_2B_2
+        a_1b_1 & a_1b_2 \\
+        a_2b_1 & a_2b_2
     \end{bmatrix}
 \]
 
@@ -1604,15 +1568,65 @@ Therefore, \(C\) is not row-equivalent to \(I\) and therefore not invertible.
 \item[(a)] If \(A\) is invertible and \(AB = 0\) for some \(n \times n\) matrix \(B\), then \(B = 0\).
 
 \(A^{-1}\) exists since \(A\) is invertible. Then,
-
-\[AB = 0\]
-\[A^{-1}AB = A^{-1}0\]
-\[IB = 0\]
-\[B = 0\]
+\begin{gather*}
+    AB = 0 \\
+    A^{-1}AB = A^{-1}0 \\
+    IB = 0 \\
+    B = 0
+\end{gather*}
 
 \item[(b)] If \(A\) is not invertible, then there exists a \(n \times n\) matrix \(B\) such that \(AB = 0\) but \(B \neq 0\).
-\[AB = 0\]
+
+By Theorem 13, \(A\) is invertible if and only if \(AX = 0\) only has the trivial solution \(X = 0\), where \(X\) is a \(n \times 1\) matrix.
+Thus, \(AX = 0\) must have a non-trivial solution \(x\).
+Let \(B = \begin{bmatrix}x & x & \dots & x\end{bmatrix}\). Then \(B \neq 0\) but \(AB = 0\).
 \end{enumerate}
+
+\item[8.] Let
+    \[
+        A = \begin{bmatrix}
+            a & b \\ c & d
+        \end{bmatrix}.
+    \]
+    Prove, using elementary row operations, that \(A\) is invertible if and only if \(ad - bc \neq 0\).  
+
+By Theorem 13, \(A\) is invertible if and only if \(AX = 0\) only has the trivial solution \(X = 0\).
+We have proven that the equation \(AX = 0\) only has the trivial solution if \(ad - bc \neq 0\) in Exercise 1.3.6.
+Therefore if \(ad - bc \neq 0\), \(A\) is invertible.
+
+Exercise 1.3.6 also proved if \(ad - bc = 0\) and \(A \neq 0\), then \(AX = I\) has a nontrivial solution,
+and therefore \(A\) is not invertible by Theorem 13. If \(A = 0\), it is clearly not row-equivalent to \(I\) and not invertible either.
+So \(ad - bc = 0\) then \(A\) is not invertible, and it logically follows that if \(A\) is invertible then \(ad - bc \neq 0\).
+
+\item[9.] An \(n \times n\) matrix \(A\) is called \textbf{upper-triangular} if \(A_{ij} = 0\) for \(i > j\),
+    that is, if every entry below the main diagonal is 0. Prove that an upper-triangular (square) matrix
+    is invertible if and only if every entry on its main diagonal is different from 0.
+
+Suppose an \(n \times n\) upper-triangular matrix \(A\) has only non-zero entries along its main diagonal.
+For each row \(i\), starting from row \(n\), divide it by \(a_{ii}\), which is valid since \(a_{ii} \neq 0\) for all \(i\).
+Then add the multiple of row \(i\) and \(-a_{ji}\) to row \(j\), for all \(j\) where \(j < i\). Then all entries in column \(i\) are 0 except for \(A_{ii} = 1\).
+This results in \(I\), showing that \(A\) is row equivalent to \(I\).
+Therefore, if an upper triangular matrix only has non-zero entries along its main diagonal, it is invertibie.
+
+Suppose an \(n \times n\) upper-triangular matrix \(A\) has zero entries along its main diagonal.
+If all diagonal entries are zero, then the bottom row must be a zero row.
+Otherwise, we can use a similar process described before to set all entries above the diagonal to zero for each row.
+Since at least one row has a zero diagonal entry, there will be a zero row.
+Then \(AX = 0\) has a nontrivial solution and therefore \(A\) is not invertible by Theorem 13.
+Therefore, an upper-triangular matrix is invertible only if every entry on its main diagonal is different from 0.
+
+\item[10.] Prove the following generalization of Exercise 6. If \(A\) is an \(m \times n\) matrix, \(B\) is an \(n \times m\) matrix
+    and \(n < m\), then \(AB\) is not invertible.
+
+\item[12.] The result of Example 16 suggests that perhaps the matrix
+    \[
+        A = \begin{bmatrix}
+            1 & \frac{1}{2} & \dotsb & \frac{1}{n} \\
+            \frac{1}{2} & \frac{1}{3} & \dotsb & \frac{1}{n+1} \\
+            \vdots & \vdots & \ddots & \vdots \\
+            \frac{1}{n} & \frac{1}{n+1} & \dotsb & \frac{1}{2n-1} \\
+        \end{bmatrix}
+    \] is invertible and \(A^{-1}\) has integer entries. Can you prove that?
 
 \end{enumerate}
 

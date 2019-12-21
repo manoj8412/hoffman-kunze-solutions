@@ -1,0 +1,27 @@
+\usepackage{array}
+
+% The first argument is the number of columns before the divider,
+% and the second argument is the number of columns before the divider,
+\newenvironment{abmatrix}[2]
+{
+    \left[
+        \begin{array} {@{} *{#1}{c} | *{#2}c @{}}
+}
+{
+        \end{array}
+    \right]
+}
+
+
+% The argument is the number of variables in the system.
+\newcolumntype{B}{>{{}}c<{{}}}
+\newenvironment{system}[1]
+{
+    \begin{cases}
+        \setlength{\arraycolsep}{0pt}
+        \begin{array} {r @{}*{#1}{B r}}
+}
+{
+        \end{array}
+    \end{cases}
+}

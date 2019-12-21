@@ -1,0 +1,139 @@
+\documentclass{article}
+\usepackage{array}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\hypersetup{
+    bookmarksnumbered=true,
+    pdfpagemode=UseOutlines,
+}
+
+\input{util.tex}
+
+\begin{document}
+
+\setcounter{section}{1}
+\section{Vector Spaces}
+
+\subsection{Vector Spaces}
+\begin{enumerate}[listparindent=\parindent]
+\item[1.] If \(F\) is a field, verify that \(F^n\) (as defined in Example 1) is a vector space over the field \(F\).
+
+Let \(\alpha = (x_1, x_2, \dots, x_n)\), \(\beta = (y_1, y_2, \dots, y_n)\), and \(\gamma = (z_1, z_2, \dots, z_n)\).
+First we prove the properties of vector addition, using the definition of addition over a field:
+    \begin{enumerate}[listparindent=\parindent]
+        \item[(a)] Addition is commutative.
+        \begin{gather*}
+            \alpha + \beta \\
+            = (x_1 + y_1, x_2 + y_2, \dots, x_n + y_n) \\
+            = (y_1 + x_1, y_2 + x_2, \dots, y_n + x_n) \\
+            = \beta + \alpha
+        \end{gather*}
+
+        \item[(b)] Addition is associative.
+        \begin{gather*}
+            (\alpha + \beta) + \gamma \\
+            = ((x_1 + y_1) + z_1, (x_2 + y_2) + z_2, \dots, (x_n + y_n) + z_n) \\
+            = (x_1 + (y_1 + z_1), x_2 + (y_2 + z_2), \dots, x_n + (y_n + z_n)) \\
+            = \alpha + (\beta + \gamma)
+        \end{gather*}
+
+        \item[(c)] There is a unique vector 0 such that \(\alpha + 0 = \alpha\) for all \(\alpha\) in V.
+
+            Since \(F\) is a field, there exists a unique element 0 in \(F\) such that \(x + 0 = x\) for all \(x\) in \(F\),
+            so there is a unique zero vector which is a \(n\)-tuple containing all 0s:
+            \[(x_1 + 0, \dots, x_n + 0) = (x_1, \dots, x_n) + (0, \dots, 0) = \alpha + 0\]
+
+        \item[(d)] For each vector \(\alpha\) in \(V\) there is a unique vector \(-\alpha\) in \(V\) such that \(\alpha + (-\alpha) = 0\).
+
+            Since \(F\) is a field, there exists a unique element \(-x\) in \(F\) such that \(x + (-x) = x\) for all \(x\) in \(F\). Therefore,
+            \begin{gather*}
+                (x_1 + -(x_1), \dots, x_n + -(x_n)) \\
+                = (x_1, \dots, x_n) + (-x_1, \dots, -x_n) \\
+                = \alpha + -\alpha
+            \end{gather*}
+    \end{enumerate}
+
+Then we prove the properties of scalar multiplication:
+    \begin{enumerate}[listparindent=\parindent]
+        \item[(a)] \(1\alpha = \alpha\) for every \(\alpha \in V\).
+        \[1\alpha = (1x_1, \dots, 1x_n) = (x_1, \dots, x_n) = \alpha\]
+
+        \item[(b)] \((c_1c_2)\alpha = c_1(c_2\alpha)\).
+        \begin{gather*}
+            (c_1c_2)\alpha = ((c_1c_2)x_1, \dots, (c_1c_2)x_n) \\
+            = (c_1(c_2x_1), \dots, c_1(c_wx_n)) \\
+            = c_1(c_2\alpha)
+        \end{gather*}
+
+        \item[(c)] \(c(\alpha + \beta) = c\alpha + c\beta\)
+        \begin{gather*}
+            c(\alpha + \beta) = c(x_1 + y_1, \dots, x_n + y_n) \\
+            = (c(x_1 + y_1), \dots, c(x_n + y_n)) \\
+            = (cx_1 + cy_1, \dots, cx_n + cy_n) \\
+            = c\alpha + c\beta
+        \end{gather*}
+
+        \item[(d)] \((c_1 + c_2)\alpha = c_1\alpha + c_2\alpha\)
+        \begin{gather*}
+            (c_1 + c_2)\alpha = ((c_1 + c_2)x_1, \dots, (c_1 + c_2)x_n) \\
+            = (c_1x_1 + c_2x_1, \dots, c_1x_n + c_2x_n) \\
+            = c_1\alpha + c_2\alpha
+        \end{gather*}
+    \end{enumerate}
+
+As it satisfies all the properties of a vector space, \(R^n\) is a vector space over \(F\).
+
+\item[2.] If \(V\) is a vector space over the field \(F\), verify that
+    \[(\alpha_1 + \alpha_2) + (\alpha_3 + \alpha_4) = [\alpha_2 + (\alpha_3 + \alpha_1)] + \alpha_4\]
+    for all vectors \(\alpha_1, \alpha_2, \alpha_3, \alpha_4 \in V\).
+    \begin{gather*}
+        (\alpha_1 + \alpha_2) + (\alpha_3 + \alpha_4) \\
+        = [(\alpha_2 + \alpha_1) + \alpha_3] + \alpha_4 \\
+        = [\alpha_2 + (\alpha_1 + \alpha_3)] + \alpha_4 \\
+        = [\alpha_2 + (\alpha_3 + \alpha_1)] + \alpha_4
+    \end{gather*}
+
+\item[3.] If \(C\) is the field of complex numbers, which vectors in \(C^3\) are linear combinations of
+    \((1, 0, -1), (0, 1, 1)\) and \((1, 1, 1)\)?
+
+Let \((y_1, y_2, y_3)\) be a vector formed by linear combinations of the three given vectors.
+Then for some scalars \(x_1, x_2, x_3 \in C\),
+\[
+    \begin{bmatrix}
+        1 & 0 & 1 \\
+        0 & 1 & 1 \\
+        -1 & 1 & 1 \\
+    \end{bmatrix}
+    \begin{bmatrix}
+        x_1 \\ x_2 \\ x_3
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+        y_1 \\ y_2 \\ y_3
+    \end{bmatrix}
+\]
+or in short, \(AX = Y\). Elementary row operations can show that \(A\) is row-equivalent to \(I\),
+and therefore \(A\) is invertible. We can then solve the system; \(X = A^{-1}Y\).
+This means any vector \(Y\) over \(C\) can be written as a linear combination of the three given vectors.
+
+\item[4.] Let \(V\) be the set of all pairs \((x, y)\) of real numbers, and let \(F\) be the field of real numbers.
+    Define
+
+    \[(x, y) + (x_1, y_1) = (x + x_1, y + y_1)\]
+    \[c(x, y) = (cx, y).\]
+    Is \(V\), with these operations, a vector space over the field of real numbers?
+
+\(V\) is not a vector space because there is no zero scalar \(0\) such that \(0(x, y) = 0\) for all \(y \in V\);
+\(0(x, y) = (0x, y) \neq (0, 0)\) unless \(y = 0\).
+
+\item[5.] On \(R^n\), define two operations
+    \begin{gather*}
+        \alpha \oplus \beta = \alpha - \beta \\
+        c\cdot\alpha = -c\alpha
+    \end{gather*}
+    The operations on the right are the usual ones. Which of the axioms for a vector space are satisfied by \((R^n, \oplus, \cdot)\)?
+
+\end{enumerate}
+\end{document}
