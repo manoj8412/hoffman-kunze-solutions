@@ -128,12 +128,440 @@ This means any vector \(Y\) over \(C\) can be written as a linear combination of
 \(V\) is not a vector space because there is no zero scalar \(0\) such that \(0(x, y) = 0\) for all \(y \in V\);
 \(0(x, y) = (0x, y) \neq (0, 0)\) unless \(y = 0\).
 
-\item[5.] On \(R^n\), define two operations
+\item[6.] Let \(V\) be the set of all complex-valued function \(f\) on the real line such that (for all \(t\) in \(\mathbb{R}\))
+    \[f(-t) = \overline{f(t)}.\]
+    The bar denotes complex conjugation. Show that \(V\), with operations
     \begin{gather*}
-        \alpha \oplus \beta = \alpha - \beta \\
-        c\cdot\alpha = -c\alpha
+        (f + g)(t) = f(t) + g(t) \\
+        (cf)(t) = cf(t)
     \end{gather*}
-    The operations on the right are the usual ones. Which of the axioms for a vector space are satisfied by \((R^n, \oplus, \cdot)\)?
+    is a vector space over the field of \textit{real} numbers. Give an example of a function in \(V\) which is not real-valued.
 
+    First, for an example of a not real-valued function in \(V\), let \(f(t) = ti\). Then \(f(-t) = -ti = \overline{ti} = \overline{f(t)}\).
+
+    \(V\) is closed under addition and multiplication. Suppose \(c \in \mathbb {R}\) and \(f, g \in V\). Then,
+    \begin{gather*}
+        (f + g)(-t) \\
+        = f(-t) + g(-t) \\
+        = \overline{f(t)} + \overline{g(t)} \\
+        = \overline{f(t) + g(t)} \\
+        = \overline{(f + g)(t)} \\
+        (f + g)(t) \in V
+    \end{gather*}
+    \begin{gather*}
+        (cf)(-t) \\
+        = cf(-t) \\
+        = c\overline{f(t)} \\
+        = \overline{cf(t)}
+        = \overline{(cf)(t)} \\
+        (cf)(t) \in V
+    \end{gather*}
+
+    Commutativity and associativity directly follow from properties of addition and multiplication in \(\mathbb{C}\).
+    \[(f + g)(t) = f(t) + g(t) = g(t) + f(t) = (g + f)(t)\]
+    \[((f + g) + h)(t) = (f(t) + g(t)) + h(t) = \\ f(t) + (g(t) + h(t)) = (f + (g + h))(t)\]
+
+    The zero vector is the function \(g(t) = 0\); then \((f + g)(t) = f(t) + g(t) = f(t) + 0 = f(t)\).
+    The uniqueness follows from the uniqueness of the additive identity in \(\mathbb{C}\).
+    \(g\) is also in \(V\) as \(g(-t) = 0 = \overline{0} = \overline{g(t)}\).
+
+    For each vector \(f(t)\), there exists a unique vector \(-f(t)\) such that \((f + (-f))(t) = 0\):
+    \[(f + (-f))(t) = f(t) + -f(t) = f(t) - f(t) = 0\]
+    It is in \(V\), as \(-f(-t) = -\overline{f(t)} = \overline{-f(t)}\).
+
+    Scalar multiplication is distributive over vector addition. Suppose \(c\) is a real number and \(f, g \in V\). Then,
+    \begin{gather*}
+        c(f + g)(t) \\
+        = c(f(t) + g(t)) \\
+        = cf(t) + cg(t) \\
+        = (cf + cg)(t) \\
+        = (cf)(t) + (cg)(t)
+    \end{gather*}
+    as multiplication is distributive over addition in \(\mathbb{C}\).
+
+    Finally, suppose \(c_1\) and \(c_2\) are real numbers and \(f \in V\). Then
+    \begin{gather*}
+        ((c_1 + c_2)f)(t) \\
+        = (c_1 + c_2)f(t) \\
+        = c_1f(t) + c_2f(t) \\
+        = (c_1f + c_2f)(t)
+    \end{gather*}
 \end{enumerate}
+
+\subsection{Vector Spaces}
+\begin{enumerate}[listparindent=\parindent]
+\item[1.] Which of the following sets of vectors \(\alpha = (\alpha_1, \dots, \alpha_n)\)
+    in \(\mathbb{R}^n\) are subspaces for \(\mathbb{R}^n (n \geq 3)\)?
+
+    For each set below, denote the given set \(S\) and suppose \(\alpha, \beta \in S\) and \(c \in \mathbb{R}\).
+    \begin{enumerate}[listparindent=\parindent]
+        \item[(a)] all \(\alpha\) such that \(\alpha_1 \geq 0\);
+
+            \(S\) is not a subspace, as \(-\alpha \notin S\) for all \(\alpha \neq 0\).
+
+        \item[(b)] all \(\alpha\) such that \(\alpha_1 + 2\alpha_2 = \alpha_3\);
+            Suppose \(\gamma = c\alpha + \beta = (\gamma_1, \gamma_2, \gamma_3, \dots)\);
+            \begin{gather*}
+                \gamma_1 + 2\gamma_2 \\
+                = c(\alpha_1 + \beta_1) + 2c(\alpha_2 + \beta_2) \\
+                = c[(\alpha_1 + 2\alpha_2) + (\beta_1 + 2\beta_2)] \\
+                = c(\alpha_3 + \beta_3) \\
+                = \gamma_3
+            \end{gather*}
+            Therefore \(\gamma \in S\) and \(S\) is a subspace by Theorem 1.
+
+        \item[(c)] all \(\alpha\) such that \(\alpha_2 = \alpha_1^2\);
+
+            Suppose \(\gamma = \alpha + \beta\);
+            then \(\gamma_2 = \alpha_2 + \beta_2 = \alpha_1^2 + \beta_1^2 \neq (\alpha_1 + \beta_1)^2 = \gamma_1^2\).
+            \(\gamma \notin S\), therefore \(S\) is not a subspace.
+
+        \item[(d)] all \(\alpha\) such that \(\alpha_1\alpha_2 = 0\).
+
+            Suppose \(\gamma = c\alpha + \beta = (\gamma_1, \gamma_2, \dots)\);
+            \begin{gather*}
+                \gamma_1\gamma_2 = c^2(\alpha_1 + \beta_1)(\alpha_2 + \beta_2) \\
+                = c^2(\alpha_1\alpha_2 + \alpha_2\beta_1 + \alpha_1\beta_2 + \beta_1\beta_2) \\
+                = c^2(\alpha_2\beta_1 + \alpha_1\beta_2)
+            \end{gather*}
+            At least one of \(\alpha_1\) and \(\alpha_2\) must be 0, and at least one of \(\beta_1\) and \(\beta_2\) must be 0.
+            However, this does not guarantee that \(\alpha_2\beta_1 + \alpha_1\beta_2 = 0\), so \(\gamma \notin S\) for some \(\alpha\) and \(\beta\),
+            Therefore \(S\) is not a subspace.
+
+        \item[(e)] all \(\alpha\) such that \(\alpha_2\) is rational.
+
+            Suppose \(\gamma = \sqrt{2}\alpha\). Then \(\gamma_2 = \sqrt{2}\alpha_2\) is not rational
+            and \(\gamma \notin S\), so \(S\) is not a subspace.
+
+    \end{enumerate}
+\item[2.] Let \(V\) be the (real) vector space of all functions \(f\) from \(R\) to \(R\).
+    Which of the following are subspaces of \(V\)?
+
+    For each set below, denote the given set \(W\) and suppose \(f, g \in W\) and \(c \in \mathbb{R}\).
+    \begin{enumerate}[listparindent=\parindent]
+        \item[(a)] all \(f\) such that \(f(x^2) = f(x)^2\);
+
+            Suppose \(f(x) = x\) and \(g(x) = x^2\). \(f, g \in W\) because
+            \(f(x^2) = x^2 = f(x)^2\) and \(g(x^2) = x^4 = (x^2)^2 = g(x)^2\).
+
+            Then \(h(x) = (f + g)(x) = x + x^2\), but \(h(x^2) = x^2 + x^4\) and
+            \(h(x)^2 = (x + x^2)^2 = x^2 + 2x^3 + x^4\). Therefore \(h(x) \notin S\)
+            and this set is not a subspace.
+
+        \item[(b)] all \(f\) such that \(f(0) = f(1)\).
+
+            \(h(0) = cf(0) + g(0)\) and \(h(1) = cf(1) + g(1)\).
+            \(f(0) = f(1)\) and \(g(0) + g(1)\), so it must be the case that \(h(0) = h(1)\),
+            and \(h \in W\). By Theorem 1, \(W\) is a subspace of \(V\).
+
+        \item[(c)] all \(f\) such that \(f(3) = 1 + f(-5)\).
+
+            Suppose \(h = f + g\).
+            It can be shown that \(h(3) \neq 1 + h(-5)\);
+
+            \begin{gather*}
+                h(3) = f(3) + g(3) \\
+                = 1 + f(-5) + 1 + g(-5) \\
+                = 2 + f(-5) + g(-5) \\
+                = 2 + h(-5) \\
+                \neq 1 + h(-5)
+            \end{gather*}
+
+            As \(f + g \notin W\), \(W\) is not a subspace of \(V\).
+
+        \item[(d)] all \(f\) such that \(f(-1) = 0\);
+
+            Suppose \(h = cf + g\). Then \(h \in W\);
+            \begin{gather*}
+                h(-1) = cf(-1) + g(-1) \\
+                = c(0) + 0 \\
+                = 0
+            \end{gather*}
+            By Theorem 1, \(W\) is a subspace of \(V\).
+
+        \item[(e)] all \(f\) which are continuous.
+
+            Suppose \(h = cf + g\). It must be that \(h \in W\)
+            since the sum of two continuous functions is continous,
+            and if \(f\) is a continuous function then \(cf\) is a continuous function for all \(c \in \mathbb{R}\).
+            By Theorem 1, \(W\) is a subspace of \(V\).
+    \end{enumerate}
+
+\item[3.] Is the vector (3, -1, 0, -1) in the subspace of \(\mathbb{R}^4\) spanned by the vectors
+    (2, -1, 3, 2), (-1, 1, 1, -3), and (1, 1, 9, -5)?
+
+    The subspace spanned by a set of vectors is the set of all linear combinations of the vectors.
+    To check if the given vector is a linear combination of the three other vectors, we solve for \(X\) in
+    \[
+        \begin{bmatrix}
+            2 & -1 & 1 \\
+            -1 & 1 & 1 \\
+            3 & 1 & 9 \\
+            2 & -3 & -5
+        \end{bmatrix}
+        X
+        =
+        \begin{bmatrix}
+            3 \\ -1 \\ 0 \\ -1
+        \end{bmatrix}
+    \]
+    and see that there is no solution for the equation.
+    As \((3, -1, 0, -1)\) is cannot be written as a linear combination of the other vectors,
+    it is not in the subspace spanned by the three vectors.
+
+\item[4.] Let \(W\) be the set of all \((x_1, x_2, x_3, x_4, x_5)\) in \(\mathbb{R}^5\) which satisfy
+    \[
+        \begin{system}{5}
+            2x_1 &-& x_2 &+& \frac{4}{3}x_3 &-& x_4 && &=& 0 \\
+            x_1 && &+& \frac{2}{3}x_3 && &-& x_5 &=& 0 \\
+            9x_1 &-& 3x_2 &+& 6x_3 &-& 3x_4 &-& 3x_5 &=& 0 \\
+        \end{system}
+    \]
+    Find a finite set of vectors which spans \(W\).
+
+\[
+    \begin{bmatrix}
+        2 & -1 & \frac{4}{3} & -1 & 0 \\
+        1 & 0 & \frac{2}{3} & 0 & -1 \\
+        9 & -3 & 6 & -3 & -3
+    \end{bmatrix}
+\]
+
+The reduced row-echelon matrix is
+\[
+    \begin{bmatrix}
+        1 & 0 & \frac{2}{3} & 0 & -1 \\
+        0 & 1 & 0 & 1 & -2 \\
+        0 & 0 & 0 & 0 & 0
+    \end{bmatrix}
+\]
+
+Therefore, all vectors in \(W\) are in the form
+\[ (-\frac{2}{3}x_3 + x_5, -x_4 + 2x_5, x_3, x_4, x_5). \]
+
+\{(1, 2, 0, 0, 1), (0, -1, 0, 1, 0), (-2, 0, 3, 0, 0)\} 
+is an example of set of vectors that span \(W\).
+
+\item[5.] Let \(F\) be a field and let \(n\) be a positive integer \((n \geq 2)\).
+    Let \(V\) be the vector space of all \(n \times n\) matrices over \(F\).
+    Which of the following sets of matrices \(A\) in \(V\) are subspaces of \(V\)?
+    \begin{enumerate}[listparindent=\parindent]
+        \item[(a)] all invertible \(A\);
+
+            The set of all invertible matrices is not a subspace of \(V\)
+            because the zero matrix, which is the zero vector in \(V\), is not invertible.
+
+        \item[(b)] all non-invertible \(A\);
+
+            The set of all non-invertible matrices is not a subspace of \(V\)
+            since two non-invertible matrices can sum to an invertible matrix;
+            \[
+                \begin{bmatrix}
+                    1 & 0 \\
+                    0 & 0 \\
+                \end{bmatrix}
+                +
+                \begin{bmatrix}
+                    0 & 0 \\
+                    0 & 1 \\
+                \end{bmatrix}
+                =
+                \begin{bmatrix}
+                    1 & 0 \\
+                    0 & 1 \\
+                \end{bmatrix}
+            \]
+
+        \item[(c)] all \(A\) such that \(AB = BA\), where \(B\) is some fixed matrix in \(V\);
+
+            Let the set of all matrices \(A\) such that \(AB = BA\) be \(W\).
+            Suppose \(A_1\) and \(A_2\) are matrices in \(W\). Then any matrix in the form
+            \(cA_1 + A_2\) where \(c \in F\) is in \(W\);
+            \begin{gather*}
+                (cA_1 + A_2)B \\
+                = cA_1B + A_2B \\
+                = cBA_1 + BA_2 \\
+                = B(cA_1) + BA_2 \\
+                = B(cA_1 + A_2) \\
+            \end{gather*}
+
+            By Theorem 1, the set of all \(A\) such that \(AB = BA\) is a subspace of \(V\).
+
+        \item[(d)] all \(A\) such that \(A^2 = A\).
+
+            Suppose \(I\) is the \(2 \times 2\) identity matrix;
+            \[
+                I + I
+                =
+                \begin{bmatrix}
+                    2 & 0 \\
+                    0 & 2 \\
+                \end{bmatrix}
+            \]
+
+            Clearly, \(I^2 = I\). However
+            \[
+                \begin{bmatrix}
+                    2 & 0 \\
+                    0 & 2 \\
+                \end{bmatrix}^2
+                =
+                \begin{bmatrix}
+                    4 & 0 \\
+                    0 & 4 \\
+                \end{bmatrix}
+            \]
+
+            As it is not closed under addition, the set is not a subspace of \(V\).
+    \end{enumerate}
+
+\item[6.]
+    \begin{enumerate}[listparindent=\parindent]
+        \item[(a)] Prove that the only subspaces of \(\mathbb{R}^1\) are \(\mathbb{R}^1\) and the zero subspace.
+
+            First, any space trivially has the zero subspace as its subspace.
+            Suppose \(S\) be a subspace of \(\mathbb{R}^1\) that is not the zero subspace.
+            \(S\) is the set of all linear combinations \(cv\) for some non-zero vector \(v = (v_1)\) in \(S\) and some scalar \(c\).
+            Then vector \(u = (u_1)\) in \(\mathbb{R}^1\) must be in \(S\), since a scalar \(c = \frac{u_1}{v_1}\) exists
+            such that \(u_1 = cv_1\) for all \(v_1 \neq 0\). Therefore, \(S\) = \(\mathbb{R}^1\).
+
+        \item[(b)] Prove that a subspaces of \(\mathbb{R}^2\) is \(\mathbb{R}^2\), or the zero subspace,
+            or consists of all scalar multiples of some fixed vector in \(\mathbb{R}^2\).
+            (The last type of subspace is, intuitively, a straight line through the origin).
+            
+            Suppose \(v, u \in \mathbb{R}^2\) and \(v \neq 0\); if \(v = 0\) it can only span the trivial zero subspace.
+
+            If \(v\) and \(u\) are scalar multiples of each other, they must span the subspace of
+            set of all scalar multiples of some fixed vector in \(\mathbb{R}^2\).
+            The space spanned by \(\{v\}\) is \(\{cv \mid c \in \mathbb{R}\}\).
+            If \(u\) is scalar multiple of \(v\), then all scalar multiples of \(u\) are scalar multiples of \(v\) as well
+            and therefore both \(\{u, v\}\) and \(\{v\}\) span the set of all scalar multiples of \(v\).
+
+            Otherwise, if \(v\) and \(u\) are not scalar multiples of each other, they must span \(\mathbb{R}^2\).
+            Let \(w\) be some linear combination of \(v = (v_1, v_2)\) and \(u = (u_1, u_2)\);
+            \begin{gather*}
+                \begin{bmatrix}
+                    v_1 & u_1 \\
+                    v_2 & u_2
+                \end{bmatrix}
+                X
+                =
+                w
+            \end{gather*}
+
+            Since \(v \neq 0\), suppose \(v_1 \neq 0\). Then
+            \begin{gather*}
+                \begin{bmatrix}
+                    v_1 & u_1 \\
+                    v_2 & u_2
+                \end{bmatrix}
+                \rightarrow
+                \begin{bmatrix}
+                    v_1 & u_1 \\
+                    0 & \frac{v_1u_2 - u_1v_2}{v_1}
+                \end{bmatrix}
+            \end{gather*}
+
+            If \(u\) is not a constant multiple of \(v\),
+            then \((u_1, u_2) = (av_1, bv_2), a \neq b\) and \(v_1u_2 - u_1v_2 = au_1u_2 - bu_1u_2 \neq 0\).
+            Then it's clear that the matrix is invertible and there must be a solution for all \(w\).
+            If \(v_1 = 0\), then \(v_2 \neq 0\), and similar logic holds after swapping the two rows.
+            This means vectors in \(\mathbb{R}^2\) can be written as a linear combination of \(v\) and \(u\),
+            hence \(\{v, u\}\) must span \(\mathbb{R}^2\).
+
+            (TODO: There's probably a more elegant way of doing this)
+
+        \item[(c)] Can you describe the subspaces of \(\mathbb{R}^3\)?
+
+            The only subspaces of \(\mathbb{R}^3\) are the zero subspace, \(\{cv \mid c \in \mathbb{R}\}\) for some \(v \in \mathbb{R}^3\),
+            \(\{c_1v_1 + c_2v_2 \mid c_1, c_2 \in \mathbb{R}\}\) where \(v_1, v_2 \in \mathbb{R}^3\), and \(\mathbb{R}^3\) itself.
+
+            (TODO)
+    \end{enumerate}
+
+\item[7.] Let \(W_1\) and \(W_2\) be subspaces of a vector space \(V\) such that the set-theoretic union of \(W_1\) and \(W_2\) is also a subspace.
+    Prove that one of the spaces \(W_i\) is contained in the other.
+
+    Suppose \(W_1 \cup W_2\) is a subspace, but \(W_2 \not\subset W_1\) and \(W_1 \not\subset W_2\).
+    There is some vector \(v \in W_1\) such that \(v \not\in W_2\) and
+    some vector \(u \in W_2\) such that \(u \not\in W_1\).
+    Since vector spaces are closed under addition, \(v + u \in W_1 \cup W_2\), and either \(v + u \in W_1\) or \(v + u \in W_2\).
+    This implies \(v + u + (-v) = u \in W_1\) or \(v + u + (-u) = v \in W_2\), which is a contradiction.
+    Therefore, either \(W_1 \subset W_2\) or \(W_2 \subset W_1\).
+
+\item[8.] Let \(V\) be the vector space of all functions from \(R\) into \(R\);
+    let \(V_e\) be the subset of even functions, \(f(-x) = f(x)\);
+    let \(V_o\) be the subset of odd functions, \(f(-x) = -f(x)\).
+
+    \begin{enumerate}[listparindent=\parindent]
+        \item[(a)] Prove that \(V_e\) and \(V_o\) are subspaces of \(V\).
+
+            Suppose \(f, g \in V_e\), \(c \in \mathbb{R}\). Then
+            \begin{gather*}
+                (cf + g)(-x) \\
+                = cf(-x) + g(-x) \\
+                = cf(x) + g(x) \\
+                = (cf(x) + g(x) \\
+                = (cf + g)(x)
+            \end{gather*}
+            Since \((cf + g)(-x) = (cf + g)(x)\), \(V_e\) is closed under addition and multiplication
+            and therefore is a subspace of \(V\).
+
+            Likewise, suppose \(f, g \in V_o\), \(c \in \mathbb{R}\). Then
+            \begin{gather*}
+                (cf + g)(-x) \\
+                = cf(-x) + g(-x) \\
+                = -cf(x) + (-g(x)) \\
+                = -(cf(x) + g(x)) \\
+                = -(cf + g)(x)
+            \end{gather*}
+            Since \((cf + g)(-x) = -(cf + g)(x)\), \(V_o\) is closed under addition and multiplication
+            and therefore is a subspace of \(V\).
+
+        \item[(b)] Prove that \(V_e + V_o = V\).
+
+            Any function \(f \in V\) can be written as a sum of functions \(g \in V_e\) and \(h \in V_o\);
+            \begin{gather*}
+                f(x) = g(x) + h(x) \\
+                f(-x) = g(x) - h(x)
+            \end{gather*}
+            Add and subtract the two equations to get
+            \begin{gather*}
+                \frac{f(x) + f(-x)}{2} = g(x) \\
+                \frac{f(x) - f(-x)}{2} = h(x)
+            \end{gather*}
+            which is defined for all \(f\).
+            Therefore, any function in \(V\) is a sum of functions in \(V_e\) and \(V_o\); \(V = V_e + V_o\).
+
+        \item[(c)] Prove that \(V_e \cap V_o = \{0\}\).
+
+            If \(f \in V_e \cap V_o\), then \(f(-x) = f(x)\) and \(f(-x) = -f(x)\). Then
+            \begin{gather*}
+                f(x) = -f(x) \\
+                2f(x) = 0 \\
+                f(x) = 0
+            \end{gather*}
+    \end{enumerate}
+
+\item[9.] Let \(W_1\) and \(W_2\) be subspaces of a vector space \(V\) such that \(W_1 + W_2 = V\)
+    and \(W_1 \cup W_2 = \{0\}\). Prove that for each vector \(\alpha\) in \(V\) there are
+    \textit{unique} vectors \(\alpha_1\) in \(W_1\) and \(\alpha_w\) in \(W_2\) such that \(\alpha = \alpha_1 + \alpha_2\).
+
+    Suppose \(\alpha = \alpha_1 + \alpha_2\ = \beta_1 + \beta_2\) where \(\alpha_1, \beta_1 \in W_1\) and \(\alpha_2, \beta_2 \in W_2\).
+    \begin{gather*}
+        \alpha_1 - \beta_1 + \alpha_2 - \beta_2 = 0 \\
+        \alpha_1 - \beta_1 = -(\alpha_2 - \beta_2) \\
+        \alpha_1 - \beta_1 \in W_1 \\
+        \beta_2 - \alpha_2 \in W_2 \\
+        \implies \alpha_1 - \beta_1, \beta_2 - \alpha_2 \in W_1 \cap W_2
+    \end{gather*}
+    \(W_1 \cap W_2 = \{0\}\), so \(\alpha_1 - \beta_1 = \beta_2 - \alpha_2 = 0\)
+    which must mean \(\alpha_1 = \beta_1\) and \(\alpha_2 = \beta_2\). 
+    Therefore, \(\alpha_1\) and \(\alpha_2\) are unique.
+\end{enumerate}
+
+\subsection{Bases and Dimension}
+\begin{enumerate}[listparindent=\parindent]
+\end{enumerate}
+
 \end{document}
