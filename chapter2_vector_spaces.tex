@@ -339,7 +339,7 @@ The reduced row-echelon matrix is
 Therefore, all vectors in \(W\) are in the form
 \[ (-\frac{2}{3}x_3 + x_5, -x_4 + 2x_5, x_3, x_4, x_5). \]
 
-\{(1, 2, 0, 0, 1), (0, -1, 0, 1, 0), (-2, 0, 3, 0, 0)\} 
+\{(1, 2, 0, 0, 1), (0, -1, 0, 1, 0), (-2, 0, 3, 0, 0)\}
 is an example of set of vectors that span \(W\).
 
 \item[5.] Let \(F\) be a field and let \(n\) be a positive integer \((n \geq 2)\).
@@ -428,7 +428,7 @@ is an example of set of vectors that span \(W\).
         \item[(b)] Prove that a subspaces of \(\mathbb{R}^2\) is \(\mathbb{R}^2\), or the zero subspace,
             or consists of all scalar multiples of some fixed vector in \(\mathbb{R}^2\).
             (The last type of subspace is, intuitively, a straight line through the origin).
-            
+
             Suppose \(v, u \in \mathbb{R}^2\) and \(v \neq 0\); if \(v = 0\) it can only span the trivial zero subspace.
 
             If \(v\) and \(u\) are scalar multiples of each other, they must span the subspace of
@@ -556,12 +556,342 @@ is an example of set of vectors that span \(W\).
         \implies \alpha_1 - \beta_1, \beta_2 - \alpha_2 \in W_1 \cap W_2
     \end{gather*}
     \(W_1 \cap W_2 = \{0\}\), so \(\alpha_1 - \beta_1 = \beta_2 - \alpha_2 = 0\)
-    which must mean \(\alpha_1 = \beta_1\) and \(\alpha_2 = \beta_2\). 
+    which must mean \(\alpha_1 = \beta_1\) and \(\alpha_2 = \beta_2\).
     Therefore, \(\alpha_1\) and \(\alpha_2\) are unique.
 \end{enumerate}
 
 \subsection{Bases and Dimension}
 \begin{enumerate}[listparindent=\parindent]
+\item[1.] Prove that if two vectors are linearly dependent, one of them is a scalar multiple of the other.
+
+    Suppose \(\alpha\) and \(\beta\) are linearly dependent. Then there exist scalars \(a\) and \(b\), where both are not 0,
+    such that \(a\alpha + b\beta = 0\). Then \(a\alpha = -b\beta\) and \(\alpha = \frac{-b}{a}\beta\) or \(\frac{-a}{b}\alpha = \beta\).
+
+\item[2.] Are the vectors
+    \begin{gather*}
+        \alpha_1 = (1, 1, 2, 4),\quad \alpha_2 = (2, -1, -5, 2) \\
+        \alpha_3 = (1, -1, -4, 0),\quad \alpha_4 = (2, 1, 1, 6)
+    \end{gather*}
+    linearly independent in \(\mathbb{R}^4\)?
+
+The matrix where the row vectors are the four given vectors,
+\[
+    \begin{bmatrix}
+        1 & 1 & 2 & 4 \\
+        2 & -1 & -5 & 2 \\
+        1 & -1 & -4 & 0 \\
+        2 & 1 & 1 & 6
+    \end{bmatrix},
+\]
+is invertible, therefore the given vectors form a linearly independent set by the converse of Corollary 3 to Theroem 5.
+
+The text never proves the converse, so here is a proof;
+If an \(n \times n\) matrix \(A\) with the row vectors \(\alpha_1, \alpha_2, \dots, \alpha_n\) is invertible,
+\(AX = 0\) only has the trivial solution \(X = 0\).
+So a linear combination of the row vectors of \(A\) is 0 only if every scalar is 0, meaning they must be linearly independent.
+
+\item[3.] Find a basis for the subspace of \(\mathbb{R}^4\) spanned by the vectors of Exercise 2.
+
+The matrix given by the four vectors,
+\[
+    \begin{bmatrix}
+        1 & 1 & 2 & 4 \\
+        2 & -1 & -5 & 2 \\
+        1 & -1 & -4 & 0 \\
+        2 & 1 & 1 & 6
+    \end{bmatrix},
+\]
+is row-equivalent to
+\[
+    \begin{bmatrix}
+        1 & 1 & 2 & 4 \\
+        0 & -3 & -9 & 6 \\
+        0 & 0 & 0 & 0 \\
+        0 & 0 & 0 & 0
+    \end{bmatrix}.
+\]
+
+The row vectors are linear combinations of the row vectors of the original matrix,
+and therefore the two sets both span the same subspace.
+Ignoring the zero vectors, the two vectors are not linearly dependent as proven by Exercise 1
+and \(\{(1, 1, 2, 4), (0, -3, -9, 6)\}\) span the given subspace.
+
+\item[4.] Show that the vectors
+    \[
+        \alpha_1 = (1, 0, -1),\quad \alpha_2 = (1, 2, 1),\quad \alpha_3 = (0, -3, 2)
+    \] form a basis for \(\mathbb{R}^3\). Express each of the standard basis vectors as linear combinations of \(\alpha_1, \alpha_2, \alpha_3\).
+
+    Let
+\[
+    AX =
+    \begin{bmatrix}
+        1 & 1 & 0 \\
+        0 & 2 & -3 \\
+        -1 & 1 & 2
+    \end{bmatrix}
+    X = Y,
+\] where \(X, Y \in \mathbb{R}^3\).
+Since \(A\) is invertible, there is a solution \(X\) for any \(Y\);
+which implies all vectors in \(\mathbb{R}^3\) are a linear combination of the column vectors of \(A\).
+Therefore \(\{\alpha_1, \alpha_2, \alpha_3\}\) is a basis of \(\mathbb{R}^3\).
+
+Omitting the steps of finding \(A^{-1}\) because no one wants to look at a page of Gaussian elimination,
+\[
+    X = A^{-1}Y =
+    \begin{bmatrix}
+        \frac{7}{10} & \frac{-1}{5} & \frac{-3}{10} \\
+        \frac{3}{10} & \frac{1}{5} & \frac{3}{10} \\
+        \frac{1}{5} & \frac{-1}{5} & \frac{1}{5}
+    \end{bmatrix}Y
+\]
+
+\begin{align*}
+    (1, 0, 0) &= \frac{7}{10}\alpha_1 - \frac{3}{10}\alpha_2 + \frac{1}{5}\alpha_3 \\
+    (0, 1, 0) &= \frac{-1}{5}\alpha_1 - \frac{1}{5}\alpha_2 + \frac{-1}{5}\alpha_3 \\
+    (0, 0, 1) &= \frac{-3}{10}\alpha_1 - \frac{3}{10}\alpha_2 + \frac{1}{5}\alpha_3
+\end{align*}
+
+\item[5.] Find three vectors in \(\mathbb{R}^3\) which are linearly dependent,
+    and are such that any two of them are linearly independent.
+
+Take two linearly independent vectors and form a linear combination of them;
+\(\{(1, 0, 0), (0, 1, 0), (1, 1, 0)\}\) one example.
+No two vectors are scalar multiples of each other and therefore linearly independent, but
+\((1, 1, 0) - (1, 0, 0) - (1, 1, 0) = (0, 0, 0)\),
+
+\item[6.] Let \(V\) be the vector space of all \(2 \times 2\) matrices over the field \(F\).
+    Prove that \(\dim V = 4\) by exhibiting a basis for \(V\) which as four elements.
+
+\[
+    \{
+        \begin{bmatrix} 1 & 0 \\ 0 & 0 \end{bmatrix},
+        \begin{bmatrix} 0 & 1 \\ 0 & 0 \end{bmatrix},
+        \begin{bmatrix} 0 & 0 \\ 1 & 0 \end{bmatrix},
+        \begin{bmatrix} 0 & 0 \\ 0 & 1 \end{bmatrix}
+    \}
+\]
+spans \(V\);
+\[
+    a \begin{bmatrix} 1 & 0 \\ 0 & 0 \end{bmatrix} +
+    b \begin{bmatrix} 0 & 1 \\ 0 & 0 \end{bmatrix} +
+    c \begin{bmatrix} 0 & 0 \\ 1 & 0 \end{bmatrix} +
+    d \begin{bmatrix} 0 & 0 \\ 0 & 1 \end{bmatrix}
+    =
+    \begin{bmatrix}
+        a & b \\
+        c & d
+    \end{bmatrix},
+\]
+which descrbies all matrices in \(V\), and their linear combinations is the zero matrix only if all scalar are zero.
+
+\item[7.] Let \(V\) be the vector space of Exercise 6. Let \(W_1\) be the set of matrices of the form
+    \[
+        \begin{bmatrix}
+            x & -x \\
+            y & z
+        \end{bmatrix}
+    \]
+    and let \(W_2\) be the set of matrices of the form
+    \[
+        \begin{bmatrix}
+            a & b \\
+            -a & c
+        \end{bmatrix}
+    \]
+
+\begin{enumerate}[listparindent=\parindent]
+    \item[(a)] Prove that \(W_1\) and \(W_2\) are subspaces of \(V\).
+
+    \(W_1\) is closed under scalar multiplication and vector addition;
+    \[
+        \alpha
+        \begin{bmatrix}
+            x_1 & -x_1 \\
+            y_1 & z_1
+        \end{bmatrix}
+        +
+        \begin{bmatrix}
+            x_2 & -x_2 \\
+            y_2 & z_2
+        \end{bmatrix}
+        =
+        \begin{bmatrix}
+            \alpha x_1 + x_2 & -(\alpha x_1 + x_2) \\
+            \alpha y_1 + y_2 & \alpha z_1 + z_2
+        \end{bmatrix}
+    \]
+
+    So is \(W_2\);
+    \[
+        \alpha
+        \begin{bmatrix}
+            a_1 & b_1 \\
+            -a_1 & c_1
+        \end{bmatrix}
+        +
+        \begin{bmatrix}
+            a_2 & b_2 \\
+            -a_2 & c_2
+        \end{bmatrix}
+        =
+        \begin{bmatrix}
+            \alpha a_1 + a_2 & \alpha b_1 + b_2 \\
+            -(\alpha a_1 + a_2) & \alpha c_1 + c_2
+        \end{bmatrix}
+    \]
+
+    \item[(b)] Find the dimensions of \(W_1, W_2, W_1 + W_2\) and \(W_1 \cap W_2\).
+
+    \(\dim W_1 = 3\) because
+    \[
+        \{
+            \begin{bmatrix} 1 & -1 \\ 0 & 0 \end{bmatrix},
+            \begin{bmatrix} 0 & 0 \\ 1 & 0 \end{bmatrix},
+            \begin{bmatrix} 0 & 0 \\ 0 & 1 \end{bmatrix}
+        \}
+    \]
+    spans \(W_1\);
+    \[
+        x \begin{bmatrix} 1 & -1 \\ 0 & 0 \end{bmatrix} +
+        y \begin{bmatrix} 0 & 0 \\ 1 & 0 \end{bmatrix} +
+        z \begin{bmatrix} 0 & 0 \\ 0 & 1 \end{bmatrix}
+        =
+        \begin{bmatrix}
+            x & -x \\
+            y & z
+        \end{bmatrix}
+        \in W_1
+    \]
+    which is equal to zero matrix only if all scalars are 0.
+
+    Similarly, \(\dim W_2 = 3\);
+    \[
+        a \begin{bmatrix} 1 & 0 \\ -1 & 0 \end{bmatrix} +
+        b \begin{bmatrix} 0 & 1 \\ 0 & 0 \end{bmatrix} +
+        c \begin{bmatrix} 0 & 0 \\ 0 & 1 \end{bmatrix}
+        =
+        \begin{bmatrix}
+            a & b \\
+            -a & c
+        \end{bmatrix}
+        \in W_2
+    \]
+    which is equal to zero matrix only if all scalars are 0.
+
+    \(W_1 \cap W_2\) is the set of all matrices in the form
+    \[
+        \begin{bmatrix}
+            x & -x \\
+            -x & y
+        \end{bmatrix}
+    \] and its dimension is 2;
+
+    \[
+        x \begin{bmatrix} 1 & -1 \\ -1 & 0 \end{bmatrix} +
+        y \begin{bmatrix} 0 & 0 \\ 0 & 1 \end{bmatrix}
+        =
+        \begin{bmatrix}
+            x & -x \\
+            -x & y
+        \end{bmatrix}
+        \in W_1 \cap W_2
+    \]
+    which is equal to zero matrix only if all scalars are 0.
+
+    Then \(\dim W_1 + W_2 = \dim W_1 + \dim W_2 - \dim W_1 \cap W_2 = 4\).
 \end{enumerate}
 
+\item[8.] Again let \(V\) be the space of \(2 \times 2\) matrices over \(F\).
+    Find a basis \(\{A_1, A_2,\allowbreak A_3, A_4\}\) for \(V\) such that \(A_j^2 = A_j\) for each \(j\).
+
+Let \(A_1 = \lbrack\begin{smallmatrix} 1 & 0 \\ 0 & 0 \end{smallmatrix}\rbrack\)
+and \(A_2 = \lbrack\begin{smallmatrix} 0 & 0 \\ 0 & 1 \end{smallmatrix}\rbrack\).
+\(A_1^2 = A_1, A_2^2 = A_2\), and they are linearly independent so \(\{A_1, A_2\}\) is a subset of some basis of \(V\).
+
+Then let \(A_3 = \lbrack\begin{smallmatrix} 1 & 1 \\ 0 & 0 \end{smallmatrix}\rbrack\).
+\(A_3^2 = A_3\) and \({A_3} \cup \{A_1, A_2\}\) is linearly independent because
+\(A_3\) is not in the span of \(\{A_1, A_2\}\); \((aA_1 + bA_2)_{1,2} = 0\) for all \(a, b \in F\) but \((A_3)_{1,2} = 1\).
+
+Similarly, let \(A_4 = \lbrack\begin{smallmatrix} 0 & 0 \\ 1 & 1 \end{smallmatrix}\rbrack\).
+\(A_4^2 = A_4\) and \({A_4} \cup \{A_1, A_2, A_3\}\) is linearly independent because
+\((aA_1 + bA_2 + cA_3)_{2,1} = 0\) for all \(a, b, c \in F\) but \((A_4)_{2,1} = 1\).
+
+Since it is a linearly independent set, \(\{A_1, A_2, A_3, A_4\}\) is a basis of \(V\).
+
+\item[9.] Let \(V\) be a vector space over a subfield \(F\) of the complex numbers.
+    Suppose \(\alpha\), \(\beta\), and \(\gamma\) are linearly independent vectors in \(V\).
+    Prove that \(\alpha + \beta\), \(\beta + \gamma\), and \(\gamma + \alpha\) are linearly independent.
+
+    \begin{gather*}
+    a(\alpha + \beta) + b(\beta + \gamma) + c(\gamma + \alpha) = 0\\
+    (a + c)\alpha + (a + b)\beta + (b + c)\gamma = 0
+    \end{gather*}
+
+    This implies \(a + c = a + b = b + c = 0\) because \(\alpha\), \(\beta\), and \(\gamma\) are linearly independent.
+    So
+    \[
+        \begin{bmatrix}
+            1 & 0 & 1 \\
+            1 & 1 & 0 \\
+            0 & 1 & 1 \\
+        \end{bmatrix}
+        \begin{bmatrix}
+            a \\ b \\ c
+        \end{bmatrix}
+        = 0
+    \]
+
+    The coefficient matrix is invertible;
+    \[
+        \begin{bmatrix}
+            1 & 0 & 1 \\
+            1 & 1 & 0 \\
+            0 & 1 & 1 \\
+        \end{bmatrix}
+        \rightarrow
+        \begin{bmatrix}
+            1 & 0 & 1 \\
+            0 & 1 & -1 \\
+            0 & 1 & 1 \\
+        \end{bmatrix}
+        \rightarrow
+        \begin{bmatrix}
+            1 & 0 & 1 \\
+            0 & 1 & -1 \\
+            0 & 0 & 2 \\
+        \end{bmatrix}
+        \rightarrow
+        \begin{bmatrix}
+            1 & 0 & 0 \\
+            0 & 1 & 0 \\
+            0 & 0 & 1 \\
+        \end{bmatrix}
+    \]
+
+    So only solution is \(a = b = c = 0\) and \(\alpha + \beta\), \(\beta + \gamma\), and \(\gamma + \alpha\) must be linearly independent.
+
+\item[10.] Let \(V\) be a vector space over the field \(F\). Suppose there are a finite number of vectors \(\alpha_1, \dots, \alpha_r\) in \(V\) which span \(V\).
+    Prove that \(V\) is finite-dimensional.
+
+    By Theorem 4, since a finite set spans \(V\), no independent set of vectors in \(V\) is finite.
+    Bases are independent by definition, so any basis of \(V\) is a finite set and \(V\) must be finite-dimensional.
+
+\item[13.] Discuss Exercise 9, when \(V\) is a vector space over the field \(F\) with two elements described in Exercise 5, Section 1.1.
+
+    \(F\) has two elements, denoted 0 and 1, where \(a + b = 1\) if and only if exactly one of \(a\) and \(b\) is 1, and \(a \cdot b = 1\) if and only if both \(a\) and \(b\) are 1.
+    \(0 + 1 = 1\) and \(0 + 0 = 0\), so the zero scalar in \(F\) is 0.
+
+    Suppose \(\alpha\), \(\beta\), \(\gamma\) are linearly independent vectors in \(V\).
+    Then \(\alpha + \beta\), \(\beta + \gamma\), and \(\gamma + \alpha\) are linearly dependent;
+    \begin{gather*}
+    1(\alpha + \beta) + 1(\beta + \gamma) + 1(\gamma + \alpha) \\
+    = (1 + 1)\alpha + (1 + 1)\beta + (1 + 1)\gamma \\
+    = 0\alpha + 0\beta + 0\gamma
+    = 0
+    \end{gather*}
+
+\item[14.] Let \(V\) be the set of real numbers. Regard \(V\) as a vector space over the field of \textit{rational} numbers,
+    with the usual operations. Prove that this vector space is \textit{not} finite-dimensional.
+
+\end{enumerate}
 \end{document}
