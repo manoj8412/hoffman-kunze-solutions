@@ -890,8 +890,304 @@ Since it is a linearly independent set, \(\{A_1, A_2, A_3, A_4\}\) is a basis of
     = 0
     \end{gather*}
 
-\item[14.] Let \(V\) be the set of real numbers. Regard \(V\) as a vector space over the field of \textit{rational} numbers,
-    with the usual operations. Prove that this vector space is \textit{not} finite-dimensional.
+\end{enumerate}
+
+\subsection{Coordinates}
+\begin{enumerate}[listparindent=\parindent]
+
+\item[1.] Show that the vectors
+    \begin{gather*}
+        \alpha_1 = (1, 1, 0, 0),\quad \alpha_2 = (0, 0, 1, 1) \\
+        \alpha_3 = (1, 0, 0, 4),\quad \alpha_4 = (0, 0, 0, 2)
+    \end{gather*}
+    form a basis for \(\mathbb{R}^4\). Find the coordinates of each of the standard basis vectors in the ordered basis \(\{\alpha_1, \alpha_2, \alpha_3, \alpha_4\}\).
+
+    Let \[P = \begin{bmatrix}
+        1 & 0 & 1 & 0 \\
+        1 & 0 & 0 & 0 \\
+        0 & 1 & 0 & 0 \\
+        0 & 1 & 4 & 2
+    \end{bmatrix}\]
+
+    \(P\) is invertible and its inverse is
+    \[\begin{bmatrix}
+        0 & 1 & 0 & 0 \\
+        0 & 0 & 1 & 0 \\
+        1 & -1 & 0 & 0 \\
+        -2 & 2 & \frac{-1}{2} & \frac{1}{2}
+    \end{bmatrix}\]
+    so the given vectors form a basis.
+
+    Let \(\mathcal{B}\) be the standard basis, then \([a]_\mathcal{B'} = P^{-1}[\alpha]_\mathcal{B}\), and
+    \begin{gather*}
+        [(1, 0, 0, 0)]_\mathcal{B'} = \begin{bmatrix} 0 \\ 0 \\ 1 \\ -2 \end{bmatrix} \quad
+        [(0, 1, 0, 0)]_\mathcal{B'} = \begin{bmatrix} 1 \\ 0 \\ -1 \\ -2 \end{bmatrix} \\
+        [(0, 0, 1, 0)]_\mathcal{B'} = \begin{bmatrix} 0 \\ 1 \\ 0 \\ \frac{-1}{2} \end{bmatrix} \quad
+        [(0, 0, 0, 1)]_\mathcal{B'} = \begin{bmatrix} 1 \\ 0 \\ -1 \\ -\frac{1}{2} \end{bmatrix}
+    \end{gather*}
+
+\item[2.] Find the coordinate matrix of the vector \((1, 0, 1)\) in the basis of \(\mathbb{C}^3\)
+    consisting of the vectors \((2i, 1, 0)\), \((2, -1, 1)\), and \((0, 1 + i, 1 - i)\), in that order.
+
+    If \(\mathcal{B}\) is the given basis,
+    \[
+        [(1, 0, 1)]_\mathcal{B} =
+        P^{-1}\begin{bmatrix} 1 \\ 0 \\ 1 \end{bmatrix} =
+        \boxed {
+            \begin{bmatrix} \frac{-1 - i}{2} \\ \frac{i}{2} \\ \frac{3 + i}{4} \end{bmatrix}
+        }
+    \]
+    where
+    \[
+        P = \begin{bmatrix}
+            2i & 2 & 0 \\
+            1 & -1 & 1 + i \\
+            0 & 1 & 1 - 1
+        \end{bmatrix} \\
+    \]
+
+\item[3.] Let \(\mathcal{B} = \{\alpha_1, \alpha_2, \alpha_3\}\) be the ordered basis for \(\mathbb{R}^3\) consisting of
+    \[
+        \alpha_1 = (1, 0, -1),\quad \alpha_2 = (1, 1, 1),\quad \alpha_3 = (1, 0, 0).
+    \]
+    What are the coordinates of the vector \((a, b, c)\) in the ordered basis \(\mathcal{B}\)?
+
+    \begin{gather*}
+        P = \begin{bmatrix}
+            1 & 1 & 1 \\
+            0 & 1 & 0 \\
+            -1 & 1 & 0
+        \end{bmatrix}, \quad
+        [a]_\mathcal{B} = P^{-1}\begin{bmatrix} a \\ b \\ c \end{bmatrix}
+        = \begin{bmatrix}
+            0 & 1 & -1 \\
+            0 & 1 & 0 \\
+            1 & -2 & 1
+        \end{bmatrix}
+        \begin{bmatrix} a \\ b \\ c \end{bmatrix} \\
+        = \begin{bmatrix} b - c \\ b \\ a - 2b + c \end{bmatrix}
+    \end{gather*}
+
+\item[4.] Let \(W\) be the subspace of \(\mathbb{C}^3\) spaned by \(\alpha_1 = (1, 0, i)\) and \(\alpha_2 = (1 + i, 1, -1)\).
+
+    \begin{enumerate}[listparindent=\parindent]
+        \item[(a)] Show that \(\alpha_1\) and \(\alpha_2\) form a basis for \(W\).
+
+            \(\alpha_1\) and \(\alpha_2\) are not scalar multiples of another, so they are linearly independent.
+            Since it spans \(W\) and is linearly independent, \(\{\alpha_1, \alpha_2\}\) is a basis for \(W\).
+
+        \item[(b)] Show that the vectors \(\beta_1 = (1, 1, 0)\) and \(\beta_2 = (1, i, 1 + i)\) are in \(W\) and form another basis for \(W\).
+
+            \begin{gather*}
+                \begin{bmatrix}
+                    1 & 1 + i \\
+                    0 & 1 \\
+                    i & -1
+                \end{bmatrix}
+                \begin{bmatrix}
+                    c_1 \\ c_2
+                \end{bmatrix}
+                =
+                \begin{bmatrix} 1 \\ 1 \\ 0 \end{bmatrix} \\
+                \begin{abmatrix}{2}{1}
+                    1 & 1 + i & 1 \\
+                    0 & 1 & 1 \\
+                    i & -1 & 0
+                \end{abmatrix}
+                \rightarrow
+                \begin{abmatrix}{2}{1}
+                    1 & 0 & -i \\
+                    0 & 1 & 1 \\
+                    0 & 0 & 0
+                \end{abmatrix} \\
+                -i(1, 0, i) + (1 + i, 1, -1) = (1, 1, 0) \\
+                -i\alpha_1 + \alpha_2 = \beta_1
+            \end{gather*}
+
+            Similarly,
+            \begin{gather*}
+                \begin{abmatrix}{2}{1}
+                    1 & 1 + i & 1 \\
+                    0 & 1 & i \\
+                    i & -1 & 1 + i
+                \end{abmatrix}
+                \rightarrow
+                \begin{abmatrix}{2}{1}
+                    1 & 0 & 2 - i \\
+                    0 & 1 & i \\
+                    0 & 0 & 0
+                \end{abmatrix} \\
+                (2 - i)(1, 0, i) + i(1 + i, 1, -1) = (2 - i, i, 1 + i) \\
+                (2 - i)\alpha_1 + i\alpha_2 = \beta_2
+            \end{gather*}
+
+            \(\beta_1\) and \(\beta_2\) are not scalar multiples, so they are linearly independent.
+            \(\dim W = 2\) because \(\{\alpha_1, \alpha_2\}\) is a basis for \(W\), so \(\{\beta_1, \beta_2\}\) is a basis for \(W\).
+    \end{enumerate}
+
+\item[5.] Let \(\alpha = (x_1, x_2)\) and \(\beta = (y_1, y_2)\) be the vectors in \(\mathbb{R}^2\) such that
+    \[
+        x_1y_1 + x_2y_2 = 0, \quad x_1^2 + x_2^2 = y_1^2 + y_2^2 = 1
+    \]
+    Prove that \(\mathcal{B} = (\alpha, \beta)\) is a basis for \(\mathbb{R}^2\). Find the coordinates of the vector \((a, b)\)
+    in the ordered basis \(\mathcal{B} = \{\alpha, \beta\}\). (The conditions on \(\alpha\) and \(\beta\) say, geometrically,
+    that \(\alpha\) and \(\beta\) are perpendicular and each has length 1.)
+
+    To show \(\mathcal{B}\) is a basis, we just need to show \(\alpha\) and \(\beta\) are linearly independent.
+    Assume they are linearly independent. Then \(\beta = c\alpha\) for some scalar \(c\). Then
+    \begin{gather*}
+        x_1y_1 + x_2y_2 = 0 \\
+        c(x_1^2 + x_2^2) = 0
+    \end{gather*}
+    \(x_1^2 + x_2^2 = 0\) contradicts the second condition, so \(c = 0\) and \(\beta\) must be the zero vector,
+    but that is also a contradiction since \(y_1^2 + y_2^2 = 0 \neq 1\). Therefore, \(\alpha\) and \(\beta\) are linearly independent,
+    and \(\mathcal{B}\) must be a basis for \(\mathbb{R}^2\).
+
+    To find the coordinates of \((a, b)\) in \(\mathbb{R}^2\),
+    \begin{gather*}
+        \begin{bmatrix}
+            x_1 & y_1 \\
+            x_2 & y_2 \\
+        \end{bmatrix}
+        \begin{bmatrix} c_1 \\ c_2 \end{bmatrix} =
+        \begin{bmatrix} a \\ b \end{bmatrix} \\
+        \begin{bmatrix} c_1 \\ c_2 \end{bmatrix} =
+        \begin{bmatrix}
+            x_1 & y_1 \\
+            x_2 & y_2 \\
+        \end{bmatrix}^{-1}
+        \begin{bmatrix} a \\ b \end{bmatrix}
+    \end{gather*}
+    \(\alpha\) and \(\beta\) cannot be zero vectors and both \(x_1\) and \(y_1\) cannot be zero otherwise \(\alpha\) and \(\beta\) are linearly dependent.
+    So we can assume \(x_1 \neq 0\) and \(y_2 \neq 0\); simply flip the two rows otherwise.
+    \(x_1y_2 - x_2y_1 \neq 0\), otherwise \(x_1y_2 = x_2y_1\) and \(\frac{x_1}{y_1} = \frac{x_2}{y_2}\)
+    which implies the two vectors are linearly dependent.
+    \begin{gather*}
+        \begin{abmatrix}{2}{2}
+            x_1 & y_1 & 1 & 0 \\
+            x_2 & y_2 & 0 & 1 \\
+        \end{abmatrix}
+        \rightarrow
+        \begin{abmatrix}{2}{2}
+            x_1 & y_1 & 1 & 0 \\
+            0 & \frac{x_1y_2 - x_2y_1}{x_1} & \frac{-x_2}{x_1} & 1 \\
+        \end{abmatrix}
+        \rightarrow \\
+        \begin{abmatrix}{2}{2}
+            x_1 & y_1 & 1 & 0 \\
+            0 & 1 & \frac{-x_2}{x_1y_2 - x_2y_1} & \frac{x_1}{x_1y_2 - x_2y_1} \\
+        \end{abmatrix}
+        \rightarrow
+        \begin{abmatrix}{2}{2}
+            x_1 & 0 & \frac{x_1y_2}{x_1y_2 - x_2y_1} & \frac{-x_1y_1}{x_1y_2 - x_2y_1} \\
+            0 & 1 & \frac{-x_2}{x_1y_2 - x_2y_1} & \frac{x_1}{x_1y_2 - x_2y_1} \\
+        \end{abmatrix}
+        \rightarrow \\
+        \begin{abmatrix}{2}{2}
+            1 & 0 & \frac{y_2}{x_1y_2 - x_2y_1} & \frac{-y_1}{x_1y_2 - x_2y_1} \\
+            0 & 1 & \frac{-x_2}{x_1y_2 - x_2y_1} & \frac{x_1}{x_1y_2 - x_2y_1} \\
+        \end{abmatrix}
+    \end{gather*}
+
+    So \[
+        \begin{bmatrix} c_1 \\ c_2 \end{bmatrix} =
+        \frac{1}{x_1y_2 - x_2y_1}
+        \begin{bmatrix}
+            ay_2 - by_1 \\
+            bx_1 - ax_2
+        \end{bmatrix} \\
+        = [(a, b)]_\mathcal{B}
+    \]
+
+\item[6.] Let \(V\) be the vector space over the complex numbers of all functions from \(R\) into \(C\), i.e.,
+    the space of all complex-valued functions on the real line. Let \(f_1(x) = 1\), \(f_2(x) = e^{ix}\), and \(f_3(x) = e^{-ix}\).
+    \begin{enumerate}[listparindent=\parindent]
+        \item[(a)] Prove that \(f_1\), \(f_2\), and \(f_3\) are linearly independent.
+            \begin{gather*}
+                af_1(x) + bf_2(x) + cf_3(x) = f_0(x) \\
+                a + be^{ix} + ce^{ix} = 0 \\
+                ae^{ix} + be^{2ix} + c = 0
+            \end{gather*}
+            This is either a quadratic function or a linear function in \(e^{ix}\), or a constant function \(f(x) = c\).
+            It only equals the zero function if \(a = b = c = 0\). Therefore \(f_1\), \(f_2\), and \(f_3\) are linearly independent.
+
+        \item[(b)] Let \(g_1(x) = 1, g_2(x) = \cos x, g_3(x) = \sin x\). Find an invertible \(3 \times 3\) matrix \(P\) such that
+            \[g_j = \sum_{i = 1}^3 P_{ij}f_i\]
+
+        \begin{gather*}
+            e^{ix} = \cos x + i\sin x \\
+            e^{-ix} = \cos x - i\sin x \\
+            \\
+            1 = 1(1) + 0(e^{ix}) + e^{-ix} \\
+            \cos x = 0(1) + \frac{1}{2}e^{ix} + \frac{1}{2}e^{-ix} \\
+            \sin x = 0(1) - \frac{i}{2}e^{ix} + \frac{i}{2}e^{-ix} \\
+            P = \begin{bmatrix}
+                1 & 0 & 0 \\
+                0 & \frac{1}{2} & \frac{-i}{2} \\
+                0 & \frac{1}{2} & \frac{i}{2} \\
+            \end{bmatrix}
+        \end{gather*}
+        P is invertible;
+        \begin{gather*}
+            \begin{bmatrix}
+                1 & 0 & 0 \\
+                0 & \frac{1}{2} & \frac{-i}{2} \\
+                0 & \frac{1}{2} & \frac{i}{2} \\
+            \end{bmatrix}
+            \rightarrow
+            \begin{bmatrix}
+                1 & 0 & 0 \\
+                0 & 1 & -i \\
+                0 & 1 & i \\
+            \end{bmatrix}
+            \rightarrow
+            \begin{bmatrix}
+                1 & 0 & 0 \\
+                0 & 1 & -i \\
+                0 & 0 & 2i \\
+            \end{bmatrix}
+            \rightarrow \\
+            \begin{bmatrix}
+                1 & 0 & 0 \\
+                0 & 1 & -i \\
+                0 & 0 & 1 \\
+            \end{bmatrix}
+            \rightarrow
+            \begin{bmatrix}
+                1 & 0 & 0 \\
+                0 & 1 & 0 \\
+                0 & 0 & 1 \\
+            \end{bmatrix}
+        \end{gather*}
+
+    \end{enumerate}
+
+\item[7.] Let \(V\) be the (real) vector space of all polynomial functions from \(\mathbb{R}\) into \(\mathbb{R}\)
+    of degree 2 or less, i.e., the space of all functions \(f\) of the form
+    \[ f(x) = c_0 + c_1x + c_2x^2 \].
+    Let \(t\) be a fixed real number and define
+    \[g_1(x) = 1, \quad g_2(x) = x + t, \quad g_3(x) = (x + t)^2.\]
+    Prove that \(\mathcal{B} = \{g_1, g_2, g_3\}\) is a basis for \(V\). If
+    \[ f(x) = c_0 + c_1x + c_2x^2 \] what are the coordinates of \(f\) in this ordered basis \(\mathcal{B}\)?
+
+    \(\dim V = 3\) since the set \(\{h_1, h_2, h_3\}\) where \(h_1(x) = 1\), \(h_2(x) = x\), \(h_3(x) = x^2\) spans \(V\),
+    and is linearly independent; \(c_0 + c_1x + c_2x^2 = 0 \) for all \(x\) if and only if \(c_0 = c_1 = c_2 = 0\).
+    Since it has 3 elements, if \(\mathcal{B}\) is linearly independent, then it is a basis of \(V\).
+    \begin{gather*}
+        d_0 + d_1(x + t) + d_2(x + t)^2 = 0 \\
+        (d_0 + d_1t + d_2t^2) + (d_1 + 2d_2t)x + d_2x^2 = 0
+    \end{gather*}
+    Again, this is only true for all \(x\) if and only if \(d_0 = d_1 = d_2 = 0\). Therefore \(\mathcal{B}\) is a basis of \(V\).
+    \begin{gather*}
+        d_0 + d_1(x + t) + d_2(x + t)^2 = c_0 + c_1x + c_2x^2 \\
+        (d_0 + d_1t + d_2t^2) + (d_1 + 2d_2t)x + d_2x^2 = c_0 + c_1x + c_2x^2 \\
+        \\
+        c_2 = d_2,\quad c_1 = d_1 + 2d_2t,\quad c_0 = d_0 + d1_t + d_2t^2 \\
+        d_1 = c_1 - 2d_2t = c_1 - 2c_2t \\
+        d_0 = c_0 - d_1t - d_2t^2 = c_0 - (c_1 - 2c_2t)t - c_2t^2 = c_0 - c_1 + c_2t^2
+    \end{gather*}
+    The coordinates of \(f\) in \(\mathcal{B}\) are \((c_0 - c_1t + c_2t^2, c_1 - 2c_2t, c_2)\).
 
 \end{enumerate}
+
 \end{document}
