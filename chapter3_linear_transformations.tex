@@ -1,0 +1,118 @@
+\documentclass{article}
+\usepackage{array}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\hypersetup{
+    bookmarksnumbered=true,
+    pdfpagemode=UseOutlines,
+}
+
+\input{util.tex}
+
+\begin{document}
+
+\setcounter{section}{2}
+\section{Linear Transformations}
+
+\subsection{Linear Transformations}
+\begin{enumerate}[listparindent=\parindent]
+\item[1.] Which of the following functions \(T\) from \(R^2\) into \(R^2\) are linear transformations?
+    \begin{enumerate}[listparindent=\parindent]
+        \item[(a)] \(T(x_1, x_2) = (1 + x_1, x_2)\);
+            \[
+                T((0, 0)) = (1, 0) \neq (0, 0)
+            \]
+            \(T\) is not a linear transformation.
+        \item[(b)] \(T(x_1, x_2) = (x_2, x_1)\);
+            \begin{gather*}
+                T(c(x_1, x_2) + (y_1, y_2)) = \\
+                T((cx_1 + y_1, cx_2 + y_2)) = \\
+                (cx_2 + y_2, cx_1 + y_1)) = \\
+                c(x_2 + x_1) + (y_2, + y_1)
+            \end{gather*}
+            \(T\) is a linear transformation.
+        \item[(c)] \(T(x_1, x_2) = (x_1^2, x_2)\);
+            \begin{gather*}
+                T(cx_1 + y_1, cx_2 + y_2) = \\
+                ((cx_1 + y_1)^2, cx_2 + y_2) = \\
+                (c^2x_1^2 + 2cx_1y_1 + y_1^2, cx_2 + y_2) \neq \\
+                c(x_1^2, x_2) + (y_1^2, y_2)
+            \end{gather*}
+            \(T\) is not a linear transformation.
+        \item[(d)] \(T(x_1, x_2) = (\sin x_1, x_2)\);
+            \begin{gather*}
+                T(cx_1 + y_1, cx_2 + y_2) = \\
+                (\sin(cx_1 + y_1), cx_2 + y_2) \neq \\
+                c(\sin x_1, x_2) + (\sin y_1, y_2)
+            \end{gather*}
+            \(T\) is not a linear transformation.
+        \item[(e)] \(T(x_1, x_2) = (x_1 - x_2, 0)\);
+            \begin{gather*}
+                T(c(x_1, x_2) + (y_1, y_2)) = \\
+                (cx_1 + y_1 - cx_2 - y_2, 0) = \\
+                (c(x_1 - x_2) + y_1 - y_2, 0)
+            \end{gather*}
+            \(T\) is a linear transformation.
+    \end{enumerate}
+
+\item[2.] Find the range, rank, null space, and nullity for the zero transformation and the identity transformation
+    on a finite-dimensional space \(V\).
+
+    For the zero transformation, the range is \(\{0\}\), the rank is 0, the null space is \(V\), and the nullity is \(\dim V\).
+    For the identity transformation, the range is \(V\), the rank is \(\dim V\), the null space is \(\{0\}\), and the nullity is 0.
+
+\item[4.] Is there a linear transformation \(T\) from \(R^3\) into \(R^2\) such that \(T(1, -1, 1) = (1, 0)\) and \(T(1, 1, 1) = (0, 1)\)?
+
+    \((1, -1, 1)\) and \((1, 1, 1)\) are linearly independent, so there exists a basis of \(R^3\) that contains the two vectors.
+    Then by Theorem 1, there exists a linear transformation that maps this basis into the desired outputs.
+
+\item[5.] If
+    \begin{gather*}
+        \alpha_1 = (1, -1),\quad \beta_1 = (1, 0) \\
+        \alpha_2 = (2, -1),\quad \beta_2 = (0, 1) \\
+        \alpha_3 = (-3, 2),\quad \beta_3 = (1, 1)
+    \end{gather*}
+    is there a linear transformation \(T\) from \(\mathbb{R}^2\) into \(\mathbb{R}^2\) such that \(T\alpha_1 = \beta_i\) for \(i = 1, 2, 3\)?
+
+    If such \(T\) exists, then \(T\alpha_3 = -(T\alpha_1 + T\alpha_2)\),
+    but \(-(T\alpha_1 + T\alpha_2) = -(\beta_1 + \beta_2) = -\beta_3\) so \(T\alpha_3 \neq \beta_3\).
+    Therefore there is no linear transformation with the given properties.
+
+\item[6.] Describe explicitly (as in Exercises 1 and 2) the linear transformation \(T\) from \(F^2\) into \(F^2\)
+    such that \(T\epsilon_1 = (a, b)\) and \(T\epsilon_2 = (c, d)\).
+
+    \[T(x_1, x_2) = (ax_1 + cx_2, bx_1 + dx_2)\]
+
+\item[8.] Describe explicitly a linear transformation from \(\mathbb{R}^3\) into \(\mathbb{R}^3\)
+    which has its range the subspace spanned by \((1, 0, -1)\) and \((1, 2, 2)\).
+
+    Let \(T\epsilon_1 = (1, 0, -1), T\epsilon_2 = (1, 2, 2), T\epsilon_3 = (0, 0, 0)\), then
+    \[T(x_1, x_2, x_3) = (x_1 + x_2, 2x_2, -x_1 + 2x_2) = x_1(1, 0, -1) + x_2(1, 2, 2)\]
+
+\item[9.] Let \(V\) the vector space of all \(n \times n\) matrices over the field \(F\), and let \(B\) be a fixed \(n \times n\) matrix.
+    If \(T(A) = AB - BA\) verify that \(T\) is a linear transformation from \(V\) to \(V\).
+
+    If \(X\) and \(Y\) are some \(n \times n\) matrices.
+    \begin{gather*}
+        T(cX + Y) = (cX + Y)B - B(cX + Y) \\
+        T(cX + Y) = cXB + YB - cBX - BY \\
+        T(cX + Y) = cXB - cBX + YB - BY \\
+        T(cX + Y) = cT(X) + cT(Y)
+    \end{gather*}
+
+\item[10.] Let \(V\) the set of all complex numbers regarded as a vector space over the field of \textit{real} numbers (usual operations).
+    Find a function from \(V\) to \(V\) which is a linear transformation on the above vector space, but which is not a linear transformation on \(\mathbb{C}^1\),
+    i.e., which is not complex linear.
+
+\item[11.] Let \(V\) be the space of \(n \times 1\) matrices over \(F\) and let \(W\) be the space of \(m \times 1 \) matrices over \(F\).
+    Let \(A\) be a fixed \(m \times m\) over \(F\) and let \(T\) be the linear transformation from \(V\) to \(W\) defined by \(T(X) = AX\).
+    Prove that \(T\) is the zero transformation if and only if \(A\) is the zero matrix.
+
+\item[12.] Let \(V\) be an \(n\)-dimensional vector space over the field \(F\) and let \(T\) be a linear transformation from \(V\) into \(V\)
+    such that the range and null space of \(T\) are identical. Prove that \(n\) is even. (Can you give an example of such a linear transformation \(T\)?)
+
+\end{enumerate}
+
+\end{document}

@@ -1190,4 +1190,138 @@ Since it is a linearly independent set, \(\{A_1, A_2, A_3, A_4\}\) is a basis of
 
 \end{enumerate}
 
+\setcounter{subsection}{6}
+\subsection{Computations Concerning Subspaces}
+
+\begin{enumerate}[listparindent=\parindent]
+\item[1.] Let \(s < n\) and \(A\) an \(s \times n\) matrix with entries in the field \(F\). Use Theorem 4 (not its proof)
+    to show that there is a non-zero \(X\) in \(F^{n \times 1}\) such that \(AX = 0\).
+
+    There are \(n\) column vectors of \(A\), \(\alpha_1, \dots, \alpha_n\),
+    which span a subspace of \(F^s\) and therefore must have a dimension of at most \(s\).
+    By Theorem 4, the set of column vectors must be linearly dependent since it contains more than \(s\) elements.
+    Then there exists nonzero scalars \(x_1, \dots, x_n\) such that \(x_1\alpha_1 + \dots + x_n\alpha_n = 0\).
+    If
+    \[X = \begin{bmatrix} x_1 \\ \vdots \\ x_n \end{bmatrix} \]
+    then \(AX = x_1\alpha_1 + \dots + x_n\alpha_n = 0\).
+
+\item[2.] Let
+    \[\alpha_1 = (1, 1, -2, 1),\quad \alpha_2 = (3, 0, 4, -1),\quad \alpha_3 = (-1, 2, 5, 2).\]
+    Let
+    \[\alpha = (4, -5, 9, -7),\quad \beta = (3, 1, -4, 4),\quad \gamma = (-1, 1, 0, 1).\]
+
+    \begin{enumerate}[listparindent=\parindent]
+        \item[(a)] Which of the vectors \(\alpha, \beta, \gamma\) are in the subspace of \(R^4\) spanned by the \(\alpha_i\)?
+
+            \[
+                \begin{bmatrix}
+                    1 & 1 & -2 & 1 \\
+                    3 & 0 & 4 & -1 \\
+                    -1 & 2 & 5 & 2
+                \end{bmatrix}
+                \rightarrow
+                \begin{bmatrix}
+                    1 & 0 & 0 & \frac{-3}{13} \\
+                    0 & 1 & 0 & \frac{14}{13} \\
+                    0 & 0 & 1 & \frac{-1}{13}
+                \end{bmatrix}
+            \]
+
+            A basis of the subspace is \(\{(1, 0, 0, \frac{-3}{13}), (0, 1, 0, \frac{14}{13}), (0, 0, 1, \frac{-1}{13})\}\),
+            so any vector in the subspace is in the form \((x_1, x_2, x_3, \frac{1}{13}(-3x_1 + 14x_2 - x_3))\).
+            It can be found that only \(\alpha\) is in the subspace.
+
+        \item[(b)] Which of the vectors \(\alpha, \beta, \gamma\) are in the subspace of \(C^4\) spanned by the \(\alpha_i\)?
+
+            The matrix with the row vectors of \(\alpha_i\) still reduces into the same row-reduced echelon matrix and
+            gives the same set of vectors as its basis. Again, only \(\alpha\) is in the subspace.
+
+        \item[(c)] Does this suggest a theorem?
+
+            Let \(S\) be a subfield of \(F\), and \(A\) be a set of vectors in \(S^n\) that spans a subspace of \(F^n\).
+            Then the space spanned by \(A\) is also a subspace of \(S^n\).
+
+    \end{enumerate}
+
+\item[3.] Consider the vectors in \(\mathbb{R}^4\) defined by
+    \[
+        \alpha_1 = (-1, 0, 1, 2),\quad \alpha_2 = (3, 4, -2, 5),\quad \alpha_3 = (1, 4, 0, 9).
+    \]
+    Find a system of homogeneous linear equations for which the space of solutions is
+    exactly the subspace of \(\mathbb{R}^4\) spanned by the given vectors.
+
+    Reducing a matrix where the row vectors are given vectors shows that
+    a basis of the given subspace is \(\{(1, 0, -1, -2), (0, 1, \frac{1}{4}, \frac{11}{4})\}\).
+    So for any vector \((x_1, x_2, x_3, x_4)\) in the subspace,
+    \[
+        \begin{system}{2}
+            -x_1 &+& \frac{1}{4}x_2 &=& x_3 \\
+            -2x_1 &+& \frac{11}{4}x_2 &=& x_4 \\
+        \end{system}
+    \]
+    \[
+        \begin{system}{3}
+            -x_1 &+& \frac{1}{4}x_2 &-& x_3 &=& 0 \\
+            -2x_1 &+& \frac{11}{4}x_2 &-& x_4 &=& 0 \\
+        \end{system}
+    \]
+    which is the desired system of equations.
+
+\item[4.] In \(\mathbb{C}^3\), let
+    \[
+        \alpha_1 = (1, 0, -i),\quad \alpha_2 = (1 + i, 1 - i, 1),\quad \alpha_3 = (i, i, i).
+    \]
+    Prove that these vectors form a basis for \(\mathbb{C}^3\).
+    What are the coordinates of the vector \((a, b, c)\) in this basis?
+
+    A basic gist because I'm too lazy to write down the work: 
+
+    Write a matrix with the three vectors as row vectors. Reduce it to see that it is row equivalent to a identity matrix
+    so the three form a basis for \(\mathbb{C}^3\).
+
+    The coordinates of the vector \((a, b, c)\) is \(P^{-1}\begin{bmatrix}a \\ b \\ c\end{bmatrix}\)
+    where \(P\) is the matrix where the columns are the given basis vectors.
+
+\item[6.] Let \(V\) be the real vector space spanned by the rows of the matrix
+    \[
+        A = \begin{bmatrix}
+            3 & 21 & 0 & 9 & 0 \\
+            1 & 7 & -1 & -2 & -1 \\
+            2 & 14 & 0 & 6 & 1 \\
+            6 & 42 & -1 & 13 & 0
+        \end{bmatrix}.
+    \]
+    \begin{enumerate}[listparindent=\parindent]
+        \item[(a)] Find a basis for \(V\).
+            Row reduce the matrix and take the non-zero row vectors:
+            \[
+                \{ (1, 7, 0, 3, 0), (0, 0, 1, 5, 0), (0, 0, 0, 0, 1) \}
+            \]
+        \item[(b)] Tell which vectors \((x_1, x_2, x_3, x_4, x_5)\) are elements of \(V\).
+
+            \[ (a_1, 7a_1, a_2, 3a_1 + 5a_2 + a_3) \]
+
+        \item[(c)] If \((x_1, x_2, x_3, x_4, x_5)\) is in \(V\) what are its coordinates in the basis chosen in part (a)?
+
+            \begin{gather*}
+                (x_1, x_2 , x_3, x_4, x_5) = (a_1, 7a_1, a_2, 3a_1 + 5a_2 + a_3) \\
+                (x_1, x_2 , x_3, x_4, x_5) = a_1(1, 7, 0, 3, 0) + a_2(0, 0, 1, 5, 0) + (0, 0, 0, 0, 1)
+            \end{gather*}
+            Therefore the coordinate vector is \(\begin{bmatrix}a_1 \\ a_2 \\ a_3\end{bmatrix}\).
+    \end{enumerate}
+
+\item[7.] Let \(A\) be a \(m \times m\) matrix over the field \(F\), and consider the system of equations \(AX = Y\).
+    Prove that this system of equations has a solution if and only if the row rank of \(A\) is equal to the row rank
+    of the augmented matrix of the system.
+    
+    Suppose there exists a solution to the system \(AX = Y\) and let \([R | Z]\) be the row-reduced echelon form of \([A | Y]\).
+
+    The zero rows of \(R\) must be the last \(n\) rows, where \(n = m - \rank(A)\).
+    Then the last \(n\) rows of \(Z\) must be zero rows as well,
+    otherwise there is a row in the form \([0 \dots 0 | x], x \neq 0\) which contradicts the existence of a solution.
+    Then \([R | Z]\) must also have precisely have \(n\) zero rows, so \(\rank(A) = \rank([A | Y])\).
+
+    If there is no solution, there exists a row in the form \([0 \dots 0 | x], x \neq 0\) so \(\rank([A | Y]) > \rank(A)\)
+
+\end{enumerate}
 \end{document}
