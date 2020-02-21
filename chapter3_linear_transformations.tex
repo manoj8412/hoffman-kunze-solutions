@@ -138,7 +138,7 @@
     Since it is also clearly in its range, \(T\alpha\) must be 0.
 
     Suppose statement (b) is true; \(T\alpha\) is in the range and the null space of \(T\), and \(T\alpha = 0\).
-    The zero vector is the only vector that is both in the range and the null space, so the intersectino of the range and null space is the zero subspace.
+    The zero vector is the only vector that is both in the range and the null space, so the intersection of the range and null space is the zero subspace.
 \end{enumerate}
 
 \subsection{The Algebra of Linear Transformations}
@@ -261,7 +261,381 @@
     \end{gather*}
 
     Let \(V\) be the space of polynomials, \(D\) the differentiation operator, and \(E\) the indefinite integral operator.
-    \(DE = I\), but \(ED \neq I\).
+    Then \(DE = I\), but \(ED \neq I\).
+
+\item[11.] Let \(V\) be a finite-dimensional vector space and let \(T\) be a linear operator on \(V\).
+    Suppose that \(\rank(T^2) = \rank(T)\). Prove that the range and null space of \(T\) are disjoint, i.e.,
+    have only the zero vector in common.
+
+    The null space of \(T\) is a subset of the null space of \(T^2\) because for any vector \(z\) in the null space of \(T\), \(T^2z = T0 = 0\).
+    \(\rank(T^2) = \rank(T)\) implies \(\nullity(T^2) = \nullity(T)\), so the null space of \(T\) is identical to the null space of \(T^2\).
+
+    Suppose there exists a nonzero vector \(v\) such that \(v\) is in both the range and the null space of \(T\).
+    There exists a nonzero vector \(u\) such that \(Tu = v\). Since \(T^2u = T(Tu) = Tv = 0\), \(u\) is in the null space of \(T^2\).
+    But we proved the two operations have the same null space, so \(Tu = v = 0\) which is a contradiction.
+    Therefore, the only vector both in the range and the null space of \(T\) must be the zero vector.
+\end{enumerate}
+
+\subsection{Isomorphisms}
+\begin{enumerate}[listparindent=\parindent]
+\item[1.] Let \(V\) be the set of complex numbers and let \(F\) be the field of real numbers.
+    With the usual operations, \(V\) is a vector space over \(F\). Describe explicitly an isomorphism of this space onto \(\mathbb{R}^2\).
+    \[ T(a + bi) = (a, b) \]
+
+\item[2.] Let \(V\) be a vector space over the field of complex numbers, and suppose there is a isomorphism \(T\) of \(V\) onto \(\mathbb{C}^3\).
+    Let \(\alpha_1, \alpha_2, \alpha_3, \alpha_4\) be vectors in \(V\) such that
+    \begin{gather*}
+        T\alpha_1 = (1, 0, i),\quad T\alpha_2 = (-2, 1 + i, 0), \\
+        T\alpha_3 = (-1, 1, 1),\quad T\alpha_4 = (\sqrt{2}, i, 3).
+    \end{gather*}
+    \begin{enumerate}[listparindent=\parindent]
+        \item[(a)] Is \(\alpha_1\) in the subspace spanned by \(\alpha_2\) and \(\alpha_3\)?
+
+            Since \(T\) is an isomorphism, this is equivalent to asking whether \(T\alpha_1\) is in the span of \(\{T\alpha_2, T\alpha_3\}\).
+            \[
+                \begin{abmatrix}{2}{1}
+                    -2 & -1 & 1 \\
+                    1 + i & 1 & 0 \\
+                    0 & 1 & i
+                \end{abmatrix}
+            \]
+            reduces into
+            \[
+                \begin{abmatrix}{2}{1}
+                    1 & 0 & \frac{-1}{2}(1 + i) \\
+                    0 & 1 & i \\
+                    0 & 0 & 0
+                \end{abmatrix}
+            \]
+
+            So
+            \[ T\alpha_1 = \frac{-1}{2}(1 + i)T\alpha_2 + iT\alpha_3 \]
+            and \(\alpha_1\) is in the span of \(\{\alpha_2, \alpha_3\}\).
+
+        \item[(b)] Let \(W_1\) be the subspace spanned by \(\alpha_1\) and \(\alpha_2\)
+            and let \(W_2\) be the subspace spanned by \(\alpha_3\) and \(\alpha_4\).
+            What is the intersection of \(W_1\) and \(W_2\)?
+            \begin{gather*}
+                aT\alpha_1 + bT\alpha_2 = cT\alpha_3 + dT\alpha_4 \\
+                aT\alpha_1 + bT\alpha_2 - cT\alpha_3 - dT\alpha_4 = 0
+            \end{gather*}
+            Solve this with a matrix with columns \(T\alpha_i\);
+            \begin{gather*}
+                \begin{bmatrix}
+                    1 & 0 & i & 0 \\
+                    0 & 1 & \frac{1}{2}(i - 1) & 0 \\
+                    0 & 0 & 0 & 1
+                \end{bmatrix}
+                \begin{bmatrix} a \\ b \\ -c \\ -d \end{bmatrix}
+                =
+                \begin{bmatrix} 0 \\ 0 \\ 0 \\ 0 \end{bmatrix} \\
+                iT\alpha_1 + \frac{i - 1}{2}T\alpha_2 - T\alpha_3 = 0
+            \end{gather*}
+            \(T\alpha_3\) is in the subspace mapped from \(W_1\), implying \(\alpha_3 \in W_1 \cap W_2\).
+
+            The row-reduced matrix shows \(\dim(W_1 + W_2) = 3\), so \[ \dim(W_1 \cap W_2) = \dim(W_1) + \dim(W_2) - \dim(W_1 + W_2) = 2 + 2 - 3 = 1 \]
+            Therefore the intersection of \(W_1\) and \(W_2\) is \(\Span (\alpha_3)\).
+
+        \item[(c)] Find a basis for the subspace of \(V\) spanned by the four vectors \(\alpha_i\).
+
+            Part b showed that the four vectors span a subspace with dimension 3, and \(\alpha_3 \in \Span\{\alpha_1, \alpha_2\}\).
+            Therefore \(\{\alpha_1, \alpha_2, \alpha_4\}\) is a basis for the given subspace.
+
+    \end{enumerate}
+
+\item[3.] Let \(W\) be the set of all \(2 \times 2\) complex Hermitian matrices, that is,
+    the set of \(2 \times 2\) complex matrices \(A\) such that \(A_{ij} = \overline{A_{ji}}\) (the bar denoting complex conjugation)
+    As we pointed out in the Example 6 of Chapter 2, \(W\) is a vector space over the field of \textit{real} numbers, under the usual operations.
+    Verify that
+    \[ (x, y, z, t) \rightarrow \begin{bmatrix} t + x & y + iz \\ y - iz & t - x \end{bmatrix} \]
+    is an isomorphism from \(\mathbb{R}^4\) onto \(W\).
+
+    Let \(T\) be the transformation in question. \(T\) is linear:
+    \begin{gather*}
+        T(c(x, y, z, t)) = \begin{bmatrix} c(t + x) & c(y + iz) \\ c(y - iz) & c(t - x) \end{bmatrix} = cT(x, y, z, t) \\
+        T((x_1, y_1, z_1, t_1) + (x_2, y_2, z_2, t_2)) \\
+        = \begin{bmatrix} t_1 + t_2 + x_1 + x_2 & y_1 + y_2 + i(z_1 + z_2) \\ y_1 + y_2 - i(z_1 + z_2) & t_1 + t_2 - (x_1 + x_2) \end{bmatrix} \\
+        = \begin{bmatrix} t_1 + x_1 & y_1 + iz_1 \\ y_1 - iz_1 & t_1 - x_1 \end{bmatrix} + \begin{bmatrix} t_2 + x_2 & y_2 + iz_2 \\ y_2 - iz_2 & t_2 - x_2 \end{bmatrix} \\
+        = T(x_1, y_1, z_1, t_1) + T(x_2, y_2, z_2, t_2)
+    \end{gather*}
+
+    The null space of \(T\) is the zero subspace. If \(T(x, y, z, t) = 0\), then \(z = 0\), \(y = 0\), and \(t + x = t - x = 0\) implying \(t = x = 0\).
+    Since \(\dim(W) = \dim(\mathbb{R}^4) = 4\), by Theorem 9 \(T\) is bijective and \(T\) is an isomorphism.
+
+\item[4.] Show that \(F^{m \times n}\) is isomorphic to \(F^{mn}\).
+    \[
+        T\begin{bmatrix}
+            a_{11} & \dots & a_{1n} \\
+            \vdots & \ddots & \vdots \\
+            a_{m1} & \dots & a_{mn} \\
+        \end{bmatrix}
+        =
+        (a_{11}, \dots, a_{1n}, \dots, a_{m1}, \dots, a_{mn})
+    \]
+
+    \(T\) is clearly a invertible linear transformation and \\
+    \(\dim(F^{m \times n}) = \dim(F^{mn}) = mn\), so the spaces are isomorphic.
+
+\item[6.] Let \(V\) and \(W\) be finite-dimensional vector spaces over the field \(F\). Prove that \(V\) and \(W\) are isomorphic if and only if \(\dim V = \dim W\).
+
+    Suppose \(\dim V = \dim W = n\). There exists a basis \(\{\alpha_1, \dots, \alpha_n\}\) for \(V\) and \(\{\beta_1, \dots, \beta_n\}\) for \(W\).
+    Let \(T\) be a linear transformation such that \(T\alpha_i = \beta_i\). \(\{T\alpha_1, \dots, T\alpha_n\}\) is a basis for \(W\), so \(T\) must be invertible and bijective.
+    Therefore the two spaces are isomorphic.
+
+    If \(V\) and \(W\) are isomorphic, there exists an invertible linear transformation \(U\) from \(V\) onto \(W\).
+    By Theorem 8, \(U\) maps a basis of \(V\) into some linearly independent subset of \(W\), so \(\dim V \leq \dim W\).
+    \(U^{-1}\) maps a basis of \(W\) into some linearly independent subset of \(V\), so \(\dim V \geq \dim W\).
+    Then \(\dim V = \dim W\).
+
+\item[7.] Let \(V\) and \(W\) be vector spaces over the field \(F\) and let \(U\) be an isomorphism of \(V\) onto \(W\).
+    Prove that \(T \rightarrow UTU^{-1}\) is an isomorphism of \(L(V, V)\) onto \(L(W, W)\).
+
+    Let \(fT = UTU^{-1}\). Then \(f^{-1}T = U^{-1}TU\) since \[ f^{-1}fT = f^{-1}(UTU^{-1}) = U^{-1}UTU^{-1}U = ITI = T \] and similarly \(ff^{-1} = I\).
+    Also, \(f\) is linear. Let \(c \in F\) and \(S \in L(V, V)\).
+    \begin{gather*}
+        f(cT + S) = U(cT + S)U^{-1} = U(cTU^{-1} + SU^{-1}) \\
+        = cUTU^{-1} + USU^{-1} = cfT + cfS
+    \end{gather*}
+    Therefore \(f\) is an isomorphism.
+
+\end{enumerate}
+
+\subsection{Linear Transformations}
+\begin{enumerate}[listparindent=\parindent]
+
+\item[1.] Let \(T\) be the linear operator on \(\mathbb{C}^2\) defined by \(T(x_1, x_2) = (x_1, 0)\).
+    Let \(\mathcal{B}\) be the standard ordered basis for \(\mathbb{C}^2\)
+    and let \(\mathcal{B}'\) be the ordered basis defined by \(\alpha_1 = (1, i), \alpha_2 = (-i, 2)\).
+    \begin{enumerate}[listparindent=\parindent]
+        \item[(a)] What is the matrix of \(T\) relative to the pair \(\mathcal{B}, \mathcal{B}'\)?
+            \[
+                \begin{bmatrix} 1 & -i \\ i & 2 \end{bmatrix}^{-1}
+                \begin{bmatrix} T\epsilon_1 & T\epsilon_2 \end{bmatrix}
+                =
+                \begin{bmatrix} 2 & i \\ -i & 1 \end{bmatrix}
+                \begin{bmatrix} 1 & 0 \\ 0 & 0 \end{bmatrix}
+                =
+                \begin{bmatrix} 2 & 0 \\ -i & 0 \end{bmatrix}
+            \]
+        \item[(b)] What is the matrix of \(T\) relative to the pair \(\mathcal{B}', \mathcal{B}\)?
+            \[
+                \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix}^{-1}
+                \begin{bmatrix} T\alpha_1 & T\alpha_2 \end{bmatrix}
+                =
+                \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix}
+                \begin{bmatrix} 1 & -i \\ 0 & 0 \end{bmatrix}
+                =
+                \begin{bmatrix} 1 & -i \\ 0 & 0 \end{bmatrix}
+            \]
+        \item[(c)] What is the matrix of \(T\) in the ordered basis \(\mathcal{B}'\)?
+            \[
+                \begin{bmatrix} 1 & -i \\ i & 2 \end{bmatrix}^{-1}
+                \begin{bmatrix} 1 & 0 \\ 0 & 0 \end{bmatrix}
+                \begin{bmatrix} 1 & -i \\ i & 2 \end{bmatrix}
+                =
+                \begin{bmatrix} 2 & i \\ -i & 1 \end{bmatrix}
+                \begin{bmatrix} 1 & -i \\ 0 & 0 \end{bmatrix}
+                =
+                \begin{bmatrix} 2 & -2i \\-i & -i \end{bmatrix}
+            \]
+        \item[(d)] What is the matrix of \(T\) in the ordered basis \(\{\alpha_2, \alpha_1\}\)?
+            \[
+                \begin{bmatrix} -i & 1 \\ 2 & i \end{bmatrix}^{-1}
+                \begin{bmatrix} 1 & 0 \\ 0 & 0 \end{bmatrix}
+                \begin{bmatrix} -i & 1 \\ 2 & i \end{bmatrix}
+                =
+                \begin{bmatrix} -i & 1 \\ 2 & i \end{bmatrix}
+                \begin{bmatrix} -i & 1 \\ 0 & 0 \end{bmatrix}
+                =
+                \begin{bmatrix} -1 & -i \\ -2i & 2 \end{bmatrix}
+            \]
+    \end{enumerate}
+
+\item[2.] Let \(T\) be the linear transformation from \(\mathbb{R}^3\) into \(\mathbb{R}^2\) defined by
+    \[ T(x_1, x_2, x_3) = (x_1 + x_2, 2x_3 - x_1). \]
+    \begin{enumerate}[listparindent=\parindent]
+        \item[(a)] If \(\mathcal{B}\) is the standard ordered basis for \(\mathbb{R}^3\) and
+            \(\mathcal{B}'\) is the standard ordered basis for \(\mathcal{R}^2\), what is the matrix of \(T\) relative to the pair \(\mathcal{B}\), \(\mathcal{B}'\)?
+            \[ \begin{bmatrix} 1 & 1 & 0 \\ -1 & 0 & 2 \end{bmatrix} \]
+        \item[(b)] If \(\mathcal{B} = \{\alpha_1, \alpha_2, \alpha_3\}\) and \(\mathcal{B}' = \{\beta_1, \beta_2\}\) where
+            \[ \alpha_1 = (1, 0, -1),\, \alpha_2 = (1, 1, 1),\, \alpha_3 = (1, 0, 0),\, \beta_1 = (0, 1),\, \beta_2 = (1, 0) \]
+            what is the matrix of \(T\) relative to the pair \(\mathcal{B}, \mathcal{B}'\)?
+            \[
+                \begin{bmatrix} 0 & 1 \\ 1 & 0 \end{bmatrix}^{-1}
+                \begin{bmatrix} T\alpha_1 & T\alpha_2 & T\alpha_3 \end{bmatrix}
+                =
+                \begin{bmatrix} 0 & 1 \\ 1 & 0 \end{bmatrix}
+                \begin{bmatrix} 1 & 2 & 1 \\ -3 & 1 & 0 \end{bmatrix}
+                =
+                \begin{bmatrix} -3 & 1 & 0 \\ 1 & 2 & 1 \end{bmatrix}
+            \]
+    \end{enumerate}
+
+\item[3.] Let \(T\) be a linear operator on \(F^n\), let \(A\) be the matrix of \(T\) in the standard ordered basis for \(F^n\),
+    and let \(W\) be the subspace of \(F^n\) spanned by the column vectors of \(A\). What does \(W\) have to do with \(T\)?
+
+\[ A = \begin{bmatrix} T\epsilon_1 & \dots T\epsilon_n \end{bmatrix} \]
+The range of \(T\) is spanned by \(T\epsilon_1, \dots, T\epsilon_n\), so it is identical to the column space of \(A\).
+
+\item[4.] Let \(V\) be a two-dimensional vector space over the field \(F\), and let \(\mathcal{B}\) be an ordered basis for \(V\).
+    If \(T\) is a linear operator on \(V\) and
+    \[ [T]_\mathcal{B} = \begin{bmatrix} a & b \\ c & d \end{bmatrix} \]
+    prove that \(T^2 - (a + d)T + (ad - bc)I = 0\).
+    \begin{gather*}
+        [T^2 - (a + d)T + (ad - bc)I = 0]_\mathcal{B} = \\
+        [T]_\mathcal{B}^2 - (a + d)[T]_\mathcal{B} + (ad - bc)I = \\
+        \begin{bmatrix} a^2 + bc & b(a + d) \\ c(a + d) & d^2 + bc \end{bmatrix} -
+        \begin{bmatrix} a^2 + da & b(a + d) \\ c(a + d) & d^2 + ad \end{bmatrix} +
+        \begin{bmatrix} ad - bc & 0 \\ 0 & ad - bc \end{bmatrix} = \\
+        \begin{bmatrix} bc - ad & 0 \\ 0 & bc - ad \end{bmatrix} +
+        \begin{bmatrix} ad - bc & 0 \\ 0 & ad - bc \end{bmatrix} = 0
+    \end{gather*}
+
+\item[5.] Let \(T\) be the linear operator on \(\mathbb{R}^3\), the matrix of which in the standard ordered basis is
+    \[ A = \begin{bmatrix} 1 & 2 & 1 \\ 0 & 1 & 1 \\ -1 & 3 & 4 \end{bmatrix}. \]
+    Find a basis for the range of \(T\) and a basis for the null space of \(T\).
+
+The range is spanned by the column space of \(A\), so column reduce \(A\);
+\[ \begin{bmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ -1 & 5 & 0 \end{bmatrix} \]
+\(\{(1, 0, -1), (0, 1, 5)\}\) is a basis for the range.
+
+\(A\) can be row reduced into
+\[ \begin{bmatrix} 1 & 0 & -1 \\ 0 & 1 & 1 \\ 0 & 0 & 0 \end{bmatrix} \]
+Therefore \{(1, -1, 1)\} is a basis for the null space.
+
+\item[6.] Let \(T\) be the linear operator on \(\mathbb{R}^2\) defined by
+    \[ T(x_1, x_2) = (-x_2, x_1). \]
+
+    \begin{enumerate}[listparindent=\parindent]
+        \item[(a)] What is the matrix of \(T\) in the standard ordered basis for \(\mathbb{R}^2\)?
+            \[ \begin{bmatrix} 0 & -1 \\ 1 & 0 \end{bmatrix} \]
+
+        \item[(b)] What is the matrix of \(T\) in the ordered basis \(\mathcal{B} = \{\alpha_1, \alpha_2\}\),
+            where \(\alpha_1 = (1, 2)\) and \(\alpha_2 = (1, -1)\)?
+            \[
+                \begin{bmatrix} 1 & 1 \\ 2 & -1 \end{bmatrix}^{-1}
+                \begin{bmatrix} -2 & 1 \\ 1 & 1 \end{bmatrix}
+                =
+                \frac{1}{3}
+                \begin{bmatrix} -1 & 2 \\ -5 & 1 \end{bmatrix}
+            \]
+
+        \item[(c)] Prove that for every real number \(c\) the operator \(T - cI\) is invertible.
+
+            The matrix of \(T - cI\) relative to the standard ordered basis is
+            \[ \begin{bmatrix} -c & -1 \\ 1 & -c \end{bmatrix}, \]
+            Noting that \(1 + c^2 \neq 0\) for all real \(c\), this can be inverted as follows,
+            \[
+                \begin{bmatrix} -c & -1 \\ 1 & -c \end{bmatrix} \rightarrow
+                \begin{bmatrix} 1 & -c \\ -c & -1 \end{bmatrix} \rightarrow
+                \begin{bmatrix} 1 & -c \\ 0 & -(1 + c^2) \end{bmatrix} \rightarrow
+                \begin{bmatrix} 1 & -c \\ 0 & 1 \end{bmatrix} \rightarrow
+                \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix}
+            \]
+            Therefore \(T - cI\) is invertible.
+
+        \item[(d)] Prove that if \(\mathcal{B}\) is any ordered basis for \(\mathbb{R}^2\)
+            and \([T]_\mathcal{B} = A\), then \(A_{12}A_{21} \neq 0\).
+
+            Let \(\mathcal{B} = \{\alpha_1, \alpha_2\}\) where \(\alpha_1 = (x_1, x_2)\) and \(\alpha_2 = (y_1, y_2)\).
+            \begin{gather*}
+                [T]_\mathcal{B} =
+                \begin{bmatrix} x_1 & y_1 \\ x_2 & y_2 \end{bmatrix}^{-1}
+                \begin{bmatrix} 0 & -1 \\ 1 & 0 \end{bmatrix}
+                \begin{bmatrix} x_1 & y_1 \\ x_2 & y_2 \end{bmatrix}
+                = \\
+                \begin{bmatrix} x_1 & y_1 \\ x_2 & y_2 \end{bmatrix}^{-1}
+                \begin{bmatrix} -x_2 & -y_2 \\ x_1 & y_1 \end{bmatrix}
+            \end{gather*}
+
+            Find the inverse and multiply it to see \(A_{12}A_{21} \neq 0\) I'm not doing this
+    \end{enumerate}
+
+\item[8.] Let \(\theta\) be a real number. Prove that the following two matrices are similar over the field of complex numbers:
+    \[
+        \begin{bmatrix} \cos \theta & -\sin \theta \\ \sin \theta & \cos \theta \end{bmatrix}, \quad
+        \begin{bmatrix} e^{i\theta} & 0 \\ 0 & e^{-i\theta} \end{bmatrix}
+    \]
+    (\textit{Hint:} Let \(T\) be the linear operator on \(\mathbb{C}^2\) which is represented by the first matrix in the standard ordered basis.
+    Then find vectors \(\alpha_1\) and \(\alpha_2\) such that \(T\alpha_1 = e^{i\theta}\alpha_1\) and \(T\alpha_2 = e^{-i\theta}\alpha_2\)
+    and \(\{\alpha_1, \alpha_2\}\) is a basis.)
+
+    If \[ \begin{bmatrix} \cos \theta & -\sin \theta \\ \sin \theta & \cos \theta \end{bmatrix} = [T]_{\mathcal{B}} \]
+    then
+    \begin{gather*}
+        T(a_1, a_2) \\
+        = (a_1\cos\theta - a_2\sin\theta, a_1\sin\theta + a_2\cos\theta) \\
+        = (a_1\cos\theta + a_1i\sin\theta, a_2i\sin\theta + a_2\cos\theta) \\
+        = (a_1, a_2)(\cos\theta + i\sin\theta) = e^{i\theta}(a_1, a_2)
+    \end{gather*}
+    \(a_1 = ia_2\) so \(\alpha_1 = (i, 1)\) is a vector such that \(T\alpha_1 = e^{i\theta}\alpha_1\).
+    Similarly,
+    \begin{gather*}
+        T(b_1, b_2) \\
+        = (b_1\cos\theta - b_2\sin\theta, b_1\sin\theta + b_2\cos\theta) \\
+        = (b_1\cos\theta - b_1i\sin\theta, -b_2i\sin\theta + b_2\cos\theta) \\
+        = (b_1, b_2)(\cos\theta - i\sin\theta) = e^{-i\theta}(b_1, b_2)
+    \end{gather*}
+    implies \(b_1 = -b_2i\) and \(\alpha_2 = (-i, 1)\) is a vector such that \(T\alpha_1 = e^{i\theta}\alpha_1\).
+    The two are clearly linearly independent, so \(\{\alpha_1, \alpha_2\}\) form a basis, \(\mathcal{B'}\).
+
+    \[ \begin{bmatrix} e^{i\theta} & 0 \\ 0 & e^{-i\theta} \end{bmatrix} = \begin{bmatrix}T\alpha_1 \\ T\alpha_2\end{bmatrix} = [T]_{\mathcal{B}'} \\ \]
+    and by Theorem 14,
+    \[ [T]_{\mathcal{B}}' = \begin{bmatrix}\alpha_1 & \alpha_2\end{bmatrix}^{-1} [T]_{\mathcal{B}} \begin{bmatrix}\alpha_1 & \alpha_2\end{bmatrix} \]
+    and the two matrices are similar.
+
+\item[9.] Let \(V\) be a finite-dimensional vector space over the field \(F\) and let \(S\) and \(T\) be linear operators on \(V\).
+    We ask: When do there exist ordered basis \(\mathcal{B}\) and \(\mathcal{B}'\) for \(V\) such that \([S]_\mathcal{B} = [T]_\mathcal{B}'\)?
+    Prove that such basis exist if and only if there an invertible operator \(U\) on \(V\) such that \(T = USU^{-1}\).
+    (\textit{Outline of proof:} If \([S]_\mathcal{B} = [T]_\mathcal{B}'\),
+    let \(U\) be the operator which carries \(\mathcal{B}\) onto \(\mathcal{B}'\) and show that \(S = UTU^{-1}\).
+    Conversely, if \(T = USU^{-1}\) for some invertible \(U\), let \(\mathcal{B}\) be any basis for \(V\) and let \(\mathcal{B}'\) its image under \(U\).
+    Then show that \([S]_\mathcal{B} = [T]_\mathcal{B'}\).)
+
+    Let \([S]_\mathcal{B} = [T]_\mathcal{B'}\) and \(U\) be an invertible operator carrying \(\mathcal{B}\) onto \(\mathcal{B}'\).
+    If \(\mathcal{B'} = \{\alpha_1, \dots, \alpha_n\}\), then the columns of matrix of \(U\) are \([\alpha_1]_\mathcal{B}, \dots, [\alpha_n]_\mathcal{B}\).
+
+    By Theorem 14,
+    \begin{gather*}
+        [USU^{-1}]_\mathcal{B'} = [U^{-1}]_\mathcal{B}[USU^{-1}]_\mathcal{B}[U]_\mathcal{B} \\
+        = [U^{-1}]_\mathcal{B}[U]_\mathcal{B}[S]_\mathcal{B}[U^{-1}]_\mathcal{B}[U]_\mathcal{B} \\
+        = [S]_\mathcal{B} = [T]_\mathcal{B'}
+    \end{gather*}
+    and \(USU^{-1} = T\).
+
+    If \(T = USU^{-1}\) for some invertible \(U\), let \(\mathcal{B}\) be any basis for \(V\) and let \(\mathcal{B'}\) its image under \(U\).
+    \begin{gather*}
+        [T]_\mathcal{B} = [USU^{-1}]_\mathcal{B'} = [U]_\mathcal{B}[S]_\mathcal{B}[U^{-1}]_\mathcal{B} \\
+    \end{gather*}
+    Then by Theorem 14, this is equivalent to \([U]_\mathcal{B'}\) and it must be that \([T]_\mathcal{B} = [U]_\mathcal{B'}\).
+
+\item[10.] We have seen that the linear operator \(T\) on \(\mathbb{R}^2\) defined by \(T(x_1, x_2) = (x_1, 0)\)
+    is represented in the standard ordered basis by the matrix
+    \[ A = \begin{bmatrix} 1 & 0 \\ 0 & 0 \end{bmatrix}. \]
+    This operator satisfies \(T^2 = T\). Prove that if \(S\) is a linear operator on \(\mathbb{R}^2\) such that \(S^2 = S\),
+    then \(S = 0\), or \(S = I\), or there is an ordered basis \(\mathcal{B}\) for \(\mathbb{R}^2\) such that \([S]_\mathcal{B} = A\).
+
+    Suppose that \(S\epsilon_1\) and \(S\epsilon_2\) are linearly independent.
+    Because \(S\) is an operator on \(\mathbb{R}^2\) to itself, \(S\) must be invertible.
+    Then
+    \begin{gather*}
+        S^2 = S \\
+        S^{-1}S^2 = S^{-1}S \\
+        S = I
+    \end{gather*}
+
+    If not, \(S\epsilon_1\) and \(S\epsilon_2\) are linearly dependent. Then \(\rank S < 2\) and therefore \(\nullity S > 0\).
+
+    If \(S\epsilon_1 = S\epsilon_2 = 0\), then clearly \(S = 0\), so WLOG assume \(S\epsilon_1 \neq 0\).
+    Let \(v\) be a nonzero vector in the null space of \(S\).
+    \(\mathcal{B} = \{S\epsilon_1, v\}\) is an ordered basis of \(\mathbb{R}^2\), as the two vectors are linearly independent.
+    If not, there exists a real number \(a\) such that \(S\epsilon_1 = av\), which is a contradiction as because
+    \(S\epsilon_1 = S(S\epsilon_1) = aSv = 0\). Then
+    \begin{gather*}
+        [S(S\epsilon_1)]_\mathcal{B} = [S\epsilon_1]_\mathcal{B} = \begin{bmatrix} 1 \\ 0 \end{bmatrix},\quad
+        [Sv]_\mathcal{B} = [0]_\mathcal{B} = \begin{bmatrix} 0 \\ 0 \end{bmatrix} \\
+        [S]_\mathcal{B} = \begin{bmatrix} 1 & 0 \\ 0 & 0 \end{bmatrix}
+    \end{gather*}
 
 \end{enumerate}
 
